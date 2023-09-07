@@ -1,0 +1,178 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+          <a class="navbar-brand" href="#">Logo</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                      <a class="nav-link" href="#features">Features</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#pricing">Pricing</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#contact">Contact</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+</header>
+ <!-- Hero Section -->
+ <section class="hero bg-primary text-white text-center py-5 d-flex justify-content-center align-items-center">
+  <div class="container">
+    <h1>A trusted and secure market exchange.</h1>
+    <p>Crypo is the most advanced UI kit for making the Blockchain platform. This kit comes with 4 different exchange page, market, wallet, and many more</p>
+    <form (ngSubmit)="submitForm(myForm)" #myForm="ngForm">
+      <div class="form-group">
+        <input type="email" class="form-control" id="emailInput" name="email" placeholder="Enter your email" [(ngModel)]="email">
+      </div>
+      <button type="submit" class="btn btn-light btn-lg">Get Started</button>
+    </form>
+
+  </div>
+</section>
+
+<!-- testo che ruota infinito -->
+<div class="marquee-container" >
+  <div class="marquee-content" >
+
+    <span *ngFor="let transaction of transaction">
+      <span>{{ transaction.amount }} </span></span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+     <span>TESTO QUI </span>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- Features Section -->
+<section id="features" class="py-5">
+  <div class="container">
+    <h2 class="text-center">Features</h2>
+
+
+
+  </div>
+</section>
+
+
+<!-- Features Section -->
+<section id="features" class="py-5">
+  <div class="container">
+      <h2 class="text-center">Features</h2>
+      <!-- Add feature content here -->
+  </div>
+</section>
+
+<!-- Pricing Section -->
+<section id="pricing" class="bg-light py-5">
+  <div class="container">
+      <h2 class="text-center">Pricing</h2>
+      <!-- Add pricing content here -->
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5">
+  <div class="container">
+      <h2 class="text-center">Contact</h2>
+      <!-- Add contact form or details here -->
+  </div>
+</section>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID Cliente</th>
+      <th>Ragione Sociale</th>
+      <th>Partita IVA</th>
+      <th>Email Cliente</th>
+      <th>PEC</th>
+      <th>Telefono Cliente</th>
+      <th>Tipo Cliente</th>
+      <th>Nome Contatto</th>
+      <th>Cognome Contatto</th>
+      <th>Telefono Contatto</th>
+      <th>Data Inserimento</th>
+      <th>Ultimo Contatto</th>
+      <th>Fatturato Annuale</th>
+      <th>Fatture</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Utilizza *ngFor per iterare attraverso l'array dei clienti -->
+    <tr *ngFor="let transaction of transaction">
+      <td>{{ transaction.amount }}</td>
+      <td>{{ transaction.currency }}</td>
+      <td>{{ transaction.currency}}</td>
+      <td>{{ transaction.transactionType }}</td>
+      <td>{{ transaction.timeStamp}}</td>
+      <td>{{ transaction.order.orderType }}</td>
+      <td>{{ transaction.order.quantity }}</td>
+      <td>{{ transaction.order.timeStamp }}</td>
+      <td>{{ transaction.order.marketData.volume }}</td>
+      <td>{{ transaction.order.marketData.timeStamp }}</td>
+      <td>{{ transaction.order.marketData.symbol }}</td>
+      <td>{{ transaction.order.marketData.price }}</td>
+      <td>{{transaction.order.marketData.name }}</td>
+      <!-- <td>{{ cliente.fatture }}</td> -->
+      <!-- <ul>
+        <li *ngFor="let fattura of cliente.fatture">
+              importo : {{ fattura.importo}}
+        </li>
+      </ul> -->
+      <!-- <td>{{ cliente.indirizzoSedeL }}</td> -->
+      <td>
+        <td >
+          <!-- <div    class="btn-group" role="group">
+            <button class="btn btn-primary" >Modifica</button>
+            <button class="btn btn-danger"  (click)="onDeleteCliente(cliente.idCliente)">Elimina</button>
+          </div> -->
+        </td>
+    </tr>
+  </tbody>
+</table>
+<div>
+  <button class="btn btn-secondary" (click)="previousPage()" >Pagina precedente</button>
+  <button class="btn btn-secondary m-3" (click)="nextPage()" >Pagina successiva</button>
+</div>
