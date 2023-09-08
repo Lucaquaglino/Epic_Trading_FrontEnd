@@ -80,7 +80,9 @@ marketData: MarketData[]=[];
         const userEmail = form.value.email;
         this.router.navigate(['/register'], { queryParams: { email: userEmail } });
       }
-
+      redirectToRegister() {
+        this.router.navigate(['/register']); // Sostituisci con la tua rotta effettiva se diversa
+      }
     loadTransaction(): void {
 
       this.AppService.getTransaction(this.page, 'id').subscribe(
