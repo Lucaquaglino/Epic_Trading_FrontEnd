@@ -11,10 +11,10 @@ export class RegisterComponent implements OnInit {
 
   username: string = '';
   password: string = '';
-name :string = '';
-surname: string = '';
-role :string = 'ADMIN';
-email :string = '';
+  name :string = '';
+  surname: string = '';
+  role :string = 'ADMIN';
+  email :string = '';
   constructor(private authService: AuthService, private router: Router,private route: ActivatedRoute) {}
 
   ngOnInit() {

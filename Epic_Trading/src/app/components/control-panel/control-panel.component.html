@@ -1,39 +1,55 @@
+<!-- <button (click)="toggleFullscreen()">Visualizza a schermo intero</button> -->
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-          <a class="navbar-brand" href="#">Logo</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav ml-auto">
-                  <li class="nav-item">
-                      <a class="nav-link" href="#features">Features</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#pricing">Pricing</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#contact">Contact</a>
-                  </li>
-              </ul>
-          </div>
+    <div class="container-fluid ">
+      <a class="navbar-brand" href="#"><img src="../../../assets/logoepicdtrading.png" alt="" style="max-width: 30px; max-height: 30px;"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarNav">
+        <div>
+        <ul class="navbar-nav mx- ">
+          <li class="nav-item">
+            <a class="nav-link" href="#features">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#pricing">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
       </div>
+        <div  class="navbar-nav "   style=" margin-left:auto;">
+        <!-- Aggiungi i bottoni "Login" e "Register" anche qui -->
+        <button class="btn btn-light btn-sm ml-2">Login</button>
+        <button class="btn btn-primary btn-sm ml-2">Register</button>
+      </div>
+      </div>
+    </div>
   </nav>
 </header>
- <!-- Hero Section -->
- <section class="hero bg-primary text-white text-center py-5 d-flex justify-content-center align-items-center">
-  <div class="container">
-    <h1>A trusted and secure market exchange.</h1>
-    <p>Crypo is the most advanced UI kit for making the Blockchain platform. This kit comes with 4 different exchange page, market, wallet, and many more</p>
-    <form (ngSubmit)="submitForm(myForm)" #myForm="ngForm">
-      <div class="form-group">
-        <input type="email" class="form-control" id="emailInput" name="email" placeholder="Enter your email" [(ngModel)]="email">
-      </div>
-      <button type="submit" class="btn btn-light btn-lg">Get Started</button>
-    </form>
+<hr class="m-0 p-0" style="color: grey;">
 
+
+
+ <!-- Hero Section -->
+ <section class="hero  text-center py-5 d-flex justify-content-center align-items-center">
+  <div class="container-fluid">
+    <h1>A trusted and secure market exchange.</h1>
+    <p>Crypo is the most advanced UI kit for making the Blockchain platform. <br>This kit comes with 4 different exchange pages, market, wallet, and many more.</p>
+
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <form (ngSubmit)="submitForm(myForm)" #myForm="ngForm">
+          <div class="form-group">
+            <input type="email" class="form-control" id="emailInput" name="email" placeholder="Enter your email" [(ngModel)]="email">
+          </div>
+          <button type="submit" class=" btn btn-primary btn-lg mt-3">Get Started</button>
+        </form>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -41,38 +57,33 @@
 <div class="marquee-container" >
   <div class="marquee-content" >
 
-    <span *ngFor="let transaction of transaction">
-      <span>{{ transaction.amount }} </span></span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
-     <span>TESTO QUI </span>
+
+
+    <span *ngFor="let marketData of marketData"> <span>{{ marketData.name }} ---- {{ marketData.price }}---{{ marketData.symbol }}---{{ marketData.timeStamp }}----{{ marketData.volume }}  </span> </span>
+      <!-- <span>{{ marketData.name }}    </span> -->
+      <span>ciao  </span>
+      <span>ciao  </span>
+      <span>ciao  </span>
+      <span>ciao  </span>
+      <span>ciao  </span>
+      <span>ciao  </span>
+      <span>ciao  </span>
+      <span>ciao  </span>
+      <span>ciao  </span>
+      <span>ciao  </span>
+      <span>ciao  </span>
+      <span>ciao  </span>
+      <span>ciao  </span>
+      <span>ciao  </span>
+      <span>ciao  </span>
+
+      <span>ciao  </span>
+      <span>ciao  </span>
+      <span>ciao  </span>
+      <span>ciao  </span>
+      <span>ciao  </span>
+
+<!-- {{ marketData.price }}{{ marketData.symbol }}{{ marketData.timeStamp }}{{ marketData.volume }}  -->
 
   </div>
 </div>
@@ -86,30 +97,130 @@
 
 <!-- Features Section -->
 <section id="features" class="py-5">
-  <div class="container">
-    <h2 class="text-center">Features</h2>
-
-
-
+  <div class="container text-center">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h2 class="text-center">Features</h2>
+        <p>Il tuo testo va qui...</p>
+      </div>
+      <div class="col-md-6">
+        <img src="url-dell'immagine.jpg" alt="Descrizione dell'immagine" class="img-fluid">
+      </div>
+    </div>
   </div>
 </section>
 
 
 <!-- Features Section -->
 <section id="features" class="py-5">
-  <div class="container">
-      <h2 class="text-center">Features</h2>
-      <!-- Add feature content here -->
+  <div class="container text-center">
+    <div class="row align-items-center">
+      <div class="col-md-6 order-md-2">
+        <img src="url-dell'immagine.jpg" alt="Descrizione dell'immagine" class="img-fluid">
+      </div>
+      <div class="col-md-6 order-md-1">
+        <h2 class="text-center">Features</h2>
+        <p>Il tuo testo va qui...</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- Pricing Section -->
+
+
+<!-- card section -->
+<section id="features" class="py-5">
+  <div class="container text-center">
+    <h2>Features</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="immagine-1.jpg" class="card-img-top" alt="Immagine 1">
+          <div class="card-body">
+            <h5 class="card-title">Feature 1</h5>
+            <p class="card-text">Descrizione della Feature 1.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="immagine-2.jpg" class="card-img-top" alt="Immagine 2">
+          <div class="card-body">
+            <h5 class="card-title">Feature 2</h5>
+            <p class="card-text">Descrizione della Feature 2.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="immagine-3.jpg" class="card-img-top" alt="Immagine 3">
+          <div class="card-body">
+            <h5 class="card-title">Feature 3</h5>
+            <p class="card-text">Descrizione della Feature 3.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- banner -->
 <section id="pricing" class="bg-light py-5">
   <div class="container">
       <h2 class="text-center">Pricing</h2>
       <!-- Add pricing content here -->
   </div>
 </section>
+
+
+
+<!-- card section -->
+<section id="features" class="py-5">
+  <div class="container text-center">
+    <h2>Features</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="immagine-1.jpg" class="card-img-top" alt="Immagine 1">
+          <div class="card-body">
+            <h5 class="card-title">Feature 1</h5>
+            <p class="card-text">Descrizione della Feature 1.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="immagine-2.jpg" class="card-img-top" alt="Immagine 2">
+          <div class="card-body">
+            <h5 class="card-title">Feature 2</h5>
+            <p class="card-text">Descrizione della Feature 2.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="immagine-3.jpg" class="card-img-top" alt="Immagine 3">
+          <div class="card-body">
+            <h5 class="card-title">Feature 3</h5>
+            <p class="card-text">Descrizione della Feature 3.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- banner -->
+<section id="pricing" class="bg-light py-5">
+  <div class="container">
+      <h2 class="text-center">Pricing</h2>
+      <!-- Add pricing content here -->
+  </div>
+</section>
+
 
 <!-- Contact Section -->
 <section id="contact" class="py-5">
@@ -176,3 +287,7 @@
   <button class="btn btn-secondary" (click)="previousPage()" >Pagina precedente</button>
   <button class="btn btn-secondary m-3" (click)="nextPage()" >Pagina successiva</button>
 </div>
+<!-- <div *ngFor="let transaction of marketData">
+  <h2> sdfsdf{{ transaction.name }}</h2>
+
+</div> -->

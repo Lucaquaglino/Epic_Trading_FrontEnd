@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild,  ElementRef  } from '@angular/core';
 import { Transactions } from 'src/app/models/transactions.interface';
 import { AppService } from 'src/app/services/app.service';
 import { Route, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-
+import { MarketData } from 'src/app/models/market-data';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class ControlPanelComponent implements OnInit {
   email: string = '';
     page = 0; // Imposta la pagina iniziale
     pageSize =10;
-
+marketData: MarketData[]=[];
 
 
 
@@ -42,13 +42,32 @@ export class ControlPanelComponent implements OnInit {
       }
     }
 
-    constructor(private AppService: AppService, private router: Router) {}
+    constructor(private AppService: AppService, private router: Router, private el: ElementRef) {}
 
+// visualizzazione a tutto schermo
+    // toggleFullscreen() {
+    //   const elem = this.el.nativeElement;
 
+    //   if (!document.fullscreenElement) {
+    //     if (elem.requestFullscreen) {
+    //       elem.requestFullscreen();
+    //     } else if (elem.mozRequestFullScreen) { // Firefox
+    //       elem.mozRequestFullScreen();
+    //     } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, Opera
+    //       elem.webkitRequestFullscreen();
+    //     } else if (elem.msRequestFullscreen) { // IE/Edge
+    //       elem.msRequestFullscreen();
+    //     }
+    //   } else {
+    //     if (document.exitFullscreen) {
+    //       document.exitFullscreen();
+    //     }
+    //   }
+    // }
 
       ngOnInit(): void {
 
-
+        this.loadMarketData()
         this.loadTransaction();
         // setInterval(() => {
         //   this.loadTransaction();
@@ -76,7 +95,18 @@ export class ControlPanelComponent implements OnInit {
     }
 
 
+    loadMarketData(): void {
 
+      this.AppService.getMarketData(this.page, 'id').subscribe(
+        (marketData : MarketData[]) => {
+          console.log(marketData);
+          this.marketData = marketData;
+        },
+        (error) => {
+          console.error("Error fetching marketData:", error);
+        }
+      );
+    }
       nextPage() {
         this.page++; // Vai alla pagina successiva
         this. loadTransaction();
