@@ -69,9 +69,9 @@ marketData: MarketData[]=[];
 
         this.loadMarketData()
         this.loadTransaction();
-        setInterval(() => {
-          this.loadMarketData();
-        }, 10000);
+        // setInterval(() => {
+        //   this.loadMarketData();
+        // }, 10000);
       }
 
 
