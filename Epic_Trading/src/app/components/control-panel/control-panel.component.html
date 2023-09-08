@@ -59,31 +59,23 @@
 
 
 
-    <span *ngFor="let marketData of marketData"> <span>{{ marketData.name }} ---- {{ marketData.price }}---{{ marketData.symbol }}---{{ marketData.timeStamp }}----{{ marketData.volume }}  </span> </span>
-      <!-- <span>{{ marketData.name }}    </span> -->
-      <span>ciao  </span>
-      <span>ciao  </span>
-      <span>ciao  </span>
-      <span>ciao  </span>
-      <span>ciao  </span>
-      <span>ciao  </span>
-      <span>ciao  </span>
-      <span>ciao  </span>
-      <span>ciao  </span>
-      <span>ciao  </span>
-      <span>ciao  </span>
-      <span>ciao  </span>
-      <span>ciao  </span>
-      <span>ciao  </span>
-      <span>ciao  </span>
+    <span *ngFor="let marketData of marketData">
+        <span>
+          {{ marketData.symbol }}&nbsp;&nbsp;</span>
+        <span>        </span>        <span>       </span><span> </span><span> </span><span> </span><span> </span><span> </span><span> </span>
+        <span [style.color]="marketData.color">
+          {{ marketData.price | number:'1.2-2' }}&nbsp;&nbsp;</span>
+        <span> </span>
 
-      <span>ciao  </span>
-      <span>ciao  </span>
-      <span>ciao  </span>
-      <span>ciao  </span>
-      <span>ciao  </span>
+        <span> </span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span> </span>
+        <span> </span>
+      </span>
 
-<!-- {{ marketData.price }}{{ marketData.symbol }}{{ marketData.timeStamp }}{{ marketData.volume }}  -->
+
+
+
 
   </div>
 </div>

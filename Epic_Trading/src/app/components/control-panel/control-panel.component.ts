@@ -69,9 +69,9 @@ marketData: MarketData[]=[];
 
         this.loadMarketData()
         this.loadTransaction();
-        // setInterval(() => {
-        //   this.loadTransaction();
-        // }, 10000);
+        setInterval(() => {
+          this.loadMarketData();
+        }, 10000);
       }
 
 
@@ -95,11 +95,47 @@ marketData: MarketData[]=[];
     }
 
 
-    loadMarketData(): void {
+    // loadMarketData(): void {
 
+    //   this.AppService.getMarketData(this.page, 'id').subscribe(
+    //     (marketData : MarketData[]) => {
+    //       console.log(marketData);
+    //       this.marketData = marketData;
+    //     },
+    //     (error) => {
+    //       console.error("Error fetching marketData:", error);
+    //     }
+    //   );
+    // }
+
+
+
+    previousPrices: number[] = [];
+
+    loadMarketData(): void {
       this.AppService.getMarketData(this.page, 'id').subscribe(
-        (marketData : MarketData[]) => {
+        (marketData: MarketData[]) => {
           console.log(marketData);
+          // Calcola la variazione percentuale e imposta il colore per ciascun marketData
+          marketData.forEach((data, index) => {
+            if (this.previousPrices[index] !== undefined) {
+              const priceChange = data.price - this.previousPrices[index];
+              const percentageChange = (priceChange / this.previousPrices[index]) * 100;
+
+              // Assegna il colore in base alla variazione percentuale
+              if (percentageChange > 0) {
+                data.color = 'green';
+              } else if (percentageChange < 0) {
+                data.color = 'red';
+              } else {
+                data.color = 'black';
+              }
+            }
+
+            // Aggiorna il valore precedente con il nuovo prezzo
+            this.previousPrices[index] = data.price;
+          });
+
           this.marketData = marketData;
         },
         (error) => {
@@ -107,6 +143,7 @@ marketData: MarketData[]=[];
         }
       );
     }
+
       nextPage() {
         this.page++; // Vai alla pagina successiva
         this. loadTransaction();

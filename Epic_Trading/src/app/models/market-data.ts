@@ -5,6 +5,7 @@ export interface MarketData {
 "symbol":string,
 	"price":number,
  "volume":number,
-	 "timeStamp":string
+	 "timeStamp":string,
+   color: string;
 
 }

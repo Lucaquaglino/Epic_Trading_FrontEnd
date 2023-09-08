@@ -6,8 +6,10 @@
 
 .marquee-content {
   display: inline-block;
-  animation: marquee 1000s linear infinite;
+  animation: marquee 700s linear infinite;
   // transform: translateX(-100%);
+
+  font-size:2em;
 }
 
 @keyframes marquee {
