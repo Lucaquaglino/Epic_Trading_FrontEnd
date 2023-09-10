@@ -20,6 +20,7 @@ marketData: MarketData[]=[];
   constructor(private AppService: AppService, private router: Router, private el: ElementRef) {}
 
   ngOnInit(): void {
+    this.loadMarketData();
   }
   loadMarketData(): void {
     this.AppService.getMarketData(this.page, 'id').subscribe(
