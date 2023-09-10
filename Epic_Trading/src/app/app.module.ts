@@ -19,6 +19,7 @@ import { AppService } from './services/app.service';
 import { ControlPanelComponent } from './components/control-panel/control-panel.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { MarketComponent } from './components/market/market.component';
 
 const rotte: Route[] = [
   { path: '', redirectTo: 'controlPanel', pathMatch: 'full' },
@@ -27,11 +28,11 @@ const rotte: Route[] = [
     component: ControlPanelComponent,
     // canActivate: [AuthGuard]
   },
-  // {
-  //   path: 'navbar',
-  //   component: NavbarComponent,
-  //   // canActivate: [AuthGuard]
-  // },
+  {
+    path: 'market',
+    component: MarketComponent,
+    // canActivate: [AuthGuard]
+  },
   {
     path: 'dashboard',
     component: DashboardComponent,
@@ -54,7 +55,8 @@ const rotte: Route[] = [
     RegisterComponent,
     ControlPanelComponent,
     DashboardComponent,
-    NavbarComponent
+    NavbarComponent,
+    MarketComponent
   ],
   imports: [
     BrowserModule,

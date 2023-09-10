@@ -1,0 +1,21 @@
+<div class="container mt-4">
+  <h2>Market Stock Actions</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Symbol</th>
+        <th scope="col">Name</th>
+        <th scope="col">Volume</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let stock of marketData">
+        <td>{{ stock.symbol }}</td>
+        <td>{{ stock.name }}</td>
+        <td>{{ stock.volume }}</td>
+        <td [style.color]="stock.color" >{{ stock.price | currency:'USD':'symbol-narrow':'1.2-2' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
