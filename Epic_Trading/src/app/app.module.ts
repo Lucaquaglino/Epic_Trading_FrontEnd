@@ -17,9 +17,11 @@ import { FormsModule } from '@angular/forms';
 import { TokenInterceptor } from './auth/token.interceptor';
 import { AppService } from './services/app.service';
 import { ControlPanelComponent } from './components/control-panel/control-panel.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 const rotte: Route[] = [
-  { path: '', redirectTo: 'register', pathMatch: 'full' },
+  { path: '', redirectTo: 'controlPanel', pathMatch: 'full' },
   {
     path: 'controlPanel',
     component: ControlPanelComponent,
@@ -30,11 +32,11 @@ const rotte: Route[] = [
   //   component: NavbarComponent,
   //   // canActivate: [AuthGuard]
   // },
-  // {
-  //   path: 'fatture',
-  //   component: FattureComponent,
-  //   // canActivate: [AuthGuard]
-  // },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    // canActivate: [AuthGuard]
+  },
   {
     path: 'login',
     component: LoginComponent,
@@ -50,7 +52,9 @@ const rotte: Route[] = [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    ControlPanelComponent
+    ControlPanelComponent,
+    DashboardComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <!-- Colonna sinistra con i link -->
+    <div class="col-md-2">
+      <ul class="list-group">
+        <li class="list-group-item"><a routerLink="/dashboard" >Profile</a></li>
+        <li class="list-group-item"><a routerLink="/dashboard" (click)="showPortfolio() ">Wallet</a></li>
+        <li class="list-group-item"><a routerLink="/dashboard" (click)="showTransactions()">Transactions</a></li>
+      </ul>
+    </div>
+
+    <!-- Contenuto dinamico -->
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-header">
+          Contenuto
+        </div>
+        <div class="card-body">
+          <div *ngIf="showingPortfolio" >
+            <!-- Colonna centrale per il portafoglio -->
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  Portafoglio
+                </div>
+                <div class="card-body">
+                  <!-- Balance -->
+                  <div class="row mb-3">
+                    <div class="col-md-12">
+                      <h5>Balance Attuale:</h5>
+                      <p>INSERIRE QUI IL BALANCE</p>
+                    </div>
+                  </div>
+
+                  <!-- Pulsanti di Deposit e Withdraw -->
+                  <div class="row">
+                    <div class="col-md-6">
+                      <button class="btn btn-primary" >Deposit</button>
+                    </div>
+                    <div class="col-md-6">
+                      <button class="btn btn-danger" >Withdraw</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div *ngIf="showingTransactions">
+            <!-- Colonna destra per le transazioni -->
+            <div class="col-md-12"> <!-- Modifica qui -->
+              <div class="card">
+                <div class="card-header">
+                  Transazioni
+                </div>
+                <div class="card-body">
+                  <!-- Contenuto delle transazioni -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
