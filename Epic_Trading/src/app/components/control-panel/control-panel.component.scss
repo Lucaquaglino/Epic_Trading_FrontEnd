@@ -21,3 +21,52 @@
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+/* SVG loader made by: csozi | Website: www.csozi.hu*/
+
+/*You dont need this "p" style*/
+.text {
+  font-weight: bolder;
+  font-size: 17px;
+  color: black;
+  position: absolute;
+  translate: -50% 0px;
+  left: 50%;
+  text-align: center;
+}
+
+.loader {
+  overflow: visible;
+  height: fit-content;
+  width: fit-content;
+  padding: 20px;
+  display: flex;
+}
+
+.logo {
+  fill: none;
+  stroke-dasharray: 20px;
+ /*<-- Play with this number until it look cool */
+  stroke: black;
+  animation: load 20s infinite linear;
+}
+
+@keyframes load {
+  0% {
+    stroke-dashoffset: 0px;
+  }
+
+  100% {
+    stroke-dashoffset: 200px;
+ /* <-- This number should always be 10 times the number up there*/
+  }
+}
