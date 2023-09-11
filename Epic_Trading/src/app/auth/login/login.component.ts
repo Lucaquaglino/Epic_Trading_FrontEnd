@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
         const token = this.authService.getToken();
         console.log('Token:', token); // Verifica il token nella console
 
-        this.router.navigate(['/controlPanel']);
+        this.router.navigate(['/dashboard']);
         console.log('Login effettuato:', response);
       },
       (error) => {

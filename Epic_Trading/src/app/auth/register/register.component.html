@@ -44,3 +44,23 @@
     </div>
   </div>
 </div>
+
+
+
+<div class="form-box mx-auto mt-5">
+  <form class="form">
+      <span class="title">Sign up</span>
+      <span class="subtitle">Create a free account with your email.</span>
+      <div class="form-container">
+        <input type="text" class="input" placeholder="Name" id="name" name="name" required [(ngModel)]=" name">
+        <input type="text" class="input" placeholder="Surname" id="surname" name="surname" required [(ngModel)]="surname">
+        <input type="text" class="input" placeholder="Username" id="username" name="username" required [(ngModel)]="username">
+        <input type="email" class="input" placeholder="Email" id="email" name="email" required [(ngModel)]="email">
+        <input type="password" class="input" placeholder="Password"id="password" name="password" required [(ngModel)]="password">
+      </div>
+      <button (click)="register()" type="submit" class="btn btn-primary">Sign up</button>
+  </form>
+  <div class="form-section">
+    <p>Have an account? <a href="/login">Log in</a> </p>
+  </div>
+  </div>

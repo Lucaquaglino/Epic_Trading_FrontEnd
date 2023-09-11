@@ -23,3 +23,22 @@
     </div>
   </div>
 </div>
+
+
+
+
+<div class="form-box mx-auto mt-5">
+  <form class="form">
+      <span class="title">Log in</span>
+      <span class="subtitle">Access with your account.</span>
+      <div class="form-container">
+
+        <input type="email" class="input" placeholder="Email" id="email" name="email" required [(ngModel)]="email">
+        <input type="password" class="input" placeholder="Password" id="password" name="password" required [(ngModel)]="password">
+      </div>
+      <button (click)="login()" type="submit" class="btn btn-primary">Log in</button>
+  </form>
+  <div class="form-section">
+    <p>Don't have an account? <a href="/register">Sign up</a> </p>
+  </div>
+  </div>
