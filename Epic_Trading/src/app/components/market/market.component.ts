@@ -14,7 +14,47 @@ export class MarketComponent implements OnInit {
   email: string = '';
     page = 0; // Imposta la pagina iniziale
     pageSize =10;
-marketData: MarketData[]=[];
+marketData!: MarketData[];
+newmarketData : MarketData = {
+  "id":"",
+  "name":"",
+  "symbol":"",
+    "price":null!,
+   "volume":null!,
+     "timeStamp":"",
+     color:null!
+
+}
+
+newTransaction: Transactions = {
+  "timeStamp":"",
+  "amount": null!,
+  "currency": "",
+  "transactionType": "",
+  "marketData": {
+    "id": "",
+    "name": "",
+    "symbol": "",
+    "price":null!,
+    "volume": null!,
+    "timeStamp": ""
+  },
+  "order": {
+    "timeStamp": "",
+    "quantity": null!,
+    "orderType": "",
+    "marketData": {
+      "id": "",
+      "name": "",
+      "symbol": "",
+      "price": null!,
+      "volume": null!,
+      "timeStamp": ""
+    }
+  }
+}
+
+
 
 
   constructor(private AppService: AppService, private router: Router, private el: ElementRef) {}
@@ -22,6 +62,78 @@ marketData: MarketData[]=[];
   ngOnInit(): void {
     this.loadMarketData();
   }
+  createTransaction(newmarketData:string): void {
+    const payload = {
+           // Supponendo che il tuo oggetto MarketData abbia un campo "currency"
+      amount: 0,
+      transactionType: "BUY",
+
+      marketdata: {
+
+        "id":	newmarketData,
+
+      },
+      order:{
+      orderType :"BUY",// Supponendo che il tuo oggetto MarketData abbia un campo "price"
+      // Altri campi del payload
+      marketData: {
+        id:"3fca7623-ef47-47cb-9ee9-8b5c22fe3426",
+        "name":	"Grimes, Reilly and Hagenes",
+        "symbol":"MITK",
+        "price": 423.12,
+        "volume": 	7739.08,
+        "timeStamp": ""
+      }
+    }
+    };
+
+    this.AppService.createTransaction(payload).subscribe(
+      (createdTransaction) => {
+        // Gestisci la risposta dal backend
+        console.log('Transazione creata con successo:', createdTransaction);
+      },
+      (error) => {
+        // Gestisci gli errori
+        console.error('Errore durante la creazione della transazione:', error);
+      }
+    );
+  }
+
+  // createTransaction( marketData:MarketData): void {
+  //   const payload: any = {
+  //      // Supponendo che il tuo oggetto MarketData abbia un campo "currency"
+  //     price: marketData.price,
+  //     transactionType: "BUY",
+
+  //     marketData: {
+  //       id:marketData.id,
+  //       "name":marketData.name,
+  //       "symbol":marketData.symbol,
+  //       "price": marketData.price,
+  //       "volume": marketData.volume,
+  //       "timeStamp": ""
+  //     },
+  //     order:{
+  //     orderType :"BUY",// Supponendo che il tuo oggetto MarketData abbia un campo "price"
+  //     // Altri campi del payload
+
+  //   }
+  //   };
+
+  //   this.AppService.createTransaction(payload).subscribe(
+  //     (createdTransaction: Transactions) => {
+  //       // La transazione è stata creata con successo, gestisci la risposta
+  //       console.log('Transazione creata con successo:', createdTransaction);
+  //     },
+  //     (error) => {
+  //       // Gestisci gli errori se la chiamata fallisce
+  //       console.error('Errore durante la creazione della transazione:', error);
+  //     }
+  //   );
+  // }
+
+
+
   loadMarketData(): void {
     this.AppService.getMarketData(this.page, 'id').subscribe(
       (marketData: MarketData[]) => {

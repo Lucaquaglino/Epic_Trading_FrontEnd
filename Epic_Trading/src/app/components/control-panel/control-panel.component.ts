@@ -28,11 +28,20 @@ marketData: MarketData[]=[];
       "amount": null!,
       "currency": "",
       "transactionType": "",
+      "marketData": {
+        "id": "",
+        "name": "",
+        "symbol": "",
+        "price":null!,
+        "volume": null!,
+        "timeStamp": ""
+      },
       "order": {
         "timeStamp": "",
         "quantity": null!,
         "orderType": "",
         "marketData": {
+          "id": "",
           "name": "",
           "symbol": "",
           "price": null!,

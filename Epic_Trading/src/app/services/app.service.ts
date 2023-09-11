@@ -11,6 +11,7 @@ import { MarketData} from '../models/market-data';
 export class AppService {
   private urlTransactions = 'http://localhost:3001/transactions'; // Controlla l'URL del backend
 private urlMarketData='http://localhost:3001/marketData';
+private apiUrl='http://localhost:3001/transactions';
   constructor(private http:HttpClient) { }
 
 
@@ -25,6 +26,12 @@ private urlMarketData='http://localhost:3001/marketData';
     return this.http.get<any>(this.urlTransactions, { params, headers })
       .pipe(map(response => response.content));
   }
+
+  createTransaction(payload: any): Observable<Transactions> {
+    return this.http.post<Transactions>(this.apiUrl, payload);
+  }
+
+
 
 
   getMarketData(page:Number, order:string): Observable<MarketData[]> {

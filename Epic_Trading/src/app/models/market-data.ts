@@ -1,6 +1,6 @@
 export interface MarketData {
 
-
+"id":string,
 	 "name":string,
 "symbol":string,
 	"price":number,

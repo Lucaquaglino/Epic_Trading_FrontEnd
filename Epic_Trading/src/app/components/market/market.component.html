@@ -7,14 +7,18 @@
         <th scope="col">Name</th>
         <th scope="col">Volume</th>
         <th scope="col">Price</th>
+        <th scope="col">id</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let stock of marketData">
+      <tr *ngFor="let stock of marketData" >
         <td>{{ stock.symbol }}</td>
         <td>{{ stock.name }}</td>
         <td>{{ stock.volume }}</td>
+
         <td [style.color]="stock.color" >{{ stock.price | currency:'USD':'symbol-narrow':'1.2-2' }}</td>
+        <td>{{ stock.id }}</td>
+        <button (click)="createTransaction(stock.id)">Acquista</button>
       </tr>
     </tbody>
   </table>
