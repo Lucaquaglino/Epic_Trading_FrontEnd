@@ -22,6 +22,9 @@ export class AuthService {
       }));
   }
 
+  getCurrentUserInfo() {
+    return this.http.get<{ name: string, email: string }>('http://localhost:3001/users/current');
+  }
 
   register(username:String, name:String,  surname: string,
     email: string,
