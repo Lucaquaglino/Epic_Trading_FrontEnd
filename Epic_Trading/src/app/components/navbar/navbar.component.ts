@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getCurrentUserInfo().subscribe(userInfo => {
       this.currentUserInfo = userInfo;
+      console.log(this.currentUserInfo);
     });
   }
   }

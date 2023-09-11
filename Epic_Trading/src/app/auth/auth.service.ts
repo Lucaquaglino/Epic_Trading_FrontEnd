@@ -22,8 +22,13 @@ export class AuthService {
       }));
   }
 
-  getCurrentUserInfo() {
-    return this.http.get<{ name: string, email: string }>('http://localhost:3001/users/current');
+  // getCurrentUserInfo() {
+  //   return this.http.get<{ name: string, email: string }>('http://localhost:3001/users/current');
+  // }
+
+
+  getCurrentUserInfo(): Observable<any> {
+    return this.http.get<any>('http://localhost:3001/users/current');
   }
 
   register(username:String, name:String,  surname: string,

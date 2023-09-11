@@ -3,7 +3,7 @@
     <!-- Colonna sinistra con i link -->
     <div class="col-md-2">
       <ul class="list-group">
-        <li class="list-group-item"><a routerLink="/dashboard" >Profile</a></li>
+        <li class="list-group-item"><a routerLink="/dashboard" (click)="showProfile()">Profile</a></li>
         <li class="list-group-item"><a routerLink="/dashboard" (click)="showPortfolio() ">Wallet</a></li>
         <li class="list-group-item"><a routerLink="/dashboard" (click)="showTransactions()">Transactions</a></li>
       </ul>
@@ -60,6 +60,42 @@
               </div>
             </div>
           </div>
+
+          <div *ngIf="showingProfile">
+            <!-- Colonna destra per le informazioni dell'utente -->
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  Informazioni Utente
+                </div>
+                <div class="card-body">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Nome</th>
+                        <th>Cognome</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Numero di Telefono</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- Inserisci qui i dati dell'utente -->
+                      <tr>
+                        <td>{{ currentUserInfo.name}}</td>
+                        <td>{{  currentUserInfo.surname }}</td>
+                        <td>{{  currentUserInfo.username }}</td>
+                        <td>{{ currentUserInfo.email }}</td>
+                        <td>{{  currentUserInfo.phoneNumber }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
         </div>
       </div>
     </div>
