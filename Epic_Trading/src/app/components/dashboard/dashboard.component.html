@@ -13,8 +13,9 @@
     <div class="col-md-10">
       <div class="card">
         <div class="card-header">
-          Contenuto
+Welcome, {{ currentUserInfo.name.charAt(0).toUpperCase() + currentUserInfo.name.slice(1) }} {{ currentUserInfo.surname.charAt(0).toUpperCase() + currentUserInfo.surname.slice(1) }}
         </div>
+        <h2 *ngIf="!showingPortfolio && !showingTransactions && !showingProfile" class="text-center m-5">Manage your account and wallet</h2>
         <div class="card-body">
           <div *ngIf="showingPortfolio" >
             <!-- Colonna centrale per il portafoglio -->
@@ -45,6 +46,7 @@
               </div>
             </div>
           </div>
+
 
 
           <div *ngIf="showingTransactions">
@@ -82,12 +84,13 @@
                     <tbody>
                       <!-- Inserisci qui i dati dell'utente -->
                       <tr>
-                        <td>{{ currentUserInfo.name}}</td>
-                        <td>{{  currentUserInfo.surname }}</td>
-                        <td>{{  currentUserInfo.username }}</td>
-                        <td>{{ currentUserInfo.email }}</td>
-                        <td>{{  currentUserInfo.phoneNumber }}</td>
+                        <td>{{ currentUserInfo.name.charAt(0).toUpperCase() + currentUserInfo.name.slice(1) }}</td>
+                        <td>{{ currentUserInfo.surname.charAt(0).toUpperCase() + currentUserInfo.surname.slice(1) }}</td>
+                        <td>{{ currentUserInfo.username}}</td>
+                        <td>{{ currentUserInfo.email}}</td>
+                        <td>{{ currentUserInfo.phoneNumber }}</td>
                       </tr>
+
                     </tbody>
                   </table>
                 </div>
