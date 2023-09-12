@@ -29,6 +29,8 @@ const rotte: Route[] = [
     component: ControlPanelComponent,
     // canActivate: [AuthGuard]
   },
+  { path: 'marketAnalyst/:marketDataId', component: MarketAnalystComponent },
+
   {
     path: 'market',
     component: MarketComponent,

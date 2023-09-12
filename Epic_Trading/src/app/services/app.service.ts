@@ -14,6 +14,7 @@ export class AppService {
 private urlMarketData='http://localhost:3001/marketData';
 private urlTransaction='http://localhost:3001/transactions';
 private urlPortfolioStock = 'http://localhost:3001/portfolioStock';
+private urlHistoricalPrice= 'http://localhost:3001/historicalPrice';
   constructor(private http:HttpClient) { }
 
 
@@ -86,5 +87,7 @@ private urlPortfolioStock = 'http://localhost:3001/portfolioStock';
   }
 
 
-
+  getHistoricalPricesByMarketDataId(marketDataId: string): Observable<any> {
+    return this.http.get<any[]>(`${this.urlHistoricalPrice}/${marketDataId}`);
+  }
 }

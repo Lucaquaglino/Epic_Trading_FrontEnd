@@ -3,6 +3,9 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { PortfolioStock } from 'src/app/models/portfolioStock.interface';
 import { AppService } from 'src/app/services/app.service';
 import { ActivatedRoute } from '@angular/router';
+import { Route, Router } from '@angular/router';
+
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -35,7 +38,7 @@ user: any;
 userPortfolioStocks: PortfolioStock[] = [];
 
 
-  constructor( private authService: AuthService,private AppService: AppService, private route: ActivatedRoute) { }
+  constructor( private authService: AuthService,private AppService: AppService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.authService.getCurrentUserInfo().subscribe(userInfo => {
@@ -64,6 +67,12 @@ userPortfolioStocks: PortfolioStock[] = [];
     this.showingPortfolio = false;
     this.showingTransactions = true;
     this.showingProfile=false;
+  }
+
+
+  viewDetails(stockId: string) {
+    // Naviga alla pagina dei dettagli delle azioni con l'ID come parametro
+    this.router.navigate(['/marketAnalyst', stockId]);
   }
 
 

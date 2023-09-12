@@ -92,6 +92,10 @@
           </td>
           <td >
             <button (click)="createTransaction(stock.id, stock.quantity); stock.quantity = null!" class="btn btn-primary">Acquista</button>
+
+          </td>
+          <td>
+            <button (click)="viewDetails(stock.id)" class="btn btn-secondary">Dettagli</button>
           </td>
 
         </tr>

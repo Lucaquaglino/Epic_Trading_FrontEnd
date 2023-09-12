@@ -1,1 +1,63 @@
-<p>market-analyst works!</p>
+<div class="row">
+  <div class="col-md-8">
+    <!-- I tuoi div esistenti a sinistra -->
+    <div id="chartContainer"></div>
+    <div id="legendContainer"></div>
+    <div id="volumeChartContainer"></div>
+  </div>
+
+<!-- <div class="col-md-4 " style="font-size: 15px;">
+  <h2>Market Stock Actions</h2>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" class="d-none d-md-table-cell">Symbol</th>
+          <th scope="col" >Name</th>
+          <th scope="col" class="d-none d-md-table-cell">Volume</th>
+          <th scope="col" >Price</th>
+          <th scope="col" >Quantity</th>
+          <th scope="col" >Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stock of marketData">
+          <td class="d-none d-md-table-cell">{{ stock.symbol }}</td>
+          <td >{{ stock.name }}</td>
+          <td class="d-none d-md-table-cell">{{ stock.volume }}</td>
+          <td  [style.color]="stock.color">{{ stock.price | currency:'USD':'symbol-narrow':'1.2-2' }}</td>
+          <td >
+            <div class="input-group">
+              <input type="number" [(ngModel)]="stock.quantity" class="form-control" placeholder="Enter Quantity">
+            </div>
+          </td>
+          <td >
+            <button class="btn btn-primary">Acquista</button>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> -->
+</div>
+<div class="container mt-4">
+  <h2>Historical Prices</h2>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let historicalPrice of historicalPrices">
+          <td>{{ historicalPrice.dateTime | date:'yyyy-MM-dd ' }}</td>
+          <td>{{ historicalPrice.price | currency:'USD':'symbol-narrow':'1.2-2' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

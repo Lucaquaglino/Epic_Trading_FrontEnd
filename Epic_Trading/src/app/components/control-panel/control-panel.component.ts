@@ -58,7 +58,7 @@ marketData: MarketData[]=[];
       ngOnInit(): void {
 
         this.loadMarketData()
-        this.loadTransaction();
+        // this.loadTransaction();
         // setInterval(() => {
         //   this.loadMarketData();
         // }, 10000);

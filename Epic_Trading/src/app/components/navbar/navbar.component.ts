@@ -13,8 +13,14 @@ export class NavbarComponent implements OnInit {
     this.authService.getCurrentUserInfo().subscribe(userInfo => {
       this.currentUserInfo = userInfo;
       console.log(this.currentUserInfo);
+
     });
   }
+
+
+
+  logOut(): void {
+    this.authService.logout();
   }
 
-
+}

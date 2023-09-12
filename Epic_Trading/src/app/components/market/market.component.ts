@@ -130,7 +130,10 @@ newTransaction: Transactions = {
 
 
 
-
+  viewDetails(stockId: string) {
+    // Naviga alla pagina dei dettagli delle azioni con l'ID come parametro
+    this.router.navigate(['/marketAnalyst', stockId]);
+  }
 
 
 
