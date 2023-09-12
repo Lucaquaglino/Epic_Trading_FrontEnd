@@ -71,6 +71,9 @@
                               {{(portfolioStock.purchasePrice )  * portfolioStock.quantity | number:'1.2-2'}}
                             </td>
                             <td>
+                              {{portfolioStock.marketData.price}}
+                            </td>
+                            <td>
                               <button (click)="viewDetails(portfolioStock.marketData.id)" class="btn btn-secondary">Dettagli</button>
                             </td>
                           <!-- <td>

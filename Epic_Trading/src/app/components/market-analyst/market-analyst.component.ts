@@ -8,7 +8,7 @@ import { NgForm } from '@angular/forms';
 import { MarketData } from 'src/app/models/market-data';
 import { ActivatedRoute } from '@angular/router';
 import { HistoricalPrice } from 'src/app/models/HistoricalPrice.interface';
-
+import { Timestamp } from 'src/app/models/Timestamp.interface';
 
 @Component({
   selector: 'app-market-analyst',
@@ -81,8 +81,12 @@ newTransaction: Transactions = {
     this.route.paramMap.subscribe((params) => {
       this.marketDataId = params.get('marketDataId');
       this.loadHistoricalPrices();
+      this.loadMarketDataId();
+      this.loadMarketData();
+
+
     });
-    this.loadMarketData();
+
     // Ottieni il riferimento all'elemento HTML che conterrà il grafico
     const chartContainer = document.getElementById('chartContainer');
 
@@ -123,7 +127,7 @@ fixRightEdge: true, // blocca a destra grafico//
         downColor: '#ff0000', // Colore delle candele ribassiste
         borderVisible: true, // Visualizza i bordi delle candele
         wickVisible: true, // Visualizza le ombre delle candele
-        title: 'Candlesticks', // Titolo della serie di dati a candela
+        title: `${this.newmarketData.name}`, // Titolo della serie di dati a candela
         // autoscaleInfoProvider: () => ({ // impostare prezzo minimo a  0 ??????????????
         //   priceRange: {
         //      minValue: 0,
@@ -132,55 +136,79 @@ fixRightEdge: true, // blocca a destra grafico//
         //   }),
       });
 
+      function formatDateWithTimestamp(timestamp:any) {
+        const date = new Date(timestamp);
+        const year = date.getFullYear();
+        const month = (date.getMonth() + 1).toString().padStart(2, '0'); // +1 perché i mesi sono zero-based
+        const day = date.getDate().toString().padStart(2, '0');
+
+        return `${year}-${month}-${day}`;
+      }
+
+      const timestamp = "2023-09-11T21:01:07.031994";
+      const formattedDate = formatDateWithTimestamp(timestamp);
+      console.log(formattedDate);
 
 
+      this.AppService.getHistoricalPricesByMarketDataId(this.marketDataId)
+      .subscribe(
+        (historicalPrices) => {
+          // Verifica se ci sono dati storici disponibili
+          if (historicalPrices && historicalPrices.length > 0) {
+            // Crea un array di dati nel formato corretto per il grafico
+              // Crea un array di dati nel formato corretto per il grafico
+          const data = historicalPrices.map((price: HistoricalPrice) => {
+            // Estrai il timestamp dalla data storica
+            const time = formatDateWithTimestamp(price.dateTime);
+            // Estrai il prezzo di apertura dal primo elemento di timestamp
+            const open = price.timestamp[0].price;
+            // Estrai il prezzo di chiusura dall'ultimo elemento di timestamp
+            const close = price.timestamp[price.timestamp.length - 1].price;
+            // Trova il prezzo più alto nei timestamp
+            const high = Math.max(...price.timestamp.map((ts: Timestamp) => ts.price));
+            // Trova il prezzo più basso nei timestamp
+            const low = Math.min(...price.timestamp.map((ts: Timestamp) => ts.price));
 
-
-      // Popola la serie di dati a candela con dati di esempio
-      const data = [
-        { time: '2023-09-01', open: 100, high: 110, low: 95, close: 105 },
-        { time: '2023-09-02', open: 105, high: 115, low: 100, close: 110 },
-        { time: '2023-09-03', open: 110, high: 120, low: 105, close: 115 },
-        { time: '2023-09-04', open: 112, high: 122, low: 110, close: 118 },
-        { time: '2023-09-05', open: 118, high: 128, low: 115, close: 125 },
-        { time: '2023-09-06', open: 125, high: 135, low: 120, close: 130 },
-        { time: '2023-09-07', open: 130, high: 140, low: 125, close: 135 },
-        { time: '2023-09-08', open: 135, high: 145, low: 130, close: 140 },
-        { time: '2023-09-09', open: 140, high: 150, low: 135, close: 145 },
-        { time: '2023-09-10', open: 145, high: 155, low: 140, close: 150 },
-        { time: '2023-09-11', open: 150, high: 160, low: 145, close: 155 },
-        { time: '2023-09-12', open: 155, high: 165, low: 150, close: 160 },
-        { time: '2023-09-13', open: 160, high: 170, low: 155, close: 165 },
-        { time: '2023-09-14', open: 165, high: 175, low: 160, close: 170 },
-        { time: '2023-09-15', open: 170, high: 180, low: 165, close: 175 },
-        { time: '2023-09-16', open: 175, high: 185, low: 170, close: 180 },
-        { time: '2023-09-17', open: 180, high: 190, low: 175, close: 185 },
-        { time: '2023-09-18', open: 185, high: 195, low: 180, close: 190 },
-        { time: '2023-09-19', open: 190, high: 200, low: 185, close: 195 },
-        { time: '2023-09-20', open: 195, high: 205, low: 190, close: 200 },
-        // Aggiungi altri dati di esempio
-      ];
-
-      this.candlestickSeries.setData(data);
-
-   // Aggiungi una serie di dati a barre per i volumi
-   this.volumeSeries = this.chart.addHistogramSeries({
-    color: 'rgba(0, 0, 255, 0.3)',  // Colore delle barre del volume
-    priceScaleId: 'right', // Usa l'asse destro per i volumi
-
-  });
-// Calcola i dati dei volumi collegati ai dati delle candele
-const volumeData = data.map((candle) => {
-  return {
-    time: candle.time,
-    value: Math.floor(Math.random() * 100) + 1, // Dati dei volumi casuali (cambia questa logica con i tuoi dati effettivi)
-  };
+            return {
+              time,
+              open,
+              close,
+              high,
+              low,
+            };
+          });
+        // Ordina i dati in base al tempo crescente utilizzando una funzione di confronto personalizzata
+data.sort((a:any, b:any) => {
+  const timeA = new Date(a.time).getTime();
+  const timeB = new Date(b.time).getTime();
+  return timeA - timeB;
 });
-this.volumeSeries.setData(volumeData);
-      // Aggiungi una legenda personalizzata
-      // this.addLegend(['Euro']);
-    } else {
-      console.error('Element with ID "chartContainer" not found in the DOM.');
+
+          // Imposta i dati nella serie a candela
+          if (this.candlestickSeries) {
+            this.candlestickSeries.setData(data);
+          }
+
+          // Ora puoi aggiungere i dati dei volumi, ad esempio generando dati casuali
+          const volumeData = data.map((candle:any) => {
+            return {
+              time: candle.time,
+              value: Math.floor(Math.random() * 100) + 1, // Dati dei volumi casuali (cambia questa logica con i tuoi dati effettivi)
+            };
+          });
+
+          // Imposta i dati dei volumi nella serie dei volumi
+          if (this.volumeSeries) {
+            this.volumeSeries.setData(volumeData);
+          }
+
+          this.historicalPrices = historicalPrices; // Aggiorna l'array con i dati ricevuti
+        }
+      },
+      (error) => {
+        console.error('Error fetching historical prices:', error);
+      }
+    );
     }
   }
 
@@ -266,6 +294,29 @@ loadHistoricalPrices(): void {
     }
   );
   }
+
+
+
+  loadMarketDataId(): void {
+
+    this.AppService
+    .getMarketDataId(this.marketDataId)
+    .subscribe(
+      (marketdata) => {
+        this.newmarketData = marketdata; // Assegna i dati ricevuti all'array
+        console.log( "marketDATA",this.newmarketData); // Verifica i dati nella console
+        console.log( "marketDATA",this.newmarketData.name);
+        this.candlestickSeries!.applyOptions({
+          title: this.newmarketData.symbol // Imposta il nome dell'azione come titolo
+        });
+      },
+      (error) => {
+        console.error('Error fetching marketData ID:', error);
+      }
+    );
+    }
+
+
 }
 
 

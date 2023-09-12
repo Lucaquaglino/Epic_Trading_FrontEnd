@@ -49,6 +49,9 @@ userPortfolioStocks: PortfolioStock[] = [];
 
       const userId = this.currentUserInfo.id;
       this.loadUserPortfolioStocks(userId);
+    //       setInterval(() => {
+    //   this.loadUserPortfolioStocks(userId);
+    // }, 10000);
     });
 
 

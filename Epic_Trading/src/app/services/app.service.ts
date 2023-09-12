@@ -90,4 +90,10 @@ private urlHistoricalPrice= 'http://localhost:3001/historicalPrice';
   getHistoricalPricesByMarketDataId(marketDataId: string): Observable<any> {
     return this.http.get<any[]>(`${this.urlHistoricalPrice}/${marketDataId}`);
   }
+
+
+
+  getMarketDataId(marketDataId: string): Observable<any> {
+    return this.http.get<any[]>(`${this.urlMarketData}/${marketDataId}`);
+  }
 }
