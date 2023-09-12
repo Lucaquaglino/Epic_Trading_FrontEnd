@@ -20,6 +20,7 @@ import { ControlPanelComponent } from './components/control-panel/control-panel.
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MarketComponent } from './components/market/market.component';
+import { MarketAnalystComponent } from './components/market-analyst/market-analyst.component';
 
 const rotte: Route[] = [
   { path: '', redirectTo: 'controlPanel', pathMatch: 'full' },
@@ -31,6 +32,11 @@ const rotte: Route[] = [
   {
     path: 'market',
     component: MarketComponent,
+    // canActivate: [AuthGuard]
+  },
+  {
+    path: 'marketAnalyst',
+    component: MarketAnalystComponent,
     // canActivate: [AuthGuard]
   },
   {
@@ -56,7 +62,8 @@ const rotte: Route[] = [
     ControlPanelComponent,
     DashboardComponent,
     NavbarComponent,
-    MarketComponent
+    MarketComponent,
+    MarketAnalystComponent
   ],
   imports: [
     BrowserModule,
