@@ -26,64 +26,67 @@
         <div class="card-body">
           <div *ngIf="showingPortfolio" >
             <!-- Colonna centrale per il portafoglio -->
+            <div class="row mb-3">
+              <div class="col-md-12 d-flex justify-content-start ">
+                <h2 >Balance: {{ currentUserInfo.balance| currency:'USD':'symbol-narrow':'1.2-2' }}  </h2>
+                <div class="loader pt-1 mx-2"></div>
+                <!-- <h3>{{ currentUserInfo.balance| currency:'USD':'symbol-narrow':'1.2-2' }}</h3> -->
+              </div>
+            </div>
+
+            <!-- Pulsanti di Deposit e Withdraw -->
+            <div class=" d-flex justify-content-start ">
+              <div class=" mb-2">
+                <button class="btn btn-primary" >Deposit</button>
+              </div>
+              <div class="mx-2 mb-2">
+                <button class="btn btn-danger" >Withdraw</button>
+              </div>
+            </div>
             <div class="col-md-12">
-              <div class="card">
-                <div class="card-header">
-                  Portafoglio
-                </div>
-                <div class="card-body">
+
+
+
 
 
                   <div *ngIf="showingPortfolio">
-                    <h2>Your Portfolio</h2>
-                    <table>
+                    <div class="card">
+                      <div class="card-body">
+                        <h2 class="card-title"> Portfolio</h2>
+                        <table class="table">
                       <thead>
                         <tr>
-                          <th>Stock Symbol</th>
-                          <th>Quantity</th>
-                          <th>Purchase Price</th>
+                          <th scope="col">Stock Symbol</th>
+                          <th scope="col">Quantity</th>
+                          <th scope="col">Purchase Price</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr *ngFor="let portfolioStock of userPortfolioStocks">
+                           <td>{{ portfolioStock.marketData.symbol }}</td>
                           <td>{{ portfolioStock.quantity }}</td>
                           <td>{{ portfolioStock.purchasePrice }}</td>
-                          <td>{{ portfolioStock.marketData.symbol }}</td>
-                          <td>
-                            <!-- Cicla attraverso historicalPrices qui -->
+
+                          <!-- <td>
+
                             <ul>
                               <li *ngFor="let historicalPrice of portfolioStock.marketData.historicalPrices">
                                 Date/Time: {{ historicalPrice.dateTime }}, Price: {{ historicalPrice.price }}
                               </li>
                             </ul>
-                          </td>
+                          </td> -->
                         </tr>
 
                       </tbody>
                     </table>
                   </div>
+                </div>
+              </div>
 
 
 
-                  <h2>ciao</h2>
 
-<div class="row mb-3">
-                    <div class="col-md-12">
-                      <h5 class="loader">Balance </h5>
 
-                      <p>{{ currentUserInfo.balance| currency:'USD':'symbol-narrow':'1.2-2' }}</p>
-                    </div>
-                  </div>
-
-                  <!-- Pulsanti di Deposit e Withdraw -->
-                  <div class="row">
-                    <div class="col-md-6">
-                      <button class="btn btn-primary" >Deposit</button>
-                    </div>
-                    <div class="col-md-6">
-                      <button class="btn btn-danger" >Withdraw</button>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -144,8 +147,6 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
 
 
 
