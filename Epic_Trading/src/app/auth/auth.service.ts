@@ -54,5 +54,5 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  // Potresti aggiungere altre funzioni per gestire il token
+
 }

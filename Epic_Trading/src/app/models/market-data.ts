@@ -7,5 +7,5 @@ export interface MarketData {
  "volume":number,
 	 "timeStamp":string,
    color: string;
-
+quantity:number,
 }

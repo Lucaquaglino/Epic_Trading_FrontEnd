@@ -53,26 +53,7 @@ marketData: MarketData[]=[];
 
     constructor(private AppService: AppService, private router: Router, private el: ElementRef) {}
 
-// visualizzazione a tutto schermo
-    // toggleFullscreen() {
-    //   const elem = this.el.nativeElement;
 
-    //   if (!document.fullscreenElement) {
-    //     if (elem.requestFullscreen) {
-    //       elem.requestFullscreen();
-    //     } else if (elem.mozRequestFullScreen) { // Firefox
-    //       elem.mozRequestFullScreen();
-    //     } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, Opera
-    //       elem.webkitRequestFullscreen();
-    //     } else if (elem.msRequestFullscreen) { // IE/Edge
-    //       elem.msRequestFullscreen();
-    //     }
-    //   } else {
-    //     if (document.exitFullscreen) {
-    //       document.exitFullscreen();
-    //     }
-    //   }
-    // }
 
       ngOnInit(): void {
 
@@ -106,18 +87,6 @@ marketData: MarketData[]=[];
     }
 
 
-    // loadMarketData(): void {
-
-    //   this.AppService.getMarketData(this.page, 'id').subscribe(
-    //     (marketData : MarketData[]) => {
-    //       console.log(marketData);
-    //       this.marketData = marketData;
-    //     },
-    //     (error) => {
-    //       console.error("Error fetching marketData:", error);
-    //     }
-    //   );
-    // }
 
 
 

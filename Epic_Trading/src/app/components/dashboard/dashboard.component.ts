@@ -68,20 +68,6 @@ userPortfolioStocks: PortfolioStock[] = [];
 
 
 
-  // loadUserPortfolioStocks(userId: string): void {
-  //   this.AppService.getUserPortfolioStocks(userId, this.page, 'id').subscribe(
-  //     (response) => {
-  //       console.log(response); // Controlla i dati ricevuti qui
-
-  //       // Accedi agli oggetti PortfolioStock all'interno di content
-  //       this.userPortfolioStocks = response.content;
-  //     },
-  //     (error) => {
-  //       console.error("Error fetching user's portfolioStocks:", error);
-  //     }
-  //   );
-
-  // }
   loadUserPortfolioStocks(userId: string): void {
     this.AppService.getUserPortfolioStocks(userId, this.page, 'id').subscribe(
       (response) => {
@@ -95,32 +81,6 @@ userPortfolioStocks: PortfolioStock[] = [];
   }
 
 
-
-  // loadPortfolioStock(): void {
-
-  //   this.AppService.getPortfolioStock(this.page, 'id').subscribe(
-  //     (portfolioStock : any) => {
-  //       console.log("portafoglio",portfolioStock);
-  //       this.portfolioStock = portfolioStock;
-  //     },
-  //     (error) => {
-  //       console.error("Error fetching transaction:", error);
-  //     }
-  //   );
-  // }
-
-
-  // loadUserPortfolioStocks(userId: string): void {
-  //   this.AppService.getUserPortfolioStocks(userId, this.page, 'id').subscribe(
-  //     (portfolioStocks: portfolioStock[]) => {
-  //       console.log(portfolioStocks);
-  //       this.userPortfolioStocks = portfolioStocks;
-  //     },
-  //     (error) => {
-  //       console.error("Error fetching user's portfolioStocks:", error);
-  //     }
-  //   );
-  // }
 
 
 

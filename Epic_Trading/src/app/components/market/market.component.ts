@@ -22,9 +22,11 @@ newmarketData : MarketData = {
     "price":null!,
    "volume":null!,
      "timeStamp":"",
-     color:null!
+     color:null!,
+     quantity:null!
 
 }
+quantity: number = 1; // Imposta un valore di default o iniziale, se necessario
 
 newTransaction: Transactions = {
   "timeStamp":"",
@@ -55,82 +57,78 @@ newTransaction: Transactions = {
 }
 
 
-
-
   constructor(private AppService: AppService, private router: Router, private el: ElementRef) {}
 
   ngOnInit(): void {
     this.loadMarketData();
   }
-  createTransaction(newmarketData:string): void {
+  // createTransaction(newmarketData:string): void {
+  //   const payload = {
+  //          // Supponendo che il tuo oggetto MarketData abbia un campo "currency"
+  //     // amount: ,
+  //     transactionType: "BUY",
+
+  //     marketdata: {
+
+  //       "id":	newmarketData,
+
+  //     },
+  //     order:{
+  //     orderType :"BUY",
+  //     quantity : 2// Supponendo che il tuo oggetto MarketData abbia un campo "price"
+  //     // Altri campi del payload
+  //     // marketData: {
+  //     //   id:"3fca7623-ef47-47cb-9ee9-8b5c22fe3426",
+  //     //   "name":	"Grimes, Reilly and Hagenes",
+  //     //   "symbol":"MITK",
+  //     //   "price": 423.12,
+  //     //   "volume": 	7739.08,
+  //     //   "timeStamp": ""
+  //     // }
+  //   }
+  //   };
+
+  //   this.AppService.createTransaction(payload).subscribe(
+  //     (createdTransaction) => {
+  //       // Gestisci la risposta dal backend
+  //       console.log('Transazione creata con successo:', createdTransaction);
+  //     },
+  //     (error) => {
+  //       // Gestisci gli errori
+  //       console.error('Errore durante la creazione della transazione:', error);
+  //     }
+  //   );
+  // }
+
+
+  createTransaction(newmarketData: string, quantity: number): void {
     const payload = {
-           // Supponendo che il tuo oggetto MarketData abbia un campo "currency"
-      amount: 0,
       transactionType: "BUY",
-
       marketdata: {
-
-        "id":	newmarketData,
-
+        "id": newmarketData,
       },
-      order:{
-      orderType :"BUY",// Supponendo che il tuo oggetto MarketData abbia un campo "price"
-      // Altri campi del payload
-      marketData: {
-        id:"3fca7623-ef47-47cb-9ee9-8b5c22fe3426",
-        "name":	"Grimes, Reilly and Hagenes",
-        "symbol":"MITK",
-        "price": 423.12,
-        "volume": 	7739.08,
-        "timeStamp": ""
+      order: {
+        orderType: "BUY",
+        quantity: quantity, // Utilizza la quantità fornita dall'input
       }
-    }
     };
 
     this.AppService.createTransaction(payload).subscribe(
       (createdTransaction) => {
-        // Gestisci la risposta dal backend
         console.log('Transazione creata con successo:', createdTransaction);
       },
       (error) => {
-        // Gestisci gli errori
         console.error('Errore durante la creazione della transazione:', error);
       }
     );
   }
 
-  // createTransaction( marketData:MarketData): void {
-  //   const payload: any = {
-  //      // Supponendo che il tuo oggetto MarketData abbia un campo "currency"
-  //     price: marketData.price,
-  //     transactionType: "BUY",
 
-  //     marketData: {
-  //       id:marketData.id,
-  //       "name":marketData.name,
-  //       "symbol":marketData.symbol,
-  //       "price": marketData.price,
-  //       "volume": marketData.volume,
-  //       "timeStamp": ""
-  //     },
-  //     order:{
-  //     orderType :"BUY",// Supponendo che il tuo oggetto MarketData abbia un campo "price"
-  //     // Altri campi del payload
 
-  //   }
-  //   };
 
-  //   this.AppService.createTransaction(payload).subscribe(
-  //     (createdTransaction: Transactions) => {
-  //       // La transazione è stata creata con successo, gestisci la risposta
-  //       console.log('Transazione creata con successo:', createdTransaction);
-  //     },
-  //     (error) => {
-  //       // Gestisci gli errori se la chiamata fallisce
-  //       console.error('Errore durante la creazione della transazione:', error);
-  //     }
-  //   );
-  // }
+
+
+
 
 
 
@@ -165,4 +163,9 @@ newTransaction: Transactions = {
       }
     );
   }
+
+
+
+
+
 }

@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<!-- <div class="container mt-4">
   <h2>Market Stock Actions</h2>
   <table class="table">
     <thead>
@@ -19,7 +19,49 @@
         <td [style.color]="stock.color" >{{ stock.price | currency:'USD':'symbol-narrow':'1.2-2' }}</td>
         <td>{{ stock.id }}</td>
         <button (click)="createTransaction(stock.id)">Acquista</button>
+
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+
+
+
+
+<div class="container mt-4">
+  <h2>Market Stock Actions</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Symbol</th>
+        <th scope="col">Name</th>
+        <th scope="col">Volume</th>
+        <th scope="col">Price</th>
+        <th scope="col">id</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let stock of marketData; let i = index">
+        <td>{{ stock.symbol }}</td>
+        <td>{{ stock.name }}</td>
+        <td>{{ stock.volume }}</td>
+        <td [style.color]="stock.color">{{ stock.price | currency:'USD':'symbol-narrow':'1.2-2' }}</td>
+        <td>{{ stock.id }}</td>
+        <td>
+          <div class="input-group">
+            <input type="number" [(ngModel)]="stock.quantity" class="form-control" placeholder="Enter Quantity" [id]="'quantityInput' + i">
+          </div>
+        </td>
+        <td>
+          <button (click)="createTransaction(stock.id, stock.quantity); stock.quantity = null!" class="btn btn-primary">Acquista</button>
+        </td>
       </tr>
     </tbody>
   </table>
 </div>
+
+
+
