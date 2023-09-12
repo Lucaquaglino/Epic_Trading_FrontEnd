@@ -59,14 +59,17 @@
                           <th scope="col">Stock Symbol</th>
                           <th scope="col">Quantity</th>
                           <th scope="col">Purchase Price</th>
+                          <th scope="col">Total Price</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr *ngFor="let portfolioStock of userPortfolioStocks">
                            <td>{{ portfolioStock.marketData.symbol }}</td>
                           <td>{{ portfolioStock.quantity }}</td>
-                          <td>{{ portfolioStock.purchasePrice }}</td>
-
+                          <td>{{ portfolioStock.purchasePrice | number:'1.2-2' }}</td>
+                            <td>
+                              {{(portfolioStock.purchasePrice )  * portfolioStock.quantity | number:'1.2-2'}}
+                            </td>
                           <!-- <td>
 
                             <ul>

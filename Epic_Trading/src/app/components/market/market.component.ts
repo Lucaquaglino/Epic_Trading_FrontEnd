@@ -61,6 +61,9 @@ newTransaction: Transactions = {
 
   ngOnInit(): void {
     this.loadMarketData();
+    setInterval(() => {
+      this.loadMarketData();
+    }, 10000);
   }
   // createTransaction(newmarketData:string): void {
   //   const payload = {
