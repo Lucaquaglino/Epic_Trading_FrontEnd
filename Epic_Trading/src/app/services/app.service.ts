@@ -106,7 +106,7 @@ private urlHistoricalPrice= 'http://localhost:3001/historicalPrice';
       userId: userId
     };
 
-    return this.http.get<userInfo>( `${this.urlPortfolioStock}/${userId}`, { params });
+    return this.http.get<userInfo>( `${this.urlTransaction}/${userId}`, { params });
   }
 
 

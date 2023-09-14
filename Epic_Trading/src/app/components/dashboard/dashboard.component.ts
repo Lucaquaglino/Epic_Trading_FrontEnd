@@ -5,6 +5,7 @@ import { AppService } from 'src/app/services/app.service';
 import { ActivatedRoute } from '@angular/router';
 import { Route, Router } from '@angular/router';
 import { userInfo } from 'src/app/models/userInfo.interface';
+import { Transactions } from 'src/app/models/transactions.interface';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +18,7 @@ export class DashboardComponent implements OnInit {
   showingProfile=false;
 
 
-userInfo!:userInfo[];
+transactions!:userInfo[];
 
   currentUserInfo!: {
     id:string,
@@ -115,7 +116,7 @@ userPortfolioStocks: PortfolioStock[] = [];
     this.AppService.getUserTransactions(userId, this.page, 'id').subscribe(
       (response) => {
         console.log("transazioniUtente",response); // Controlla i dati ricevuti qui
-        this.userInfo= response.content; // Accedi al campo "content"
+        this.transactions= response.content; // Accedi al campo "content"
       },
       (error) => {
         console.error("Error fetching user's portfolioStocks:", error);

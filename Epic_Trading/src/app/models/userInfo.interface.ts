@@ -7,9 +7,9 @@ content:userInfo[];
   //    username: string,
   //    balance: number,
   // portfolioStock:{
-    purchasePrice:number,
+    // purchasePrice:number,
     id:string,
-    transaction:{
+    // transaction:{
       amount:number,
       transactionType: string,
       order:{
@@ -19,7 +19,7 @@ content:userInfo[];
         }
         qunatity:number
       }
-    }
+    // }
 
 
 }

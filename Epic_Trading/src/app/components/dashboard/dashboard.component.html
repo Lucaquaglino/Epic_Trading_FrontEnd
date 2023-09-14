@@ -118,15 +118,15 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let portfolioStock of userInfo">
-                   <td>{{ portfolioStock }}</td>
-                  <td>{{ portfolioStock }}</td>
-                  <td>{{ portfolioStock.purchasePrice | number:'1.2-2' }}</td>
+                <tr *ngFor="let portfolioStock of transactions">
+                   <td>{{ portfolioStock.transactionType}}</td>
+                  <!-- <td>{{ portfolioStock.transaction.transactionType}}</td> -->
+                  <td>{{ portfolioStock.amount | number:'1.2-2' }}</td>
                     <td>
-                      {{(portfolioStock.purchasePrice )  * portfolioStock.transaction.order.qunatity| number:'1.2-2'}}
+                      <!-- {{(portfolioStock.amount )  * portfolioStock.order.qunatity| number:'1.2-2'}} -->
                     </td>
                     <td>
-                      {{portfolioStock.transaction.order.marketData.symbol}}
+                      {{portfolioStock.order.marketData.symbol}}
                     </td>
                     <td>
                       <!-- <button (click)="viewDetails(portfolioStock.marketData.id)" class="btn btn-secondary">Dettagli</button> -->
