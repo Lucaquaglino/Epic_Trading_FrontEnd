@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs';
 import { MarketData} from '../models/market-data';
 import { PortfolioStock } from '../models/portfolioStock.interface';
+import { userInfo } from '../models/userInfo.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -96,4 +97,21 @@ private urlHistoricalPrice= 'http://localhost:3001/historicalPrice';
   getMarketDataId(marketDataId: string): Observable<any> {
     return this.http.get<any[]>(`${this.urlMarketData}/${marketDataId}`);
   }
+
+
+  getUserTransactions(userId: string, page: number, order: string): Observable<userInfo> {
+    const params = {
+      page: page.toString(),
+      order: order,
+      userId: userId
+    };
+
+    return this.http.get<userInfo>( `${this.urlPortfolioStock}/${userId}`, { params });
+  }
+
+
+
+
+
+
 }

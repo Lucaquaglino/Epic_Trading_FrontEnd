@@ -4,7 +4,7 @@ import { PortfolioStock } from 'src/app/models/portfolioStock.interface';
 import { AppService } from 'src/app/services/app.service';
 import { ActivatedRoute } from '@angular/router';
 import { Route, Router } from '@angular/router';
-
+import { userInfo } from 'src/app/models/userInfo.interface';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,6 +15,10 @@ export class DashboardComponent implements OnInit {
   showingPortfolio = false;
   showingTransactions = false;
   showingProfile=false;
+
+
+userInfo!:userInfo[];
+
   currentUserInfo!: {
     id:string,
     name: string,
@@ -25,8 +29,21 @@ export class DashboardComponent implements OnInit {
     portfolioStock:{
       purchasePrice:number,
       id:string},
-
+      transaction:{
+        amount:number,
+        transactionType: string,
+        order:{
+          marketData:{
+          name:string,
+          symbol:string,
+          }
+          qunatity:number
+        }
+      }
   };
+
+
+
   email: string = '';
   page = 0; // Imposta la pagina iniziale
   pageSize =20;
@@ -49,6 +66,7 @@ userPortfolioStocks: PortfolioStock[] = [];
 
       const userId = this.currentUserInfo.id;
       this.loadUserPortfolioStocks(userId);
+      this.loadUserTransactions(userId)
     //       setInterval(() => {
     //   this.loadUserPortfolioStocks(userId);
     // }, 10000);
@@ -93,7 +111,17 @@ userPortfolioStocks: PortfolioStock[] = [];
   }
 
 
-
+  loadUserTransactions(userId: string): void {
+    this.AppService.getUserTransactions(userId, this.page, 'id').subscribe(
+      (response) => {
+        console.log("transazioniUtente",response); // Controlla i dati ricevuti qui
+        this.userInfo= response.content; // Accedi al campo "content"
+      },
+      (error) => {
+        console.error("Error fetching user's portfolioStocks:", error);
+      }
+    );
+  }
 
 
 

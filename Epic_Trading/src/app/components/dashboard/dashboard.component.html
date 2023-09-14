@@ -105,16 +105,46 @@
 
           <div *ngIf="showingTransactions">
             <!-- Colonna destra per le transazioni -->
-            <div class="col-md-12"> <!-- Modifica qui -->
-              <div class="card">
-                <div class="card-header">
-                  Transazioni
-                </div>
-                <div class="card-body">
-                  <!-- Contenuto delle transazioni -->
-                </div>
-              </div>
-            </div>
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title"> Transactions</h2>
+                <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Stock Symbol</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Purchase Price</th>
+                  <th scope="col">Total Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let portfolioStock of userInfo">
+                   <td>{{ portfolioStock }}</td>
+                  <td>{{ portfolioStock }}</td>
+                  <td>{{ portfolioStock.purchasePrice | number:'1.2-2' }}</td>
+                    <td>
+                      {{(portfolioStock.purchasePrice )  * portfolioStock.transaction.order.qunatity| number:'1.2-2'}}
+                    </td>
+                    <td>
+                      {{portfolioStock.transaction.order.marketData.symbol}}
+                    </td>
+                    <td>
+                      <!-- <button (click)="viewDetails(portfolioStock.marketData.id)" class="btn btn-secondary">Dettagli</button> -->
+                    </td>
+                  <!-- <td>
+
+                    <ul>
+                      <li *ngFor="let historicalPrice of portfolioStock.marketData.historicalPrices">
+                        Date/Time: {{ historicalPrice.dateTime }}, Price: {{ historicalPrice.price }}
+                      </li>
+                    </ul>
+                  </td> -->
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
           </div>
 
           <div *ngIf="showingProfile">
