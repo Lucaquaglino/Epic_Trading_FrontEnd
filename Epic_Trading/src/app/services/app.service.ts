@@ -114,4 +114,8 @@ private urlHistoricalPrice= 'http://localhost:3001/historicalPrice';
 
 
 
+
+
+
+
 }

@@ -54,11 +54,15 @@ marketData: MarketData[]=[];
     constructor(private AppService: AppService, private router: Router, private el: ElementRef) {}
 
 
-
+    showSpinner = true;
       ngOnInit(): void {
 
         this.loadMarketData()
         this.loadTransaction();
+        setTimeout(() => {
+          this.showSpinner = false;
+        }, 3000);
+
         // setInterval(() => {
         //   this.loadMarketData();
         // }, 10000);
@@ -73,6 +77,10 @@ marketData: MarketData[]=[];
       redirectToRegister() {
         this.router.navigate(['/register']); // Sostituisci con la tua rotta effettiva se diversa
       }
+
+
+
+
     loadTransaction(): void {
 
       this.AppService.getTransaction(this.page, 'id').subscribe(

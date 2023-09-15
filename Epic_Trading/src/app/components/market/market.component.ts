@@ -58,9 +58,12 @@ newTransaction: Transactions = {
 
 
   constructor(private AppService: AppService, private router: Router, private el: ElementRef) {}
-
+  showSpinner = true;
   ngOnInit(): void {
     this.loadMarketData();
+    setTimeout(() => {
+      this.showSpinner = false;
+    }, 3500);
     // setInterval(() => {
     //   this.loadMarketData();
     // }, 10000);
