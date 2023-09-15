@@ -4,10 +4,16 @@
 }
 
 .bannercontrolpanel{
-  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+   background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
   color:white;
 }
 
+.bannercontrolpaneltext{
+  background: linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
 .marquee-container {
   overflow: hidden;
@@ -74,7 +80,7 @@
   fill: none;
   stroke-dasharray: 20px;
  /*<-- Play with this number until it look cool */
-  stroke: black;
+  stroke: #3662bb;
   animation: load 20s infinite linear;
 }
 
