@@ -164,7 +164,7 @@
 
     <table cellspacing="0" class="g-table-list">
        <thead>
-          <tr>
+          <tr >
               <th class="g-table-list-col-edit"></th>
               <th class="g-table-list-col-title g-table-list-col-sku required ">SKU</th>
               <th class="g-table-list-col-title g-table-list-col-listing opt g-table-list-rwd">Listing Title</th>
@@ -177,105 +177,17 @@
 
        <tbody>
 
-          <tr>
+          <tr *ngFor="let portfolioStock of transactions">
             <td><a href="#"><i class="fa fa-fw fa-pencil"></i></a></td>
-            <td><a href="#">2R-06HY-RI0K</a><br><div class="g-table-list-col-small-copy">Amazon US</div></td>
-            <td class="g-table-list-rwd"><a href="#">Crest 3D White Vivid Fluoride Anticavity Toothpaste Radiant Mint 0.85 oz Travel Size (Pack of 4)</a></td>
-            <td>1 sold</td>
-            <td>$3.99</td>
+            <td><a href="#">{{portfolioStock.order.marketData.name}}</a><br><div class="g-table-list-col-small-copy">{{portfolioStock.order.marketData.symbol}}</div></td>
+            <td class="g-table-list-rwd"><a href="#">{{portfolioStock.amount}}</a></td>
+            <td>{{portfolioStock.transactionType}}</td>
+            <td>{{portfolioStock.order.qunatity}}</td>
             <td>$0.12</td>
             <td><div class="g-table-list-col-small-copy">12/20/2017, 11:50PM</div></td>
           </tr>
 
-         <tr>
-            <td><a href="#"><i class="fa fa-fw fa-pencil"></i></a></td>
-            <td><a href="#">2R-06HY-RI0K</a><br><div class="g-table-list-col-small-copy">Amazon US</div></td>
-            <td class="g-table-list-rwd"><a href="#">Crest 3D White Vivid Fluoride Anticavity Toothpaste Radiant Mint 0.85 oz Travel Size (Pack of 4)</a></td>
-            <td>1 sold</td>
-            <td>$3.99</td>
-            <td>$0.12</td>
-            <td><div class="g-table-list-col-small-copy">12/20/2017, 11:50PM</div></td>
-          </tr>
 
-         <tr>
-            <td><a href="#"><i class="fa fa-fw fa-pencil"></i></a></td>
-            <td><a href="#">2R-06HY-RI0K</a><br><div class="g-table-list-col-small-copy">Amazon US</div></td>
-            <td class="g-table-list-rwd"><a href="#">Crest 3D White Vivid Fluoride Anticavity Toothpaste Radiant Mint 0.85 oz Travel Size (Pack of 4)</a></td>
-            <td>1 sold</td>
-            <td>$3.99</td>
-            <td>$0.12</td>
-            <td><div class="g-table-list-col-small-copy">12/20/2017, 11:50PM</div></td>
-          </tr>
-
-         <tr>
-            <td><a href="#"><i class="fa fa-fw fa-pencil"></i></a></td>
-            <td><a href="#">2R-06HY-RI0K</a><br><div class="g-table-list-col-small-copy">Amazon US</div></td>
-            <td class="g-table-list-rwd"><a href="#">Crest 3D White Vivid Fluoride Anticavity Toothpaste Radiant Mint 0.85 oz Travel Size (Pack of 4).</a></td>
-            <td>1 sold</td>
-            <td>$3.99</td>
-            <td>$0.12</td>
-            <td><div class="g-table-list-col-small-copy">12/20/2017, 11:50PM</div></td>
-          </tr>
-
-         <tr>
-            <td><a href="#"><i class="fa fa-fw fa-pencil"></i></a></td>
-            <td><a href="#">2R-06HY-RI0K</a><br><div class="g-table-list-col-small-copy">Amazon US</div></td>
-            <td class="g-table-list-rwd"><a href="#">Crest 3D White Vivid Fluoride Anticavity Toothpaste Radiant Mint 0.85 oz Travel Size (Pack of 4)</a></td>
-            <td>1 sold</td>
-            <td>$3.99</td>
-            <td>$0.12</td>
-            <td><div class="g-table-list-col-small-copy">12/20/2017, 11:50PM</div></td>
-          </tr>
-
-         <tr>
-            <td><a href="#"><i class="fa fa-fw fa-pencil"></i></a></td>
-            <td><a href="#">2R-06HY-RI0K</a><br><div class="g-table-list-col-small-copy">Amazon US</div></td>
-            <td class="g-table-list-rwd"><a href="#">Crest 3D White Vivid Fluoride Anticavity Toothpaste Radiant Mint 0.85 oz Travel Size (Pack of 4)</a></td>
-            <td>1 sold</td>
-            <td>$3.99</td>
-            <td>$0.12</td>
-            <td><div class="g-table-list-col-small-copy">12/20/2017, 11:50PM</div></td>
-          </tr>
-
-         <tr>
-            <td><a href="#"><i class="fa fa-fw fa-pencil"></i></a></td>
-            <td><a href="#">2R-06HY-RI0K</a><br><div class="g-table-list-col-small-copy">Amazon US</div></td>
-            <td class="g-table-list-rwd"><a href="#">Crest 3D White Vivid Fluoride Anticavity Toothpaste Radiant Mint 0.85 oz Travel Size (Pack of 4)</a></td>
-            <td>1 sold</td>
-            <td>$3.99</td>
-            <td>$0.12</td>
-            <td><div class="g-table-list-col-small-copy">12/20/2017, 11:50PM</div></td>
-          </tr>
-
-         <tr>
-            <td><a href="#"><i class="fa fa-fw fa-pencil"></i></a></td>
-            <td><a href="#">2R-06HY-RI0K</a><br><div class="g-table-list-col-small-copy">Amazon US</div></td>
-            <td class="g-table-list-rwd"><a href="#">Crest 3D White Vivid Fluoride Anticavity Toothpaste Radiant Mint 0.85 oz Travel Size (Pack of 4)</a></td>
-            <td>1 sold</td>
-            <td>$3.99</td>
-            <td>$0.12</td>
-            <td><div class="g-table-list-col-small-copy">12/20/2017, 11:50PM</div></td>
-          </tr>
-
-         <tr>
-            <td><a href="#"><i class="fa fa-fw fa-pencil"></i></a></td>
-            <td><a href="#">2R-06HY-RI0K</a><br><div class="g-table-list-col-small-copy">Amazon US</div></td>
-            <td class="g-table-list-rwd"><a href="#">Crest 3D White Vivid Fluoride Anticavity Toothpaste Radiant Mint 0.85 oz Travel Size (Pack of 4)</a></td>
-            <td>1 sold</td>
-            <td>$3.99</td>
-            <td>$0.12</td>
-            <td><div class="g-table-list-col-small-copy">12/20/2017, 11:50PM</div></td>
-          </tr>
-
-         <tr>
-            <td><a href="#"><i class="fa fa-fw fa-pencil"></i></a></td>
-            <td><a href="#">2R-06HY-RI0K</a><br><div class="g-table-list-col-small-copy">Amazon US</div></td>
-            <td class="g-table-list-rwd"><a href="#">Crest 3D White Vivid Fluoride Anticavity Toothpaste Radiant Mint 0.85 oz Travel Size (Pack of 4)</a></td>
-            <td>1 sold</td>
-            <td>$3.99</td>
-            <td>$0.12</td>
-            <td><div class="g-table-list-col-small-copy">12/20/2017, 11:50PM</div></td>
-          </tr>
 
         </tbody>
 
