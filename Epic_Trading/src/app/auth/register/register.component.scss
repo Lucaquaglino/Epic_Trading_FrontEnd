@@ -4,6 +4,7 @@
   overflow: hidden;
   border-radius: 16px;
   color: #010101;
+  transform: translateY(30%);
 }
 
 .form {
@@ -66,8 +67,8 @@
 
 /*Button*/
 .form button {
-  background-color: #0066ff;
-  color: #fff;
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  color:white;
   border: 0;
   border-radius: 24px;
   padding: 10px 16px;
@@ -80,3 +81,13 @@
 .form button:hover {
   background-color: #005ce6;
 }
+
+
+.bannercontrolpanel{
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  color:white;
+  height: 100vh;
+}
+
+
+
