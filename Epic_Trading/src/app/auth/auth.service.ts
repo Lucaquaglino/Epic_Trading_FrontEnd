@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 })
 export class AuthService {
   constructor(private http: HttpClient ) { }
-
+urlUser:string="http://localhost:3001/users"
   login(email: string, password: string): Observable<any> {
     const credentials = { email, password };
     return this.http.post<any>('http://localhost:3001/auth/login', credentials)
@@ -52,6 +52,12 @@ export class AuthService {
 
   getToken(): string | null {
     return localStorage.getItem('token');
+  }
+
+
+  updateUser(userId: string, userPayload: any): Observable<any> {
+    const url = `${this.urlUser}/${userId}`;
+    return this.http.put(url, userPayload);
   }
 
 

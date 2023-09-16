@@ -27,7 +27,7 @@ transactions!:userInfo[];
       surname: string,
        username: string,
        balance: number,
-    portfolioStock:{
+      portfolioStock:{
       purchasePrice:number,
       id:string},
       transaction:{
@@ -50,21 +50,48 @@ transactions!:userInfo[];
   pageSize =20;
 portfolioStock: PortfolioStock[] = [];
 
-userId!: string;
-user: any;
 
 userPortfolioStocks: PortfolioStock[] = [];
+
+
+
+
+
+
+
+originalUserInfo!: {
+  id:string,
+  name: string,
+   email: string,phoneNumber: string,
+    surname: string,
+     username: string,
+     balance: number,
+    portfolioStock:{
+    purchasePrice:number,
+    id:string},
+    transaction:{
+      amount:number,
+      transactionType: string,
+      order:{
+        marketData:{
+        name:string,
+        symbol:string,
+        }
+        qunatity:number
+      }
+    }
+};
+
 
 
   constructor( private authService: AuthService,private AppService: AppService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.authService.getCurrentUserInfo().subscribe(userInfo => {
-      this.currentUserInfo = userInfo;
+      // this.currentUserInfo = userInfo;
+      this.originalUserInfo = { ...userInfo };
+      this.currentUserInfo = { ...userInfo };
       console.log(this.currentUserInfo);
-
-      // Carica solo i portfolioStock dell'utente corrente
-
       const userId = this.currentUserInfo.id;
       this.loadUserPortfolioStocks(userId);
       this.loadUserTransactions(userId)
@@ -102,8 +129,8 @@ userPortfolioStocks: PortfolioStock[] = [];
   loadUserPortfolioStocks(userId: string): void {
     this.AppService.getUserPortfolioStocks(userId, this.page, 'id').subscribe(
       (response) => {
-        console.log("portfolio",response); // Controlla i dati ricevuti qui
-        this.userPortfolioStocks = response.content; // Accedi al campo "content"
+        console.log("portfolio",response);
+        this.userPortfolioStocks = response.content;
       },
       (error) => {
         console.error("Error fetching user's portfolioStocks:", error);
@@ -115,18 +142,38 @@ userPortfolioStocks: PortfolioStock[] = [];
   loadUserTransactions(userId: string): void {
     this.AppService.getUserTransactions(userId, this.page, 'id').subscribe(
       (response) => {
-        console.log("transazioniUtente",response); // Controlla i dati ricevuti qui
-        this.transactions= response.content; // Accedi al campo "content"
+        console.log("transazioniUtente",response);
+        this.transactions= response.content;
       },
       (error) => {
         console.error("Error fetching user's portfolioStocks:", error);
       }
     );
   }
+  isFormDirty = false;
+  cancelPutUser():void{
+    this.currentUserInfo = { ...this.originalUserInfo };
+    this.isFormDirty=false
+  }
+
+  updateUser(userId: string ): void {
+    this.authService.updateUser(userId, this.currentUserInfo).subscribe(
+      (response) => {
+        console.log('Utente aggiornato con successo:', response);
+        this.isFormDirty = false;
+      },
+      (error) => {
+        console.error('Errore durante l\'aggiornamento dell\'utente:', error);
+
+      }
+    );
+  }
 
 
 
-
+  onFieldChange(): void {
+    this.isFormDirty = true;
+  }
 
 
 }

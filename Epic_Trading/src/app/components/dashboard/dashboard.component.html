@@ -95,7 +95,7 @@
       <div class="row">
         <div class="col-md-12" *ngIf="showingProfile">
           <!-- Colonna destra per le informazioni dell'utente -->
-          <div class="col-md-12">
+          <!-- <div class="col-md-12">
             <table class="table bannercontrolpanel" id="tables">
               <thead>
                 <tr>
@@ -107,7 +107,7 @@
                 </tr>
               </thead>
               <tbody>
-                <!-- Inserisci qui i dati dell'utente -->
+
                 <tr>
                   <td>{{ currentUserInfo.name.charAt(0).toUpperCase() + currentUserInfo.name.slice(1) }}</td>
                   <td>{{ currentUserInfo.surname.charAt(0).toUpperCase() + currentUserInfo.surname.slice(1) }}</td>
@@ -117,7 +117,43 @@
                 </tr>
               </tbody>
             </table>
-          </div>
+          </div> -->
+
+
+
+              <div class="col-md-12">
+                <form (submit)="updateUser(currentUserInfo.id)" class="d-flex">
+                  <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="currentUserInfo.name"(ngModelChange)="onFieldChange()">
+                  </div>
+                  <div class="form-group">
+                    <label for="surname">Cognome</label>
+                    <input type="text" class="form-control" id="surname" name="surname" [(ngModel)]="currentUserInfo.surname" (ngModelChange)="onFieldChange()">
+                  </div>
+                  <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" [(ngModel)]="currentUserInfo.username" (ngModelChange)="onFieldChange()">
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" [(ngModel)]="currentUserInfo.email" (ngModelChange)="onFieldChange()">
+                  </div>
+                  <div class="form-group">
+                    <label for="phoneNumber">Numero di Telefono</label>
+                    <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" [(ngModel)]="currentUserInfo.phoneNumber" (ngModelChange)="onFieldChange()">
+                  </div>
+
+                </form>
+                <div>
+                  <button *ngIf="isFormDirty" (click)="updateUser(currentUserInfo.id)" class="btn btn-primary">Salva modifiche</button>
+                 <button *ngIf="isFormDirty"  (click)="cancelPutUser()" class="btn btn-primary">Annulla modifiche</button>
+                </div>
+
+              </div>
+
+
+
         </div>
       </div>
     </div>

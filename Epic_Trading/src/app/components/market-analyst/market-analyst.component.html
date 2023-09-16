@@ -214,9 +214,30 @@
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
+                                  <div class="container mt-4">
+                                    <h2>Historical Prices</h2>
+                                    <div class="table-responsive">
+                                      <table class="table">
+                                        <thead>
+                                          <tr>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Price</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr *ngFor="let historicalPrice of historicalPrices">
+                                            <td>{{ historicalPrice.dateTime | date:'yyyy-MM-dd ' }}</td>
+                                            <td>{{ historicalPrice.price | currency:'USD':'symbol-narrow':'1.2-2' }}</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
                                     </div>
+                                  </div>
+                                    <!-- <div class="chart-area">
+                                        <canvas id="myAreaChart">
+
+                                        </canvas>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -245,6 +266,8 @@
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
+                                  <h2>ciao</h2>
+
                                     <div class="chart-pie pt-4 pb-2">
                                         <canvas id="myPieChart"></canvas>
                                     </div>
@@ -310,7 +333,7 @@
                             </div>
 
                             <!-- Color System -->
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-lg-6 mb-4">
                                     <div class="card bg-primary text-white shadow">
                                         <div class="card-body">
@@ -347,7 +370,7 @@
                                     <div class="card bg-danger text-white shadow">
                                         <div class="card-body">
                                             Danger
-                                            <div class="text-white-50 small">#e74a3b</div>
+                                            <div class="text-white-50 small">#e74</div>
                                         </div>
                                     </div>
                                 </div>
@@ -375,7 +398,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
 
                         </div>
 
