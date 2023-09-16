@@ -120,6 +120,21 @@
           </div> -->
 
 
+          <form class="form" (submit)="updateUser(currentUserInfo.id)">
+            <ul class="wrapper form-group">
+
+              <li style="--i:4;"><input class="input" type="text" placeholder="Name" [(ngModel)]="currentUserInfo.name" (ngModelChange)="onFieldChange()" [ngModelOptions]="{standalone: true}" ></li>
+              <li style="--i:3;"><input class="input" placeholder="Phone number" required="" name="phone"></li>
+              <li style="--i:2;"><input class="input" type="email" placeholder="E-mail" required="" name="email"></li>
+              <button style="--i:1;" (click)="updateUser(currentUserInfo.id)">Submit</button>
+            </ul>
+          </form>
+
+
+
+
+
+
 
               <div class="col-md-12">
                 <form (submit)="updateUser(currentUserInfo.id)" class="d-flex">
@@ -301,3 +316,10 @@
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalOk">
     Mostra modale
   </button>
+
+
+
+
+
+
+
