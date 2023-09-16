@@ -161,6 +161,7 @@ originalUserInfo!: {
       (response) => {
         console.log('Utente aggiornato con successo:', response);
         this.isFormDirty = false;
+        this.showModalOk = true;
       },
       (error) => {
         console.error('Errore durante l\'aggiornamento dell\'utente:', error);
@@ -173,7 +174,15 @@ originalUserInfo!: {
 
   onFieldChange(): void {
     this.isFormDirty = true;
+    this.showModalOk = true;
   }
+
+  showModalOk = false;
+
+
+test():void{
+  this.showModalOk = true;
+}
 
 
 }

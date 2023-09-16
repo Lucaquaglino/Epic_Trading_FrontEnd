@@ -146,8 +146,8 @@
 
                 </form>
                 <div>
-                  <button *ngIf="isFormDirty" (click)="updateUser(currentUserInfo.id)" class="btn btn-primary">Salva modifiche</button>
-                 <button *ngIf="isFormDirty"  (click)="cancelPutUser()" class="btn btn-primary">Annulla modifiche</button>
+                  <button *ngIf="isFormDirty" (click)="updateUser(currentUserInfo.id)" class="btn btn-primary" data-toggle="modal" data-target="#modalOk">Salva modifiche</button>
+                 <button *ngIf="isFormDirty"  (click)="cancelPutUser()" class="btn btn-primary" >Annulla modifiche</button>
                 </div>
 
               </div>
@@ -245,3 +245,59 @@
 
   </div>
   </div>
+
+
+//MODALI
+  <div id="modalOk" class="modal fade modal-lg  ">
+    <div class="modal-dialog ">
+      <div class="modal-content ">
+        <div class="modal-header">
+          <h5 class="modal-title bannercontrolpaneltext" id="modal-title-add">
+           USER  MODIFIED
+          </h5>
+          <!-- <h5 class="modal-title" id="modal-title-mod">
+            Prodotto modificato correttamente
+          </h5>
+          <h5 class="modal-title" id="modal-title-del">
+            Prodotto eliminato correttamente
+          </h5> -->
+        </div>
+        <div class="modal-body">
+          <p id="add-modal " class="bannercontrolpaneltext">Successful user modify</p>
+          <!-- <p id="mod-modal">Il prodotto è stato modificato.</p>
+          <p id="del-modal">Il prodotto è stato cancellato.</p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="modalError" class="modal fade modal-lg text-danger">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-title-add-error">
+            Prodotto non aggiunto!
+          </h5>
+          <h5 class="modal-title" id="modal-title-mod-error">
+            Prodotto non modificato!
+          </h5>
+          <h5 class="modal-title" id="modal-title-del-error">
+            Prodotto non eliminato!
+          </h5>
+        </div>
+        <div class="modal-body">
+          <p id="add-modal-error">
+            Errore durante il caricamento del prodotto.
+          </p>
+          <p id="mod-modal-error">
+            Errore durante la modifica del prodotto.
+          </p>
+          <p id="del-modal-error">
+            Errore durante la cancellazione del prodotto.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalOk">
+    Mostra modale
+  </button>
