@@ -21,6 +21,8 @@
 <div *ngIf="!showSpinner">
 <div class="container mt-4 ">
   <h2>Market Stock Actions</h2>
+  <button (click)="nextPage()">NEXT</button>
+  <button (click)="previousPage()">PREVIOUS</button>
   <div class="table-responsive">
     <table class="table bannercontrolpanel">
       <thead>

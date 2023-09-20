@@ -250,9 +250,12 @@ test():void{
 
 
 createTransactionSELL(mdprice:number, newmarketData: string, quantity: number,portfolioId:string): void {
+  const currentTimestamp = new Date().toISOString();
   const payload = {
+
     transactionType: "SELL",
     amount: 1000000,
+    timeStamp: currentTimestamp,
     marketdata: {
       "id": newmarketData,
       "price": mdprice,
@@ -260,6 +263,7 @@ createTransactionSELL(mdprice:number, newmarketData: string, quantity: number,po
     order: {
       orderType: "SELL",
       quantity: quantity,
+      timeStamp: currentTimestamp,
     },
     portfolioStockId:portfolioId
   };

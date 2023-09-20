@@ -1,8 +1,8 @@
 
-<header class="mb-5 sticky-top">
+<header class=" sticky-top">
   <nav class="navbar navbar-expand-lg navbar-light bannercontrolpanel">
     <div class="container-fluid ">
-      <a class="navbar-brand" [routerLink]="['/dashboard']"><img src="../../../assets/logoepicdtrading.png" alt="" style="max-width: 30px; max-height: 30px;">EPICTRADING</a>
+      <a class="navbar-brand text-white" [routerLink]="['/dashboard']"><img src="../../../assets/logoepicdtrading.png" alt="" style="max-width: 30px; max-height: 30px;">EPICTRADING</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -11,13 +11,13 @@
         <div>
         <ul class="navbar-nav mx- ">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/market" routerLinkActive="active">Market</a>
+            <a class="nav-link text-white" routerLink="/market" routerLinkActive="active">Market</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+            <a class="nav-link text-white" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/marketAnalyst" routerLinkActive="active">DEVO PENSARCI</a>
+            <a class="nav-link text-white" routerLink="/marketAnalyst" routerLinkActive="active">DEVO PENSARCI</a>
           </li>
         </ul>
         </div>
@@ -40,8 +40,8 @@
         <span id="span-logout"
           class=" "><span
             class="visually-hidden">unread messages</span></span></div></a><div class="me-3">
-              <p class="m-0"> {{ currentUserInfo.name }}</p>
-              <p class="m-0 text-secondary "> {{ currentUserInfo.email }}</p>
+              <p class="m-0"  *ngIf="currentUserInfo"> {{ currentUserInfo.name }}</p>
+              <p class="m-0 text-secondary"  *ngIf="currentUserInfo"> {{ currentUserInfo.email }}</p>
           </div></li>
           <li><hr class="dropdown-divider"></li>
           <li><a class="dropdown-item d-flex align-items-center " [routerLink]="['/dashboard']"

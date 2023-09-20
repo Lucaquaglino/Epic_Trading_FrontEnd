@@ -108,15 +108,19 @@ newTransaction: Transactions = {
 
 
   createTransaction(newmarketData: string, quantity: number): void {
+    const currentTimestamp = new Date().toISOString();
     const payload = {
       transactionType: "BUY",
       amount: 1000000,
+      timeStamp:currentTimestamp,
       marketdata: {
         "id": newmarketData,
+
       },
       order: {
         orderType: "BUY",
         quantity: quantity, // Utilizza la quantità fornita dall'input
+        timeStamp: currentTimestamp,
       },
       portfolioStockId:""
     };
@@ -176,6 +180,17 @@ newTransaction: Transactions = {
   }
 
 
+  nextPage() {
+    this.page++; // Vai alla pagina successiva
+    this.loadMarketData();
 
+  }
+
+  previousPage() {
+    if (this.page > 0) {
+      this.page--; // Vai alla pagina precedente solo se non sei sulla prima pagina
+      this.loadMarketData();
+    }
+  }
 
 }

@@ -17,6 +17,10 @@ import { Timestamp } from 'src/app/models/Timestamp.interface';
 })
 export class MarketAnalystComponent implements OnInit {
 
+  //logica per mostrare piu o meno dati (historical price)
+  showAllHistoricalPrices = false;
+  numberOfItemsToShow = 6;
+  //
   previousPrices: number[] = [];
   email: string = '';
     page = 0; // Imposta la pagina iniziale
@@ -93,7 +97,7 @@ newTransaction: Transactions = {
     if (chartContainer) {
       // Crea il grafico all'interno dell'elemento chartContainer
       this.chart = createChart(chartContainer, {
-        width: 5000, // Larghezza del grafico
+        width: 1000, // Larghezza del grafico
         height: 400, // Altezza del grafico
         autoSize: true,
 
