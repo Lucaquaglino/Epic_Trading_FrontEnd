@@ -128,9 +128,10 @@ newTransaction: Transactions = {
           secondsVisible: true, // Nascondi i secondi sull'asse x
 fixRightEdge: true, // blocca a destra grafico//
 
-
+// borderVisible: false, //
 
         },
+
 
 
 
