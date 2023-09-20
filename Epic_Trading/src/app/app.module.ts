@@ -21,6 +21,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MarketComponent } from './components/market/market.component';
 import { MarketAnalystComponent } from './components/market-analyst/market-analyst.component';
+import { PaypalComponent } from './components/paypal/paypal.component';
 
 const rotte: Route[] = [
   { path: '', redirectTo: 'controlPanel', pathMatch: 'full' },
@@ -54,6 +55,10 @@ const rotte: Route[] = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'paypal',
+    component: PaypalComponent
   }
 ];
 @NgModule({
@@ -65,7 +70,8 @@ const rotte: Route[] = [
     DashboardComponent,
     NavbarComponent,
     MarketComponent,
-    MarketAnalystComponent
+    MarketAnalystComponent,
+    PaypalComponent
   ],
   imports: [
     BrowserModule,
