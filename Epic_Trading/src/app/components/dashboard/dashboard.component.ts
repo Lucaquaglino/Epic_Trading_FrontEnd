@@ -6,11 +6,24 @@ import { ActivatedRoute } from '@angular/router';
 import { Route, Router } from '@angular/router';
 import { userInfo } from 'src/app/models/userInfo.interface';
 import { Transactions } from 'src/app/models/transactions.interface';
+import { trigger, state, style, animate, transition } from '@angular/animations';
+import { interval } from 'rxjs';
+import { startWith, scan, takeWhile } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  animations: [
+    trigger('countTo', [
+      state('in', style({ transform: 'scale(1)' })),
+      transition('void => *', [
+        style({ transform: 'scale(1.2)' }),
+        animate('800ms ease-in-out', style({ transform: 'scale(1)' }))
+      ])
+    ])
+  ]
 })
 export class DashboardComponent implements OnInit {
   showingPortfolio = false;
@@ -84,6 +97,7 @@ originalUserInfo!: {
 
 
 
+currentNumber = 0; // Il numero corrente che cambierà durante l'animazione
   constructor( private authService: AuthService,private AppService: AppService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
@@ -98,6 +112,16 @@ originalUserInfo!: {
     //       setInterval(() => {
     //   this.loadUserPortfolioStocks(userId);
     // }, 10000);
+    // interval(15) // Aggiorna ogni 20 millisecondi (puoi personalizzare l'intervallo)
+    // .pipe(
+    //   startWith(0),
+    //   scan((acc, _) => acc + 500),
+    //   takeWhile(val => val <= this.currentUserInfo.balance)
+    // )
+    // .subscribe(val => {
+    //   this.currentNumber = val;
+    // });
+    this.startAnimation()
     });
 
 
@@ -247,7 +271,9 @@ createTransactionSELL(mdprice:number, newmarketData: string, quantity: number,po
       this.authService.getCurrentUserInfo().subscribe(
         (userInfo) => {
           // Aggiorna le informazioni utente con i nuovi dati
-          this.currentUserInfo = userInfo;
+          // this.currentUserInfo = userInfo;
+          // this.currentNumber
+          this.startAnimation()
         })
     },
     (error) => {
@@ -256,9 +282,30 @@ createTransactionSELL(mdprice:number, newmarketData: string, quantity: number,po
   );
 }
 
+//animazione per aumento balance
+startAnimation() {
+
+
+    interval(20)//millisecondi di aggiornamento
+      .pipe(
+        startWith(0),
+        scan((acc, _) => acc + 1000),//quantità di aggiornamento
+        takeWhile(val => val <= this.currentUserInfo.balance)
+      )
+      .subscribe(val => {
+        this.currentNumber = val;
+
+      });
+  }
 
 
 
 
 
 }
+
+
+
+
+
+
