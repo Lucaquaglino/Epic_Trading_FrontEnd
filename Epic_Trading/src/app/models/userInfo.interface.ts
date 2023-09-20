@@ -19,7 +19,7 @@ content:userInfo[];
         name:string,
         symbol:string,
         }
-        qunatity:number
+        quantity:number
       }
     // }
 

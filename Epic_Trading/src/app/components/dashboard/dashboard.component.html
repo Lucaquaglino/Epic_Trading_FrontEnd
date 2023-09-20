@@ -47,18 +47,24 @@
                   <th scope="col">Stock Symbol</th>
                   <th scope="col">Quantity</th>
                   <th scope="col">Purchase Price</th>
+                  <th scope="col">Current Price</th>
                   <th scope="col">Total Price</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let portfolioStock of userPortfolioStocks">
-                  <td>{{ portfolioStock.marketData.symbol }}</td>
+                  <td>{{ portfolioStock.marketData.symbol }},</td>
                   <td>{{ portfolioStock.quantity }}</td>
                   <td>{{ portfolioStock.purchasePrice | number:'1.2-2' }}</td>
+                  <td [style.color]="portfolioStock.color">{{  portfolioStock.marketData.price | number:'1.2-2' }}</td>
                   <td>{{ (portfolioStock.purchasePrice) * portfolioStock.quantity | number:'1.2-2' }}</td>
-                  <td>{{ portfolioStock.marketData.price }}</td>
+
                   <td>
                     <button (click)="viewDetails(portfolioStock.marketData.id)" class="btn btn-secondary">Dettagli</button>
+                  </td>
+                  <td >
+                    <button (click)="createTransactionSELL(portfolioStock.marketData.price, portfolioStock.marketData.id, portfolioStock.quantity, portfolioStock.id)" class="btn btn-primary">VENDI</button>
+
                   </td>
                 </tr>
               </tbody>
@@ -84,7 +90,9 @@
                 <td>{{ portfolioStock.transactionType}}</td>
                 <td>{{ portfolioStock.amount | number:'1.2-2' }}</td>
                 <td></td>
-                <td>{{ portfolioStock.order.marketData.symbol }}</td>
+                <ng-container *ngIf="portfolioStock.transactionType == 'BUY'">
+                <td >{{ portfolioStock.order.marketData.symbol }}</td>
+              </ng-container>
                 <td></td>
               </tr>
             </tbody>
@@ -120,7 +128,7 @@
           </div> -->
 
 
-          <form class="form" (submit)="updateUser(currentUserInfo.id)">
+          <!-- <form class="form" (submit)="updateUser(currentUserInfo.id)">
             <ul class="wrapper form-group">
 
               <li style="--i:4;"><input class="input" type="text" placeholder="Name" [(ngModel)]="currentUserInfo.name" (ngModelChange)="onFieldChange()" [ngModelOptions]="{standalone: true}" ></li>
@@ -128,7 +136,7 @@
               <li style="--i:2;"><input class="input" type="email" placeholder="E-mail" required="" name="email"></li>
               <button style="--i:1;" (click)="updateUser(currentUserInfo.id)">Submit</button>
             </ul>
-          </form>
+          </form> -->
 
 
 
@@ -230,10 +238,10 @@
 
           <tr *ngFor="let portfolioStock of transactions">
             <td><a href="#"><i class="fa fa-fw fa-pencil"></i></a></td>
-            <td><a href="#">{{portfolioStock.order.marketData.name}}</a><br><div class="g-table-list-col-small-copy">{{portfolioStock.order.marketData.symbol}}</div></td>
+            <td><a *ngIf="portfolioStock.transactionType == 'BUY'" href="#">{{portfolioStock.order.marketData.name}}</a><br><div *ngIf="portfolioStock.transactionType == 'BUY'" class="g-table-list-col-small-copy">{{portfolioStock.order.marketData.symbol}}</div></td>
             <td class="g-table-list-rwd"><a href="#">{{portfolioStock.amount}}</a></td>
             <td>{{portfolioStock.transactionType}}</td>
-            <td>{{portfolioStock.order.qunatity}}</td>
+            <td *ngIf="portfolioStock.transactionType == 'BUY' || 'SELL'">{{portfolioStock.order.quantity}}</td>
             <td>$0.12</td>
             <td><div class="g-table-list-col-small-copy">12/20/2017, 11:50PM</div></td>
           </tr>

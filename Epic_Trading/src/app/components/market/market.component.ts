@@ -110,13 +110,15 @@ newTransaction: Transactions = {
   createTransaction(newmarketData: string, quantity: number): void {
     const payload = {
       transactionType: "BUY",
+      amount: 1000000,
       marketdata: {
         "id": newmarketData,
       },
       order: {
         orderType: "BUY",
         quantity: quantity, // Utilizza la quantità fornita dall'input
-      }
+      },
+      portfolioStockId:""
     };
 
     this.AppService.createTransaction(payload).subscribe(

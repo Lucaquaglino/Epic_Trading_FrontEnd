@@ -38,7 +38,7 @@ transactions!:userInfo[];
           name:string,
           symbol:string,
           }
-          qunatity:number
+          quantity:number
         }
       }
   };
@@ -77,7 +77,7 @@ originalUserInfo!: {
         name:string,
         symbol:string,
         }
-        qunatity:number
+        quantity:number
       }
     }
 };
@@ -95,9 +95,9 @@ originalUserInfo!: {
       const userId = this.currentUserInfo.id;
       this.loadUserPortfolioStocks(userId);
       this.loadUserTransactions(userId)
-    //       setInterval(() => {
-    //   this.loadUserPortfolioStocks(userId);
-    // }, 10000);
+          setInterval(() => {
+      this.loadUserPortfolioStocks(userId);
+    }, 10000);
     });
 
 
@@ -126,11 +126,46 @@ originalUserInfo!: {
 
 
 
+  // loadUserPortfolioStocks(userId: string): void {
+  //   this.AppService.getUserPortfolioStocks(userId, this.page, 'id').subscribe(
+  //     (response) => {
+  //       console.log("portfolio",response);
+  //       this.userPortfolioStocks = response.content;
+  //     },
+  //     (error) => {
+  //       console.error("Error fetching user's portfolioStocks:", error);
+  //     }
+  //   );
+  // }
+
+  previousPurchasePrices: number[] = [];
   loadUserPortfolioStocks(userId: string): void {
     this.AppService.getUserPortfolioStocks(userId, this.page, 'id').subscribe(
       (response) => {
-        console.log("portfolio",response);
-        this.userPortfolioStocks = response.content;
+        console.log("portfolio", response);
+        const userPortfolioStocks: PortfolioStock[] = response.content;
+
+        // Calcola la variazione percentuale e imposta il colore per ciascun PortfolioStock
+        userPortfolioStocks.forEach((portfolioStock, index) => {
+          if (this.previousPurchasePrices[index] !== undefined) {
+            const priceChange = portfolioStock.marketData.price - this.previousPurchasePrices[index];
+            const percentageChange = (priceChange / this.previousPurchasePrices[index]) * 100;
+
+            // Assegna il colore in base alla variazione percentuale
+            if (percentageChange > 0) {
+              portfolioStock.color = 'green';
+            } else if (percentageChange < 0) {
+              portfolioStock.color = 'red';
+            } else {
+              portfolioStock.color = 'black';
+            }
+          }
+
+          // Aggiorna il valore precedente con il nuovo prezzo di acquisto
+          this.previousPurchasePrices[index] = portfolioStock.marketData.price;
+        });
+
+        this.userPortfolioStocks = userPortfolioStocks;
       },
       (error) => {
         console.error("Error fetching user's portfolioStocks:", error);
@@ -184,5 +219,35 @@ test():void{
   this.showModalOk = true;
 }
 
+
+
+
+
+
+
+createTransactionSELL(mdprice:number, newmarketData: string, quantity: number,portfolioId:string): void {
+  const payload = {
+    transactionType: "SELL",
+    amount: 1000000,
+    marketdata: {
+      "id": newmarketData,
+      "price": mdprice,
+    },
+    order: {
+      orderType: "SELL",
+      quantity: quantity,
+    },
+    portfolioStockId:portfolioId
+  };
+
+  this.AppService.createTransaction(payload).subscribe(
+    (createdTransaction) => {
+      console.log('Transazione creata con successo:', createdTransaction);
+    },
+    (error) => {
+      console.error('Errore durante la creazione della transazione:', error);
+    }
+  );
+}
 
 }

@@ -19,6 +19,7 @@ export interface PortfolioStock {
   };
   quantity: number;
   purchasePrice: number;
+  color:any
 }
 
   // Altre proprietà se necessario
