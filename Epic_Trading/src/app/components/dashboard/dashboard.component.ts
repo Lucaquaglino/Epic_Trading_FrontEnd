@@ -34,7 +34,8 @@ export class DashboardComponent implements OnInit {
  numberOfItemsToShowPF = 6;
  //
 
-
+// SSPINNER
+showSpinner: boolean = true;
 
   showingPortfolio = false;
   showingTransactions = false;
@@ -111,6 +112,7 @@ currentNumber = 0; // Il numero corrente che cambierà durante l'animazione
   constructor( private authService: AuthService,private AppService: AppService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+
     this.authService.getCurrentUserInfo().subscribe(userInfo => {
       // this.currentUserInfo = userInfo;
       this.originalUserInfo = { ...userInfo };
@@ -119,7 +121,10 @@ currentNumber = 0; // Il numero corrente che cambierà durante l'animazione
       const userId = this.currentUserInfo.id;
 
       this.loadUserPortfolioStocks(userId);
-      this.loadUserTransactions(userId)
+      this.loadUserTransactions(userId);
+      setTimeout(() => {
+        this.showSpinner = false;
+      }, 2000);
     //       setInterval(() => {
     //   this.loadUserPortfolioStocks(userId);
     // }, 10000);
@@ -132,7 +137,9 @@ currentNumber = 0; // Il numero corrente che cambierà durante l'animazione
     // .subscribe(val => {
     //   this.currentNumber = val;
     // });
+
     this.startAnimation()
+
     });
 
 
@@ -343,7 +350,7 @@ createTransactionSELL(mdprice:number, newmarketData: string, quantity: number,po
 startAnimation() {
   let startValue = 0;
   const endValue = this.currentUserInfo.balance;
-  const increment = 1000; // Incremento desiderato
+  const increment = 200; // Incremento desiderato
 
   const animationTimer = setInterval(() => {
     if (startValue + increment <= endValue) {
