@@ -418,7 +418,7 @@
 
                                         </div>
                                       </div>
-                                      <button class=" btn-s bannercontrolpanel rounded-2 ml-4 btn-primary">Deposit</button>   <button class="btn-s btn-danger rounded-2 px-2 ml-2">Withdraw</button>
+                                      <button (click)="createTransactionDEPOSIT()" class=" btn-s bannercontrolpanel rounded-2 ml-4 btn-primary">Deposit</button>   <button class="btn-s btn-danger rounded-2 px-2 ml-2">Withdraw</button>
                                   </div>
 
                                       <div class="col-auto">
@@ -511,6 +511,7 @@
                                               <th scope="col">Quantity</th>
                                               <th scope="col">Purchase Price</th>
                                               <th scope="col">Current Price</th>
+                                              <th scope="col">% variation</th>
                                               <th scope="col">Total Price</th>
                                             </tr>
                                           </thead>
@@ -521,6 +522,7 @@
                                               <td>{{ portfolioStock.quantity }}</td>
                                               <td>{{ portfolioStock.purchasePrice| currency:'USD':'symbol-narrow':'1.2-2' }}</td>
                                               <td [style.color]="portfolioStock.color">{{  portfolioStock.marketData.price | currency:'USD':'symbol-narrow':'1.2-2' }}</td>
+                                              <td>{{ calculatePriceChange(portfolioStock.purchasePrice, portfolioStock.marketData.price) | number:'1.2-2' }}%</td>
                                               <td>{{ (portfolioStock.purchasePrice) * portfolioStock.quantity | currency:'USD':'symbol-narrow':'1.2-2' }}</td>
 
                                               <td>

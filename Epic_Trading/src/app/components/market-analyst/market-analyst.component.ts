@@ -9,6 +9,7 @@ import { MarketData } from 'src/app/models/market-data';
 import { ActivatedRoute } from '@angular/router';
 import { HistoricalPrice } from 'src/app/models/HistoricalPrice.interface';
 import { Timestamp } from 'src/app/models/Timestamp.interface';
+import { PortfolioStock } from 'src/app/models/portfolioStock.interface';
 
 @Component({
   selector: 'app-market-analyst',
@@ -87,7 +88,10 @@ newTransaction: Transactions = {
       this.loadHistoricalPrices();
       this.loadMarketDataId();
       this.loadMarketData();
-
+      setInterval(() => {
+        this.loadMarketData();
+        this.loadMarketDataId();
+      }, 10000);
 
     });
 
@@ -338,24 +342,65 @@ loadHistoricalPrices(): void {
 
 
 
-  loadMarketDataId(): void {
+  // loadMarketDataId(): void {
 
-    this.AppService
-    .getMarketDataId(this.marketDataId)
-    .subscribe(
-      (marketdata) => {
-        this.newmarketData = marketdata; // Assegna i dati ricevuti all'array
-        console.log( "marketDATA",this.newmarketData); // Verifica i dati nella console
-        console.log( "marketDATA",this.newmarketData.name);
-        this.candlestickSeries!.applyOptions({
-          title: this.newmarketData.symbol // Imposta il nome dell'azione come titolo
-        });
-      },
-      (error) => {
-        console.error('Error fetching marketData ID:', error);
+  //   this.AppService
+  //   .getMarketDataId(this.marketDataId)
+  //   .subscribe(
+  //     (marketdata) => {
+  //       this.newmarketData = marketdata; // Assegna i dati ricevuti all'array
+  //       console.log( "marketDATA",this.newmarketData); // Verifica i dati nella console
+  //       console.log( "marketDATA",this.newmarketData.name);
+  //       this.candlestickSeries!.applyOptions({
+  //         title: this.newmarketData.symbol // Imposta il nome dell'azione come titolo
+  //       });
+
+
+
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching marketData ID:', error);
+  //     }
+  //   );
+  //   }
+
+
+
+// Dichiarare una variabile per salvare l'ultimo prezzo
+previousPrice: number = 0; // Inizializza a 0 o al valore iniziale desiderato
+percentageChange:number= 0;
+
+loadMarketDataId(): void {
+  this.AppService.getMarketDataId(this.marketDataId).subscribe(
+    (newmarketData) => {
+
+      if (this.previousPrice !== undefined) {
+
+        const priceChange = newmarketData.price - this.previousPrice;
+        this.percentageChange = (priceChange / this.previousPrice) * 100;
+
+        // Assegna il colore in base alla variazione percentuale
+        if (this.percentageChange > 0) {
+          newmarketData.color = 'green';
+        } else if (this.percentageChange < 0) {
+          newmarketData.color = 'red';
+        } else {
+          newmarketData.color = 'black';
+        }
       }
-    );
+
+      // Aggiorna il valore precedente con il nuovo prezzo
+      this.previousPrice = newmarketData.price;
+
+      this.newmarketData = newmarketData; // Aggiorna newmarketData con i dati calcolati
+    },
+    (error) => {
+      console.error('Error fetching marketData ID:', error);
     }
+  );
+}
+
+
 
 
 }

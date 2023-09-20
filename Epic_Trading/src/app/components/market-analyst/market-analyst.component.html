@@ -137,7 +137,10 @@
                                       <div class="col mr-2">
                                         <div class="text-s font-weight-bold text-primary text-uppercase mb-1">
                                             Price</div>
-                                        <div class="h3 mb-0 font-weight-bold text-gray-800">{{newmarketData.price| currency:'USD':'symbol-narrow':'1.2-2'}}</div>
+                                        <div class="h3 mb-0 font-weight-bold"  [style.color]="newmarketData.color ">{{newmarketData.price| currency:'USD':'symbol-narrow':'1.2-2'}}</div>
+                                        <div>
+                                          {{ percentageChange | number:'1.2-2' }} %
+                                        </div>
                                     </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -259,7 +262,10 @@
                                         <div class="d-flex justify-content-between">
                                         <div>
                                         <div>{{newmarketData.name}}</div>
-                                        <div>{{newmarketData.price}}</div>
+                                        <div [style.color]="newmarketData.color "> {{newmarketData.price| currency:'USD':'symbol-narrow':'1.2-2'}}</div>
+                                        <div>
+                                          {{ percentageChange | number:'1.2-2' }} %
+                                        </div>
                                         <div>{{newmarketData.symbol}}</div>
                                       </div>
                                       <div>

@@ -106,8 +106,9 @@ originalUserInfo!: {
     }
 };
 
-
-
+// logica calcolo percentuale
+purchasePrice!: number
+ currentPrice!: number
 currentNumber = 0; // Il numero corrente che cambierà durante l'animazione
   constructor( private authService: AuthService,private AppService: AppService, private route: ActivatedRoute, private router: Router) { }
 
@@ -125,9 +126,10 @@ currentNumber = 0; // Il numero corrente che cambierà durante l'animazione
       setTimeout(() => {
         this.showSpinner = false;
       }, 2000);
-    //       setInterval(() => {
-    //   this.loadUserPortfolioStocks(userId);
-    // }, 10000);
+          setInterval(() => {
+      this.loadUserPortfolioStocks(userId);
+
+    }, 10000);
     // interval(15) // Aggiorna ogni 20 millisecondi (puoi personalizzare l'intervallo)
     // .pipe(
     //   startWith(0),
@@ -332,10 +334,11 @@ createTransactionSELL(mdprice:number, newmarketData: string, quantity: number,po
       console.log('Transazione di SELL creata con successo:', createdTransaction);
       this.loadUserPortfolioStocks(this.currentUserInfo.id);
       this.loadUserTransactions(this.currentUserInfo.id)
+
       this.authService.getCurrentUserInfo().subscribe(
         (userInfo) => {
           // Aggiorna le informazioni utente con i nuovi dati.
-          // this.currentUserInfo = userInfo;
+          this.currentUserInfo = userInfo;
           // this.currentNumber
           this.startAnimation()
         })
@@ -345,6 +348,56 @@ createTransactionSELL(mdprice:number, newmarketData: string, quantity: number,po
     }
   );
 }
+
+
+
+
+
+
+
+
+
+createTransactionDEPOSIT(): void {
+  const currentTimestamp = new Date().toISOString();
+  const payload = {
+    transactionType: "DEPOSIT",
+    amount: 10000000,
+    timeStamp:currentTimestamp,
+    marketdata: {
+
+
+    },
+    order: {
+
+    },
+    portfolioStockId:""
+  };
+
+  this.AppService.createTransaction(payload).subscribe(
+    (createdTransaction) => {
+      this.loadUserTransactions(this.currentUserInfo.id)
+      this.authService.getCurrentUserInfo().subscribe(
+        (userInfo) => {
+          // Aggiorna le informazioni utente con i nuovi dati.
+          // this.currentUserInfo = userInfo;
+          // this.currentNumber
+          this.startAnimation()
+        })
+      console.log('Transazione creata con successo:', createdTransaction);
+    },
+    (error) => {
+      console.error('Errore durante la creazione della transazione:', error);
+    }
+  );
+}
+
+
+
+
+
+
+
+
 
 //animazione per aumento balance
 startAnimation() {
@@ -365,6 +418,12 @@ startAnimation() {
 
 
 
+
+// calcolo variaione di prezzo portfolio
+calculatePriceChange(purchasePrice: number, currentPrice: number): number {
+  const priceChange = currentPrice - purchasePrice;
+  return (priceChange / purchasePrice) * 100;
+}
 
 
 }
