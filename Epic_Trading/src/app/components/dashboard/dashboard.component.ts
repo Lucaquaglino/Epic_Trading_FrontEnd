@@ -95,9 +95,9 @@ originalUserInfo!: {
       const userId = this.currentUserInfo.id;
       this.loadUserPortfolioStocks(userId);
       this.loadUserTransactions(userId)
-          setInterval(() => {
-      this.loadUserPortfolioStocks(userId);
-    }, 10000);
+    //       setInterval(() => {
+    //   this.loadUserPortfolioStocks(userId);
+    // }, 10000);
     });
 
 
@@ -242,12 +242,23 @@ createTransactionSELL(mdprice:number, newmarketData: string, quantity: number,po
 
   this.AppService.createTransaction(payload).subscribe(
     (createdTransaction) => {
-      console.log('Transazione creata con successo:', createdTransaction);
+      console.log('Transazione di SELL creata con successo:', createdTransaction);
+      this.loadUserPortfolioStocks(this.currentUserInfo.id);
+      this.authService.getCurrentUserInfo().subscribe(
+        (userInfo) => {
+          // Aggiorna le informazioni utente con i nuovi dati
+          this.currentUserInfo = userInfo;
+        })
     },
     (error) => {
       console.error('Errore durante la creazione della transazione:', error);
     }
   );
 }
+
+
+
+
+
 
 }
