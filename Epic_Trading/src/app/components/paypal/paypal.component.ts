@@ -7,7 +7,7 @@ import { PaymentService } from '../../services/payment.service';
   styleUrls: ['./paypal.component.scss']
 })
 export class PaypalComponent implements OnInit {
-  amount = 10  ;
+  amount = 0  ;
 
   @ViewChild('paymentRef', {static: true}) paymentRef!: ElementRef;
 
@@ -20,8 +20,9 @@ export class PaypalComponent implements OnInit {
         style: {
           layout: 'horizontal',
           color: 'blue',
-          shape: 'rect',
           label: 'paypal',
+          disableMaxWidth: false,
+          tagline:false
         },
         createOrder: (data: any, actions: any) => {
           return actions.order.create({
@@ -49,11 +50,12 @@ export class PaypalComponent implements OnInit {
         }
       }
     ).render(this.paymentRef.nativeElement);
-  }
 
+  }
   cancel() {
     this.router.navigate(['dashboard']);
   }
+
 
 }
 

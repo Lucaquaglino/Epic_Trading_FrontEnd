@@ -1,6 +1,20 @@
 <div class="paypal-container">
+
+  <input
+  type="number"
+  step="1"
+  [(ngModel)]="amount"
+  name="amount"
+  id="amount"
+  class="form-control"
+  placeholder="Inserisci l'importo in dollari"
+  required
+/>
   <div class="amount">Total amount to pay: ${{amount}}</div>
   <div class="info">Please do not refresh the browser while the transaction is processing</div>
   <div #paymentRef></div>
   <button class="back" (click)="cancel()">Cancel</button>
 </div>
+
+
+
