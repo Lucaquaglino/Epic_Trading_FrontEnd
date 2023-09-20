@@ -19,13 +19,23 @@ import { startWith, scan, takeWhile } from 'rxjs/operators';
     trigger('countTo', [
       state('in', style({ transform: 'scale(1)' })),
       transition('void => *', [
-        style({ transform: 'scale(1.2)' }),
-        animate('800ms ease-in-out', style({ transform: 'scale(1)' }))
+        style({ transform: 'scale(1.1)' }),
+        animate('1000ms ease-in-out', style({ transform: 'scale(1)' }))
       ])
     ])
   ]
 })
 export class DashboardComponent implements OnInit {
+
+ //logica per mostrare piu o meno dati (TRANSATIONS PORTFOLIO)
+ showAll = false;
+ numberOfItemsToShow = 7;
+ showAllPF = false;
+ numberOfItemsToShowPF = 6;
+ //
+
+
+
   showingPortfolio = false;
   showingTransactions = false;
   showingProfile=false;
@@ -161,19 +171,21 @@ currentNumber = 0; // Il numero corrente che cambierà durante l'animazione
   //     }
   //   );
   // }
-
+  totalPortfolioQuantity: number = 0;
   previousPurchasePrices: number[] = [];
   loadUserPortfolioStocks(userId: string): void {
     this.AppService.getUserPortfolioStocks(userId, this.page, 'id').subscribe(
       (response) => {
         console.log("portfolio", response);
         const userPortfolioStocks: PortfolioStock[] = response.content;
-
+        let totalQuantity = 0;
         // Calcola la variazione percentuale e imposta il colore per ciascun PortfolioStock
         userPortfolioStocks.forEach((portfolioStock, index) => {
+          totalQuantity += portfolioStock.quantity;
           if (this.previousPurchasePrices[index] !== undefined) {
             const priceChange = portfolioStock.marketData.price - this.previousPurchasePrices[index];
             const percentageChange = (priceChange / this.previousPurchasePrices[index]) * 100;
+
 
             // Assegna il colore in base alla variazione percentuale
             if (percentageChange > 0) {
@@ -188,8 +200,11 @@ currentNumber = 0; // Il numero corrente che cambierà durante l'animazione
           // Aggiorna il valore precedente con il nuovo prezzo di acquisto
           this.previousPurchasePrices[index] = portfolioStock.marketData.price;
         });
+        this.totalPortfolioQuantity = totalQuantity;
 
+        // console.log("test quantità portfolio",this.totalPortfolioQuantity)
         this.userPortfolioStocks = userPortfolioStocks;
+
       },
       (error) => {
         console.error("Error fetching user's portfolioStocks:", error);
@@ -198,17 +213,52 @@ currentNumber = 0; // Il numero corrente che cambierà durante l'animazione
   }
 
 
-  loadUserTransactions(userId: string): void {
-    this.AppService.getUserTransactions(userId, this.page, 'id').subscribe(
-      (response) => {
-        console.log("transazioniUtente",response);
-        this.transactions= response.content;
-      },
-      (error) => {
-        console.error("Error fetching user's portfolioStocks:", error);
-      }
-    );
-  }
+  // loadUserTransactions(userId: string): void {
+  //   this.AppService.getUserTransactions(userId, this.page, 'id').subscribe(
+  //     (response) => {
+  //       console.log("transazioniUtente",response);
+  //       this.transactions= response.content;
+  //     },
+  //     (error) => {
+  //       console.error("Error fetching user's portfolioStocks:", error);
+  //     }
+  //   );
+  // }
+
+
+
+
+
+
+  totalSellBuyTransactionCount : number = 0;
+
+
+loadUserTransactions(userId: string): void {
+  this.AppService.getUserTransactions(userId, this.page, 'id').subscribe(
+    (response) => {
+      console.log("transazioniUtente", response);
+      const transactions: userInfo[] = response.content;
+      let sellBuyTransactionCount = 0;
+
+
+      // Conta le transazioni di tipo "SELL" e "BUY"
+      transactions.forEach((transaction) => {
+        if (transaction.transactionType === "SELL"|| transaction.transactionType === "BUY") {
+          sellBuyTransactionCount++;
+        }
+      });
+
+      this.totalSellBuyTransactionCount = sellBuyTransactionCount;
+
+
+      this.transactions = transactions;
+    },
+    (error) => {
+      console.error("Error fetching user's transactions:", error);
+    }
+  );
+}
+
   isFormDirty = false;
   cancelPutUser():void{
     this.currentUserInfo = { ...this.originalUserInfo };
@@ -288,19 +338,20 @@ createTransactionSELL(mdprice:number, newmarketData: string, quantity: number,po
 
 //animazione per aumento balance
 startAnimation() {
+  let startValue = 0;
+  const endValue = this.currentUserInfo.balance;
+  const increment = 1000; // Incremento desiderato
 
-
-    interval(20)//millisecondi di aggiornamento
-      .pipe(
-        startWith(0),
-        scan((acc, _) => acc + 1000),//quantità di aggiornamento
-        takeWhile(val => val <= this.currentUserInfo.balance)
-      )
-      .subscribe(val => {
-        this.currentNumber = val;
-
-      });
-  }
+  const animationTimer = setInterval(() => {
+    if (startValue + increment <= endValue) {
+      startValue += increment;
+      this.currentNumber = startValue;
+    } else {
+      this.currentNumber = endValue;
+      clearInterval(animationTimer); // Ferma il timer quando il valore desiderato è stato raggiunto
+    }
+  }, 1); // Ogni millisecondo
+}
 
 
 

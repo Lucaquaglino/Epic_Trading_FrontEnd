@@ -1,6 +1,6 @@
-<div class="container ">
+<!-- <div class="container ">
   <div class="row">
-    <!-- Colonna sinistra con i link -->
+
     <div class="col-md-2">
       <ul class="list-group">
         <li class="list-group-item"><a routerLink="/dashboard" (click)="showProfile()">Profile</a></li>
@@ -9,20 +9,20 @@
       </ul>
     </div>
 
-    <!-- Contenuto dinamico -->
+
     <div class="col-md-10">
       <div class="row">
         <div class="col-md-12">
           <h2 *ngIf="!showingPortfolio && !showingTransactions && !showingProfile" class="text-center m-5">Manage your account and wallet here</h2>
           <svg *ngIf="!showingPortfolio && !showingTransactions && !showingProfile" class="mx-auto " fill="#000000" width="256px" height="256px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" id="Data_x5F_analysis" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <!-- Il tuo codice SVG qui -->
+
           </svg>
         </div>
       </div>
 
       <div class="row">
         <div class="col-md-12" *ngIf="showingPortfolio">
-          <!-- Colonna centrale per il portafoglio -->
+
           <div class="row mb-3">
             <div class="col-md-12 d-flex justify-content-start">
               <h2  [@countTo]="currentNumber > 0 ? 'in' : 'void'">Balance: {{ currentNumber| currency:'USD':'symbol-narrow':'1.2-2' }}</h2>
@@ -30,7 +30,7 @@
             </div>
           </div>
 
-          <!-- Pulsanti di Deposit e Withdraw -->
+
           <div class="d-flex justify-content-start">
             <div class="mb-2">
               <button class="btn btn-primary">Deposit</button>
@@ -75,7 +75,7 @@
 
       <div class="row">
         <div class="col-md-12" *ngIf="showingTransactions">
-          <!-- Colonna destra per le transazioni -->
+
           <table class="table">
             <thead>
               <tr>
@@ -101,7 +101,7 @@
       </div>
 
       <div class="row">
-        <div class="col-md-12" *ngIf="showingProfile">
+        <div class="col-md-12" *ngIf="showingProfile"> -->
           <!-- Colonna destra per le informazioni dell'utente -->
           <!-- <div class="col-md-12">
             <table class="table bannercontrolpanel" id="tables">
@@ -142,7 +142,7 @@
 
 
 
-
+<!--
 
               <div class="col-md-12">
                 <form (submit)="updateUser(currentUserInfo.id)" class="d-flex">
@@ -181,23 +181,13 @@
       </div>
     </div>
   </div>
-</div>
-
+</div> -->
 
 
 <!-- PROVA TABELLA CODE PEN -->
 
 
-
-
-
-
-
-
-
-
-
-<div class="g-page ">
+<!-- <div class="g-page ">
 
   <div class="g-header">
     <div class="g-header-value page-title">Sales</div>
@@ -267,10 +257,10 @@
     </div>
 
   </div>
-  </div>
+  </div> -->
 
 
-//MODALI
+<!-- //MODALI -->
   <div id="modalOk" class="modal fade modal-lg  ">
     <div class="modal-dialog ">
       <div class="modal-content ">
@@ -321,9 +311,9 @@
       </div>
     </div>
   </div>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalOk">
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalOk">
     Mostra modale
-  </button>
+  </button> -->
 
 
 
@@ -376,7 +366,7 @@
                                       <div class="col mr-2">
                                           <div class="text-s font-weight-bold text-primary text-uppercase mb-1">
                                               Welcome,</div>
-                                          <div class="h3 mb-0 font-weight-bold text-gray-800">{{currentUserInfo.name}} {{currentUserInfo.surname}}</div>
+                                          <div class="h3 mb-0 font-weight-bold text-gray-800 text-uppercase"  *ngIf="currentUserInfo">{{currentUserInfo.name}} {{currentUserInfo.surname}}</div>
                                       </div>
                                       <div class="col-auto">
                                           <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -395,19 +385,18 @@
                                   <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                       <div class="text-s font-weight-bold text-primary text-uppercase mb-1">
-                                          Balance</div>
+                                          Balance </div>
                                       <!-- <div class="h3 mb-0 font-weight-bold text-gray-800">{{newmarketData.price| currency:'USD':'symbol-narrow':'1.2-2'}}</div> -->
                                       <div class="row mb-3">
                                         <div class="col-md-12 d-flex justify-content-start">
-                                          <h2  [@countTo]="currentNumber > 0 ? 'in' : 'void'">{{ currentNumber| currency:'USD':'symbol-narrow':'1.2-2' }}</h2>
+                                          <h2 class="h3 mb-0 font-weight-bold text-gray-800" [@countTo]="currentNumber > 0 ? 'in' : 'void'" >{{ currentNumber| currency:'USD':'symbol-narrow':'1.2-2' }}</h2>
                                           <div class="loader pt-1 mx-2"></div>
-                                          <button class=" btn ml-4 btn-primary">Deposit</button>   <button class="btn btn-danger ml-2">Withdraw</button>
+
                                         </div>
                                       </div>
-
-
-
+                                      <button class=" btn-s bannercontrolpanel rounded-2 ml-4 btn-primary">Deposit</button>   <button class="btn-s btn-danger rounded-2 px-2 ml-2">Withdraw</button>
                                   </div>
+
                                       <div class="col-auto">
                                           <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                                       </div>
@@ -421,27 +410,10 @@
                           <div class="card border-left-info shadow h-100 py-2">
                               <div class="card-body">
                                   <div class="row no-gutters align-items-center">
-                                    <!-- PROGRESS BAR  -->
-                                      <!-- <div class="col mr-2">
-                                          <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
-                                          </div>
-                                          <div class="row no-gutters align-items-center">
-                                              <div class="col-auto">
-                                                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                              </div>
-                                              <div class="col">
-                                                  <div class="progress progress-sm mr-2">
-                                                      <div class="progress-bar bg-info" role="progressbar"
-                                                          style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                          aria-valuemax="100"></div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div> -->
                                       <div class="col mr-2">
                                         <div class="text-s font-weight-bold text-primary text-uppercase mb-1">
                                             STOCKS</div>
-                                        <!-- <div class="h3 mb-0 font-weight-bold text-gray-800">{{newmarketData.symbol}}</div> -->
+                                        <div [@countTo]="currentNumber > 0 ? 'in' : 'void'" class="h3 mb-0 font-weight-bold text-gray-800">{{totalPortfolioQuantity}}</div>
                                     </div>
                                       <div class="col-auto">
                                           <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -459,7 +431,7 @@
                                     <div class="col mr-2">
                                       <div class="text-s font-weight-bold text-primary text-uppercase mb-1">
                                           TRANSACTIONS</div>
-                                      <!-- <div class="h3 mb-0 font-weight-bold text-gray-800">{{newmarketData.volume}}</div> -->
+                                      <div [@countTo]="currentNumber > 0 ? 'in' : 'void'" class="h3 mb-0 font-weight-bold text-gray-800">{{totalSellBuyTransactionCount}}</div>
                                   </div>
                                       <div class="col-auto">
                                           <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -496,40 +468,18 @@
                                       </div>
                                   </div>
                               </div>
+
+
+
+
+
+
+
                               <!-- Card Body -->
                               <div class="card-body">
-                                <!-- <div class="container mt-4">
-                                  <h2>Historical Prices</h2>
-                                  <div class="table-responsive">
-                                    <table class="table">
-                                      <thead>
-                                        <tr>
-                                          <th scope="col">Date</th>
-                                          <th scope="col">Price</th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <tr *ngFor="let historicalPrice of historicalPrices">
-                                          <td>{{ historicalPrice.dateTime | date:'yyyy-MM-dd ' }}</td>
-                                          <td>{{ historicalPrice.price | currency:'USD':'symbol-narrow':'1.2-2' }}</td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
 
-                                  </div>
-                                </div> -->
-                                  <!-- <div class="chart-area">
-                                      <canvas id="myAreaChart">
-
-                                      </canvas>
-                                  </div> -->
-
-                                  <div class="row">
                                     <div class="col-md-12" >
-                                      <!-- Colonna centrale per il portafoglio -->
-
-
-                                      <div class="col-md-12">
+                                      <div class="table-responsive">
                                         <table class="table">
                                           <thead>
                                             <tr>
@@ -541,7 +491,8 @@
                                             </tr>
                                           </thead>
                                           <tbody>
-                                            <tr *ngFor="let portfolioStock of userPortfolioStocks">
+                                            <ng-container *ngFor="let portfolioStock of userPortfolioStocks; let i = index">
+                                            <tr *ngIf="showAllPF || i < numberOfItemsToShowPF">
                                               <td>{{ portfolioStock.marketData.symbol }}</td>
                                               <td>{{ portfolioStock.quantity }}</td>
                                               <td>{{ portfolioStock.purchasePrice| currency:'USD':'symbol-narrow':'1.2-2' }}</td>
@@ -549,18 +500,22 @@
                                               <td>{{ (portfolioStock.purchasePrice) * portfolioStock.quantity | currency:'USD':'symbol-narrow':'1.2-2' }}</td>
 
                                               <td>
-                                                <button (click)="viewDetails(portfolioStock.marketData.id)" class="btn btn-secondary">Dettagli</button>
+                                                <button (click)="viewDetails(portfolioStock.marketData.id)" class="btn-xs bannercontrolpanel  px-4 rounded-2 py-2">Details</button>
                                               </td>
                                               <td >
-                                                <button (click)="createTransactionSELL(portfolioStock.marketData.price, portfolioStock.marketData.id, portfolioStock.quantity, portfolioStock.id)" class="btn btn-primary">VENDI</button>
+                                                <button (click)="createTransactionSELL(portfolioStock.marketData.price, portfolioStock.marketData.id, portfolioStock.quantity, portfolioStock.id)" class="btn btn-danger px-1 rounded-5 py-2">SELL</button>
 
                                               </td>
                                             </tr>
+                                          </ng-container>
+                                            <button class="btn" (click)="showAllPF = !showAllPF">
+                                              {{ showAllPF ? 'Show less' : 'Show all' }}
+                                            </button>
                                           </tbody>
                                         </table>
                                       </div>
                                     </div>
-                                  </div>
+
 
                           </div>
                       </div>
@@ -571,7 +526,7 @@
                               <!-- Card Header - Dropdown -->
                               <div
                                   class=" bannercontrolpanel card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                  <h6 class="m-0 font-weight-bold text-white">Historical Price</h6>
+                                  <h6 class="m-0 font-weight-bold text-white">Transactions</h6>
                                   <div class="dropdown no-arrow">
                                       <a class="dropdown-toggle" href="" role="button" id="dropdownMenuLink"
                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -589,34 +544,48 @@
                               </div>
                               <!-- Card Body -->
                               <div class="card-body">
-                                  <div class="container mt-4">
+                                  <div class="col-md-12">
                                   <div class="table-responsive">
                                     <table class="table">
                                       <thead>
                                         <tr>
                                           <th scope="col">Transaction</th>
                                           <th scope="col">Quantity</th>
-                                          <th scope="col">Purchase Price</th>
+                                          <th scope="col">Price</th>
                                           <th scope="col">Symbol</th>
                                         </tr>
                                       </thead>
                                       <tbody>
-                                        <tr *ngFor="let portfolioStock of transactions">
+                                        <ng-container *ngFor="let portfolioStock of transactions; let i = index">
+                                        <tr *ngIf="showAll || i < numberOfItemsToShow">
                                           <td>{{ portfolioStock.transactionType}}</td>
                                           <td>{{portfolioStock.order.quantity}}</td>
                                           <td>{{ portfolioStock.amount | currency:'USD':'symbol-narrow':'1.2-2'}}</td>
-                                          <ng-container *ngIf="portfolioStock.transactionType == 'BUY'">
+                                          <ng-container *ngIf="portfolioStock.transactionType == 'BUY' || portfolioStock.transactionType == 'SELL'">
                                           <td >{{ portfolioStock.order.marketData.symbol }}</td>
                                         </ng-container>
+
                                           <td></td>
                                         </tr>
+                                      </ng-container>
+                                      <button class="btn" (click)="showAll = !showAll">
+                                        {{ showAll ? 'Show less' : 'Show all'  }}
+                                      </button>
                                       </tbody>
                                     </table>
 
                                   </div>
                                 </div>
 
-                                  <div class="mt-4 text-center small">
+
+
+
+
+
+
+
+
+                                  <!-- <div class="mt-4 text-center small">
                                       <span class="mr-2">
                                           <i class="fas fa-circle text-primary"></i> Direct
                                       </span>
@@ -626,7 +595,7 @@
                                       <span class="mr-2">
                                           <i class="fas fa-circle text-info"></i> Referral
                                       </span>
-                                  </div>
+                                  </div> -->
                               </div>
                           </div>
                       </div>
@@ -813,7 +782,7 @@
   </a>
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  <!-- <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -830,4 +799,4 @@
               </div>
           </div>
       </div>
-  </div>
+  </div> -->
