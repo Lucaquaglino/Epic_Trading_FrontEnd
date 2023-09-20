@@ -93,19 +93,34 @@ newTransaction: Transactions = {
     if (chartContainer) {
       // Crea il grafico all'interno dell'elemento chartContainer
       this.chart = createChart(chartContainer, {
-        width: 1000, // Larghezza del grafico
+        width: 5000, // Larghezza del grafico
         height: 400, // Altezza del grafico
+        autoSize: true,
+
+          // rightPriceScale: {
+          //   scaleMargins: {
+          //     top: 0.1,
+          //     bottom: 0.1,
+          //   },
+          //   invertScale: false,
+          // },
+
+
+
 
         layout: {
           // backgroundColor: '#f0f0f0', // Colore di sfondo del grafico
           textColor: 'rgba(0, 0, 0, 0.9)', // Colore del testo
+
         },
         grid: {
+
           horzLines: {
-            color: 'rgba(0, 0, 0, 0.1)', // Colore delle linee orizzontali della griglia
+            color: '#f0f0f0', // Colore delle linee orizzontali della griglia
+
           },
           vertLines: {
-            color: 'rgba(0, 0, 0, 0.1)', // Colore delle linee verticali della griglia
+            color: '#f0f0f0', // Colore delle linee verticali della griglia
           },
         },
         timeScale: {
@@ -113,11 +128,20 @@ newTransaction: Transactions = {
           secondsVisible: true, // Nascondi i secondi sull'asse x
 fixRightEdge: true, // blocca a destra grafico//
 
+
+
         },
 
 
 
       });
+      const desiredCandlesToShow = 10;
+
+      // Assicurati che l'array `data` contenga solo le ultime `desiredCandlesToShow` candele
+   // Calcola il numero desiderato di candele da visualizzare (ad esempio, 10)
+
+
+// Calcola la larghezza delle candele in base alla larghezza totale del grafico
 
 
 
@@ -134,7 +158,11 @@ fixRightEdge: true, // blocca a destra grafico//
         //      maxValue: 399,
         //   },
         //   }),
+
       });
+
+
+
 
       function formatDateWithTimestamp(timestamp:any) {
         const date = new Date(timestamp);
@@ -169,12 +197,18 @@ fixRightEdge: true, // blocca a destra grafico//
             // Trova il prezzo più basso nei timestamp
             const low = Math.min(...price.timestamp.map((ts: Timestamp) => ts.price));
 
+
+
+
+
+
             return {
               time,
               open,
               close,
               high,
               low,
+
             };
           });
         // Ordina i dati in base al tempo crescente utilizzando una funzione di confronto personalizzata
@@ -189,6 +223,8 @@ data.sort((a:any, b:any) => {
             this.candlestickSeries.setData(data);
           }
 
+          //candele su tutto il grafico del tempo
+          this.chart!.timeScale().fitContent();
           // Ora puoi aggiungere i dati dei volumi, ad esempio generando dati casuali
           const volumeData = data.map((candle:any) => {
             return {
