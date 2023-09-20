@@ -117,6 +117,7 @@ currentNumber = 0; // Il numero corrente che cambierà durante l'animazione
       this.currentUserInfo = { ...userInfo };
       console.log(this.currentUserInfo);
       const userId = this.currentUserInfo.id;
+
       this.loadUserPortfolioStocks(userId);
       this.loadUserTransactions(userId)
     //       setInterval(() => {
@@ -252,6 +253,7 @@ loadUserTransactions(userId: string): void {
 
 
       this.transactions = transactions;
+
     },
     (error) => {
       console.error("Error fetching user's transactions:", error);
@@ -322,9 +324,10 @@ createTransactionSELL(mdprice:number, newmarketData: string, quantity: number,po
     (createdTransaction) => {
       console.log('Transazione di SELL creata con successo:', createdTransaction);
       this.loadUserPortfolioStocks(this.currentUserInfo.id);
+      this.loadUserTransactions(this.currentUserInfo.id)
       this.authService.getCurrentUserInfo().subscribe(
         (userInfo) => {
-          // Aggiorna le informazioni utente con i nuovi dati
+          // Aggiorna le informazioni utente con i nuovi dati.
           // this.currentUserInfo = userInfo;
           // this.currentNumber
           this.startAnimation()
