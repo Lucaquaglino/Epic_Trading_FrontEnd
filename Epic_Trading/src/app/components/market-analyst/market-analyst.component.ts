@@ -72,7 +72,7 @@ newTransaction: Transactions = {
 
 
 
-
+showPer:boolean = false;
 
   // chart
   private chart: IChartApi | null = null;
@@ -88,10 +88,14 @@ newTransaction: Transactions = {
       this.loadHistoricalPrices();
       this.loadMarketDataId();
       this.loadMarketData();
+
       setInterval(() => {
         this.loadMarketData();
         this.loadMarketDataId();
       }, 10000);
+    setTimeout(() => {
+        this.showPer = true;
+      }, 12000);
 
     });
 

@@ -138,7 +138,7 @@
                                         <div class="text-s font-weight-bold text-primary text-uppercase mb-1">
                                             Price</div>
                                         <div class="h3 mb-0 font-weight-bold"  [style.color]="newmarketData.color ">{{newmarketData.price| currency:'USD':'symbol-narrow':'1.2-2'}}</div>
-                                        <div>
+                                        <div *ngIf="showPer">
                                           {{ percentageChange | number:'1.2-2' }} %
                                         </div>
                                     </div>
@@ -232,38 +232,11 @@
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                  <!-- <div class="container mt-4">
-                                    <h2>Historical Prices</h2>
-                                    <div class="table-responsive">
-                                      <table class="table">
-                                        <thead>
-                                          <tr>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Price</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr *ngFor="let historicalPrice of historicalPrices">
-                                            <td>{{ historicalPrice.dateTime | date:'yyyy-MM-dd ' }}</td>
-                                            <td>{{ historicalPrice.price | currency:'USD':'symbol-narrow':'1.2-2' }}</td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-
-                                    </div>
-                                  </div> -->
-                                    <!-- <div class="chart-area">
-                                        <canvas id="myAreaChart">
-
-                                        </canvas>
-                                    </div> -->
-
-                                        <!-- I tuoi div esistenti a sinistra -->
                                         <div class="d-flex justify-content-between">
                                         <div>
                                         <div>{{newmarketData.name}}</div>
                                         <div [style.color]="newmarketData.color "> {{newmarketData.price| currency:'USD':'symbol-narrow':'1.2-2'}}</div>
-                                        <div>
+                                        <div *ngIf="showPer">
                                           {{ percentageChange | number:'1.2-2' }} %
                                         </div>
                                         <div>{{newmarketData.symbol}}</div>
