@@ -1,17 +1,19 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { PaymentService } from '../../services/payment.service';
+import { AppService } from '../../services/app.service';
 @Component({
   selector: 'app-paypal',
   templateUrl: './paypal.component.html',
   styleUrls: ['./paypal.component.scss']
 })
 export class PaypalComponent implements OnInit {
-  amount = 0  ;
+  amount!:number  ;
 
   @ViewChild('paymentRef', {static: true}) paymentRef!: ElementRef;
 
-  constructor(private router: Router, private payment: PaymentService) { }
+
+  constructor(private router: Router, private payment: PaymentService, private Appservice:AppService) { }
 
   ngOnInit(): void {
     this.amount = this.payment.totalAmount;
@@ -29,7 +31,7 @@ export class PaypalComponent implements OnInit {
             purchase_units: [
               {
                 amount: {
-                  value: 10,
+                  value:this.amount.toString(),
                   // this.amount.toString(),
                   currency_code: 'USD'
                 }
@@ -41,7 +43,9 @@ export class PaypalComponent implements OnInit {
           return actions.order.capture().then((details: any) => {
             if (details.status === 'COMPLETED') {
               this.payment.transactionID = details.id;
-              this.router.navigate(['confirm']);
+              console.log(details);
+              this.createTransactionDEPOSIT()
+              this.router.navigate(['confirmPaypal']);
             }
           });
         },
@@ -55,6 +59,46 @@ export class PaypalComponent implements OnInit {
   cancel() {
     this.router.navigate(['dashboard']);
   }
+
+
+
+
+
+
+
+  createTransactionDEPOSIT(): void {
+    const currentTimestamp = new Date().toISOString();
+    const payload = {
+      transactionType: "DEPOSIT",
+      amount: this.amount,
+      timeStamp:currentTimestamp,
+      marketdata: {
+
+
+      },
+      order: {
+
+      },
+      portfolioStockId:""
+    };
+
+    this.Appservice.createTransaction(payload).subscribe(
+      (createdTransaction:any) => {
+
+        console.log('Transazione creata con successo:', createdTransaction);
+      },
+      (error:any) => {
+        console.error('Errore durante la creazione della transazione:', error);
+      }
+    );
+  }
+
+
+
+
+
+
+
 
 
 }
