@@ -65,7 +65,6 @@ export class PaypalComponent implements OnInit {
 
 
 
-
   createTransactionDEPOSIT(): void {
     const currentTimestamp = new Date().toISOString();
     const payload = {
