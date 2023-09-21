@@ -128,19 +128,10 @@ currentNumber = 0; // Il numero corrente che cambierà durante l'animazione
       setTimeout(() => {
         this.showSpinner = false;
       }, 2000);
-          setInterval(() => {
-      this.loadUserPortfolioStocks(userId);
+    //       setInterval(() => {
+    //   this.loadUserPortfolioStocks(userId);
 
-    }, 10000);
-    // interval(15) // Aggiorna ogni 20 millisecondi (puoi personalizzare l'intervallo)
-    // .pipe(
-    //   startWith(0),
-    //   scan((acc, _) => acc + 500),
-    //   takeWhile(val => val <= this.currentUserInfo.balance)
-    // )
-    // .subscribe(val => {
-    //   this.currentNumber = val;
-    // });
+    // }, 10000);
 
     this.startAnimation()
 

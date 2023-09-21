@@ -23,7 +23,7 @@ export class PaypalComponent implements OnInit {
           layout: 'horizontal',
           color: 'blue',
           label: 'paypal',
-          disableMaxWidth: false,
+
           tagline:false
         },
         createOrder: (data: any, actions: any) => {
