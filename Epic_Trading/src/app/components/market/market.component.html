@@ -38,7 +38,7 @@
     </div>
   </div>
 </div>
-
+<!--
 <div *ngIf="!showSpinner">
 <div class="container mt-4 ">
   <h2>Market Stock Actions</h2>
@@ -81,7 +81,146 @@
     </table>
   </div>
 </div>
+</div> -->
+
+
+
+
+
+<!-- test solo colonna template dashboard  -->
+<body id="page-top" *ngIf="!showSpinner">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+      <!-- Sidebar -->
+
+      <!-- End of Sidebar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+
+          <!-- Main Content -->
+          <div id="content">
+
+              <!-- Topbar -->
+
+              <!-- End of Topbar -->
+
+              <!-- Begin Page Content -->
+              <div class="container-fluid">
+
+
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                  <h1 class="h3 mb-0 text-gray-800 text-center mt-3">MARKET</h1>
+                  <a routerLink="/dashboard" routerLinkActive="active" class="d-none d-sm-inline-block btn btn-sm mt-3  shadow-sm bannercontrolpanel"><i
+                          class=" fas fa-download fa-sm text-white-50 "></i> Dashboard</a>
+
+              </div>
+    <!-- Area Chart -->
+    <div class="col-xl-12">
+      <div class="card shadow mb-4">
+          <!-- Card Header - Dropdown -->
+          <div
+              class=" bannercontrolpanel  card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <h6 class="m-0 font-weight-bold text-white">Stocks</h6>
+              <div class="dropdown no-arrow">
+                  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                      aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+              </div>
+          </div>
+
+
+
+
+
+
+
+          <!-- Card Body -->
+          <div class="card-body">
+
+                <div class="col-md-12" >
+                  <div class="table-responsive">
+                    <table class="table" >
+                      <thead>
+                        <tr>
+                          <th scope="col" class="d-none d-md-table-cell">Symbol</th>
+                          <th scope="col" >Name</th>
+                          <th scope="col" class="d-none d-md-table-cell">Volume</th>
+                          <th scope="col" >Price</th>
+                          <th scope="col" >Quantity</th>
+                          <th scope="col" >Action</th>
+                          <th scope="col" ></th>
+                          <th scope="col" ></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <ng-container *ngFor="let stock of marketData; let i = index">
+                          <tr>
+                            <td class="d-none d-md-table-cell">{{ stock.symbol }}</td>
+                            <td >{{ stock.name }}</td>
+                            <td class="d-none d-md-table-cell">{{ stock.volume }}</td>
+                            <td  [style.color]="stock.color">{{ stock.price | currency:'USD':'symbol-narrow':'1.2-2' }}</td>
+                            <td >
+                              <div class="input-group">
+                                <input type="" [(ngModel)]="stock.quantity" class="form-control" placeholder="Enter Quantity">
+                              </div>
+                            </td>
+                            <td >
+                              <button (click)="createTransaction(stock.id, stock.quantity);" class=" btn btn-success rounded-4 m-0 px-5 btn-primary">BUY</button>
+
+                            </td>
+                            <td>
+                              <button (click)="viewDetails(stock.id)" class="btn bannercontrolpanel rounded-4 m-0 px-5">Details</button>
+                            </td>
+
+                          </tr>
+                      </ng-container>
+
+  <button class="btn bannercontrolpanel rounded-3 mt-4 mx-2 px-3" (click)="previousPage()">PREVIOUS</button>
+  <button class="btn bannercontrolpanel rounded-3 mt-4 px-3" (click)="nextPage()">NEXT</button>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+
+      </div>
+  </div>
 </div>
+</div>
+
+
+</div>
+</div>
+</div>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -27,6 +27,10 @@ import { startWith, scan, takeWhile } from 'rxjs/operators';
 })
 export class DashboardComponent implements OnInit {
 
+
+// logica withdraw
+amount=0;
+
  //logica per mostrare piu o meno dati (TRANSATIONS PORTFOLIO)
  showAll = false;
  numberOfItemsToShow = 7;
@@ -37,9 +41,7 @@ export class DashboardComponent implements OnInit {
 // SSPINNER
 showSpinner: boolean = true;
 
-  showingPortfolio = false;
-  showingTransactions = false;
-  showingProfile=false;
+
 
 
 transactions!:userInfo[];
@@ -146,21 +148,7 @@ currentNumber = 0; // Il numero corrente che cambierà durante l'animazione
 
 
   }
-  showPortfolio() {
-    this.showingPortfolio = true;
-    this.showingTransactions = false;
-    this.showingProfile=false;
-  }
-  showProfile() {
-    this.showingPortfolio = false;
-    this.showingTransactions = false;
-    this.showingProfile=true;
-  }
-  showTransactions() {
-    this.showingPortfolio = false;
-    this.showingTransactions = true;
-    this.showingProfile=false;
-  }
+
 
 
   viewDetails(stockId: string) {
@@ -361,7 +349,7 @@ createTransactionDEPOSIT(): void {
   const currentTimestamp = new Date().toISOString();
   const payload = {
     transactionType: "DEPOSIT",
-    amount: 10000000,
+    amount: 10000,
     timeStamp:currentTimestamp,
     marketdata: {
 
@@ -379,7 +367,7 @@ createTransactionDEPOSIT(): void {
       this.authService.getCurrentUserInfo().subscribe(
         (userInfo) => {
           // Aggiorna le informazioni utente con i nuovi dati.
-          // this.currentUserInfo = userInfo;
+          this.currentUserInfo = userInfo;
           // this.currentNumber
           this.startAnimation()
         })
@@ -391,6 +379,60 @@ createTransactionDEPOSIT(): void {
   );
 }
 
+
+
+createTransactionWITHDRAW(amount:number): void {
+  const currentTimestamp = new Date().toISOString();
+  const payload = {
+    transactionType: "WITHDRAW",
+    amount: amount,
+    timeStamp:currentTimestamp,
+    marketdata: {
+
+
+    },
+    order: {
+
+    },
+    portfolioStockId:""
+  };
+
+  this.AppService.createTransaction(payload).subscribe(
+    (createdTransaction) => {
+      this.loadUserTransactions(this.currentUserInfo.id)
+      this.authService.getCurrentUserInfo().subscribe(
+        (userInfo) => {
+          // Aggiorna le informazioni utente con i nuovi dati.
+          this.currentUserInfo = userInfo;
+          // this.currentNumber
+          this.startAnimation()
+        })
+      console.log('Transazione creata con successo:', createdTransaction);
+    },
+    (error) => {
+      console.error('Errore durante la creazione della transazione:', error);
+    }
+  );
+}
+
+
+openWithdrawModal() {
+  // Apre la modale quando viene fatto clic su "Settings"
+  const settingsModal = document.getElementById('modalWithdraw');
+  if (settingsModal) {
+    settingsModal.classList.add('show');
+    settingsModal.style.display = 'block';
+  }
+}
+
+closeWithdrawModal() {
+  // Chiude la modale
+  const settingsModal = document.getElementById('modalWithdraw');
+  if (settingsModal) {
+    settingsModal.classList.remove('show');
+    settingsModal.style.display = 'none';
+  }
+}
 
 
 

@@ -183,14 +183,16 @@ newTransaction: Transactions = {
   nextPage() {
     this.page++; // Vai alla pagina successiva
     this.loadMarketData();
-
+    window.scrollTo(0, 0);
   }
 
   previousPage() {
     if (this.page > 0) {
       this.page--; // Vai alla pagina precedente solo se non sei sulla prima pagina
       this.loadMarketData();
+      window.scrollTo(0, 0);
     }
+
   }
 
 }
