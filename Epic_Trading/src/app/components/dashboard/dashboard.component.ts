@@ -8,7 +8,7 @@ import { userInfo } from 'src/app/models/userInfo.interface';
 import { Transactions } from 'src/app/models/transactions.interface';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { interval } from 'rxjs';
-import { startWith, scan, takeWhile } from 'rxjs/operators';
+
 
 
 @Component({
@@ -388,9 +388,3 @@ calculatePriceChange(purchasePrice: number, currentPrice: number): number {
 
 
 }
-
-
-
-
-
-

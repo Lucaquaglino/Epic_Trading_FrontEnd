@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-
+// * Logica modifica user details
   originalUserInfo!: {
     id:string,
     name: string,
@@ -31,10 +31,6 @@ export class NavbarComponent implements OnInit {
         }
       }
   };
-
-
-
-
 
   currentUserInfo!: {
     id:string,
@@ -73,14 +69,10 @@ export class NavbarComponent implements OnInit {
   }
 
 
-
   logOut(): void {
     this.authService.logout();
 
   }
-
-
-
 
 
   openSettingsModal() {
@@ -92,6 +84,7 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+
   closeSettingsModal() {
     // Chiude la modale
     const settingsModal = document.getElementById('modalOk');
@@ -102,12 +95,12 @@ export class NavbarComponent implements OnInit {
   }
 
 
-
   isFormDirty = false;
   cancelPutUser():void{
     this.currentUserInfo = { ...this.originalUserInfo };
     this.isFormDirty=false
   }
+
 
   updateUser(userId: string ): void {
     this.authService.updateUser(userId, this.currentUserInfo).subscribe(
@@ -123,14 +116,11 @@ export class NavbarComponent implements OnInit {
     );
   }
 
-
-
+  showModalOk = false;
   onFieldChange(): void {
     this.isFormDirty = true;
     this.showModalOk = true;
   }
-
-  showModalOk = false;
 
 
 test():void{
