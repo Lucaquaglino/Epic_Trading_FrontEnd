@@ -10,14 +10,11 @@ import { MarketData } from 'src/app/models/market-data';
   styleUrls: ['./market.component.scss']
 })
 export class MarketComponent implements OnInit {
-// modale ok buy
-  showSuccessModal = false;
 
 
-  previousPrices: number[] = [];
-  email: string = '';
-    page = 0; // Imposta la pagina iniziale
-    pageSize =10;
+email: string = '';
+page = 0; // Imposta la pagina iniziale
+pageSize =10;
 marketData!: MarketData[];
 newmarketData : MarketData = {
   "id":"",
@@ -30,7 +27,7 @@ newmarketData : MarketData = {
      quantity:null!
 
 }
-quantity: number = 1; // Imposta un valore di default o iniziale, se necessario
+
 
 newTransaction: Transactions = {
   "timeStamp":"",
@@ -72,43 +69,6 @@ newTransaction: Transactions = {
     //   this.loadMarketData();
     // }, 10000);
   }
-  // createTransaction(newmarketData:string): void {
-  //   const payload = {
-  //          // Supponendo che il tuo oggetto MarketData abbia un campo "currency"
-  //     // amount: ,
-  //     transactionType: "BUY",
-
-  //     marketdata: {
-
-  //       "id":	newmarketData,
-
-  //     },
-  //     order:{
-  //     orderType :"BUY",
-  //     quantity : 2// Supponendo che il tuo oggetto MarketData abbia un campo "price"
-  //     // Altri campi del payload
-  //     // marketData: {
-  //     //   id:"3fca7623-ef47-47cb-9ee9-8b5c22fe3426",
-  //     //   "name":	"Grimes, Reilly and Hagenes",
-  //     //   "symbol":"MITK",
-  //     //   "price": 423.12,
-  //     //   "volume": 	7739.08,
-  //     //   "timeStamp": ""
-  //     // }
-  //   }
-  //   };
-
-  //   this.AppService.createTransaction(payload).subscribe(
-  //     (createdTransaction) => {
-  //       // Gestisci la risposta dal backend
-  //       console.log('Transazione creata con successo:', createdTransaction);
-  //     },
-  //     (error) => {
-  //       // Gestisci gli errori
-  //       console.error('Errore durante la creazione della transazione:', error);
-  //     }
-  //   );
-  // }
 
 
   createTransaction(newmarketData: string, quantity: number): void {
@@ -141,18 +101,11 @@ newTransaction: Transactions = {
     );
   }
 
-
-
-
-
   viewDetails(stockId: string) {
     // Naviga alla pagina dei dettagli delle azioni con l'ID come parametro
     this.router.navigate(['/marketAnalyst', stockId]);
   }
-
-
-
-
+  previousPrices: number[] = [];
   loadMarketData(): void {
     this.AppService.getMarketData(this.page, 'id').subscribe(
       (marketData: MarketData[]) => {
