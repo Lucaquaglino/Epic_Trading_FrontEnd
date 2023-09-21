@@ -158,7 +158,7 @@
                           <th scope="col" >Name</th>
                           <th scope="col" class="d-none d-md-table-cell">Volume</th>
                           <th scope="col" >Price</th>
-                          <th scope="col" >Quantity</th>
+                          <!-- <th scope="col" >Quantity</th> -->
                           <th scope="col" >Action</th>
                           <th scope="col" ></th>
                           <th scope="col" ></th>
@@ -171,13 +171,13 @@
                             <td >{{ stock.name }}</td>
                             <td class="d-none d-md-table-cell">{{ stock.volume }}</td>
                             <td  [style.color]="stock.color">{{ stock.price | currency:'USD':'symbol-narrow':'1.2-2' }}</td>
-                            <td >
+                            <!-- <td >
                               <div class="input-group">
                                 <input type="" [(ngModel)]="stock.quantity" class="form-control" placeholder="Enter Quantity">
                               </div>
-                            </td>
+                            </td> -->
                             <td >
-                              <button (click)="createTransaction(stock.id, stock.quantity);" class=" btn btn-success rounded-4 m-0 px-5 btn-primary">BUY</button>
+                              <button (click)="openConfirmationModal(stock.id)"class=" btn btn-success rounded-4 m-0 px-5 btn-primary">BUY</button>
 
                             </td>
                             <td>
@@ -185,6 +185,49 @@
                             </td>
 
                           </tr>
+
+
+
+<!-- MODALE BUY -->
+
+<div id="modalBUY" class="modal fade modal-lg">
+  <div class="modal-dialog p-0" >
+    <div class="modal-content ">
+      <div class="modal-header ">
+        <h5 class="modal-title bannercontrolpaneltext" id="modal-title-add">
+         CONFIRM BUY?
+        </h5>
+      </div>
+      <div class="modal-body" >
+        <p id="add-modal " class="bannercontrolpaneltext">SELECT QUANTITY</p>
+        <div class="col-md-12">
+          <form  class="d-flex">
+            <div class="form-group">
+              <label for="amount">Quantity:</label>
+              <input type="number" class="form-control" id="amount" name="amount" [(ngModel)]="stock.quantity">
+            </div>
+          </form>
+          <div>
+            <button type="button" class="btn-s px-2  rounded-2  btn-success" (click)="createTransaction(selectedStock.id, stock.quantity)">Yes</button>
+            <button type="button" class="btn-s btn-danger rounded-2 px-2 ml-2" (click)="closeConfirmationModal()">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
                       </ng-container>
 
   <button class="btn bannercontrolpanel rounded-3 mt-4 mx-2 px-3" (click)="previousPage()">PREVIOUS</button>

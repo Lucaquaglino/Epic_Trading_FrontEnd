@@ -566,7 +566,7 @@
                                           <tbody>
                                             <ng-container *ngFor="let portfolioStock of userPortfolioStocks; let i = index">
                                             <tr *ngIf="showAllPF || i < numberOfItemsToShowPF">
-                                              <td>{{ portfolioStock.marketData.symbol }}</td>
+                                              <td  >{{ portfolioStock.marketData.symbol }} </td>
                                               <td>{{ portfolioStock.quantity }}</td>
                                               <td>{{ portfolioStock.purchasePrice| currency:'USD':'symbol-narrow':'1.2-2' }}</td>
                                               <td [style.color]="portfolioStock.color">{{  portfolioStock.marketData.price | currency:'USD':'symbol-narrow':'1.2-2' }}</td>

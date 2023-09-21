@@ -10,6 +10,10 @@ import { MarketData } from 'src/app/models/market-data';
   styleUrls: ['./market.component.scss']
 })
 export class MarketComponent implements OnInit {
+// modale ok buy
+  showSuccessModal = false;
+
+
   previousPrices: number[] = [];
   email: string = '';
     page = 0; // Imposta la pagina iniziale
@@ -111,7 +115,7 @@ newTransaction: Transactions = {
     const currentTimestamp = new Date().toISOString();
     const payload = {
       transactionType: "BUY",
-      amount: 1000000,
+      amount: 0,
       timeStamp:currentTimestamp,
       marketdata: {
         "id": newmarketData,
@@ -128,6 +132,8 @@ newTransaction: Transactions = {
     this.AppService.createTransaction(payload).subscribe(
       (createdTransaction) => {
         console.log('Transazione creata con successo:', createdTransaction);
+        this.closeConfirmationModal();
+        // this.showSuccessMessage();
       },
       (error) => {
         console.error('Errore durante la creazione della transazione:', error);
@@ -194,5 +200,44 @@ newTransaction: Transactions = {
     }
 
   }
+
+// modale buy stock
+
+selectedStock: any = null;
+
+   openConfirmationModal(id:string): void {
+    const settingsModal = document.getElementById('modalBUY');
+    if (settingsModal) {
+
+      this.selectedStock = {
+        id: id
+
+      };
+
+      settingsModal.classList.add('show');
+      settingsModal.style.display = 'block';
+
+
+    }
+  }
+
+
+  closeConfirmationModal():void{
+    const settingsModal = document.getElementById('modalBUY');
+    if (settingsModal) {
+      settingsModal.classList.remove('show');
+      settingsModal.style.display = 'none';
+    }
+  }
+
+// moDALE CONFERMA BUY
+  // showSuccessMessage() {
+  //   this.showSuccessModal = true;
+  //   setTimeout(() => {
+  //     this.showSuccessModal = false;
+  //   }, 2000); // 2000 millisecondi (2 secondi)
+  // }
+
+
 
 }
