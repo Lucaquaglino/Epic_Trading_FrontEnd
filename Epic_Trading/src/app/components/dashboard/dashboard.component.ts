@@ -27,22 +27,17 @@ import { startWith, scan, takeWhile } from 'rxjs/operators';
 })
 export class DashboardComponent implements OnInit {
 
-
-// logica withdraw
+// *logica withdraw
 amount=0;
 
- //logica per mostrare piu o meno dati (TRANSATIONS PORTFOLIO)
+ //*logica per mostrare piu o meno dati (TRANSACTIONS & PORTFOLIO)
  showAll = false;
  numberOfItemsToShow = 7;
  showAllPF = false;
  numberOfItemsToShowPF = 6;
- //
 
-// SSPINNER
+// *SPINNER
 showSpinner: boolean = true;
-
-
-
 
 transactions!:userInfo[];
 
@@ -69,21 +64,12 @@ transactions!:userInfo[];
       }
   };
 
-
-
   email: string = '';
   page = 0; // Imposta la pagina iniziale
   pageSize =20;
 portfolioStock: PortfolioStock[] = [];
 
-
 userPortfolioStocks: PortfolioStock[] = [];
-
-
-
-
-
-
 
 originalUserInfo!: {
   id:string,
@@ -108,7 +94,7 @@ originalUserInfo!: {
     }
 };
 
-// logica calcolo percentuale
+// *logica calcolo percentuale
 purchasePrice!: number
  currentPrice!: number
 currentNumber = 0; // Il numero corrente che cambierà durante l'animazione
@@ -141,25 +127,12 @@ currentNumber = 0; // Il numero corrente che cambierà durante l'animazione
   }
 
 
-
   viewDetails(stockId: string) {
     // Naviga alla pagina dei dettagli delle azioni con l'ID come parametro
     this.router.navigate(['/marketAnalyst', stockId]);
   }
 
 
-
-  // loadUserPortfolioStocks(userId: string): void {
-  //   this.AppService.getUserPortfolioStocks(userId, this.page, 'id').subscribe(
-  //     (response) => {
-  //       console.log("portfolio",response);
-  //       this.userPortfolioStocks = response.content;
-  //     },
-  //     (error) => {
-  //       console.error("Error fetching user's portfolioStocks:", error);
-  //     }
-  //   );
-  // }
   totalPortfolioQuantity: number = 0;
   previousPurchasePrices: number[] = [];
   loadUserPortfolioStocks(userId: string): void {
@@ -202,34 +175,13 @@ currentNumber = 0; // Il numero corrente che cambierà durante l'animazione
   }
 
 
-  // loadUserTransactions(userId: string): void {
-  //   this.AppService.getUserTransactions(userId, this.page, 'id').subscribe(
-  //     (response) => {
-  //       console.log("transazioniUtente",response);
-  //       this.transactions= response.content;
-  //     },
-  //     (error) => {
-  //       console.error("Error fetching user's portfolioStocks:", error);
-  //     }
-  //   );
-  // }
-
-
-
-
-
-
   totalSellBuyTransactionCount : number = 0;
-
-
 loadUserTransactions(userId: string): void {
   this.AppService.getUserTransactions(userId, this.page, 'id').subscribe(
     (response) => {
       console.log("transazioniUtente", response);
       const transactions: userInfo[] = response.content;
       let sellBuyTransactionCount = 0;
-
-
       // Conta le transazioni di tipo "SELL" e "BUY"
       transactions.forEach((transaction) => {
         if (transaction.transactionType === "SELL"|| transaction.transactionType === "BUY") {
@@ -270,23 +222,16 @@ loadUserTransactions(userId: string): void {
   }
 
 
-
+  showModalOk = false;
   onFieldChange(): void {
     this.isFormDirty = true;
     this.showModalOk = true;
   }
 
-  showModalOk = false;
-
 
 test():void{
   this.showModalOk = true;
 }
-
-
-
-
-
 
 
 createTransactionSELL(mdprice:number, newmarketData: string, quantity: number,portfolioId:string): void {
@@ -329,13 +274,6 @@ createTransactionSELL(mdprice:number, newmarketData: string, quantity: number,po
 }
 
 
-
-
-
-
-
-
-
 createTransactionDEPOSIT(): void {
   const currentTimestamp = new Date().toISOString();
   const payload = {
@@ -369,7 +307,6 @@ createTransactionDEPOSIT(): void {
     }
   );
 }
-
 
 
 createTransactionWITHDRAW(amount:number): void {
@@ -425,14 +362,7 @@ closeWithdrawModal() {
   }
 }
 
-
-
-
-
-
-
-
-//animazione per aumento balance
+//*animazione per aumento balance
 startAnimation() {
   let startValue = 0;
   const endValue = this.currentUserInfo.balance;
@@ -450,9 +380,7 @@ startAnimation() {
 }
 
 
-
-
-// calcolo variaione di prezzo portfolio
+// *calcolo variaione di prezzo portfolio
 calculatePriceChange(purchasePrice: number, currentPrice: number): number {
   const priceChange = currentPrice - purchasePrice;
   return (priceChange / purchasePrice) * 100;
