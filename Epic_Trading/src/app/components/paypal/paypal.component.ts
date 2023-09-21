@@ -45,7 +45,7 @@ export class PaypalComponent implements OnInit {
               this.payment.transactionID = details.id;
               console.log(details);
               this.createTransactionDEPOSIT()
-              this.router.navigate(['confirmPaypal']);
+              this.router.navigate(['confirmPaypal'], { queryParams: { details: JSON.stringify(details) } });
             }
           });
         },

@@ -64,6 +64,10 @@ const rotte: Route[] = [
   {
     path: 'confirmPaypal',
     component: ConfirmPaypalComponent
+  },
+  {
+    path: 'confirmPaypal:/details',
+    component: ConfirmPaypalComponent
   }
 ];
 @NgModule({
