@@ -23,6 +23,7 @@ import { MarketComponent } from './components/market/market.component';
 import { MarketAnalystComponent } from './components/market-analyst/market-analyst.component';
 import { PaypalComponent } from './components/paypal/paypal.component';
 import { ConfirmPaypalComponent } from './components/confirm-paypal/confirm-paypal.component';
+import { ErrorComponent } from './components/error/error.component';
 
 const rotte: Route[] = [
   { path: '', redirectTo: 'controlPanel', pathMatch: 'full' },
@@ -71,6 +72,11 @@ const rotte: Route[] = [
     path: 'confirmPaypal:/details',
     component: ConfirmPaypalComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'error',
+    component: ErrorComponent,
+    // canActivate: [AuthGuard]
   }
 ];
 @NgModule({
@@ -84,7 +90,8 @@ const rotte: Route[] = [
     MarketComponent,
     MarketAnalystComponent,
     PaypalComponent,
-    ConfirmPaypalComponent
+    ConfirmPaypalComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

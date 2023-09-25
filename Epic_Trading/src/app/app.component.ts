@@ -16,6 +16,6 @@ export class AppComponent {
 
     // Decidi se mostrare la navbar in base all'URL attuale
     // Ad esempio, se l'URL contiene "controlpanel", nascondi la navbar
-    return !currentUrl.includes('controlPanel') && !currentUrl.includes('register')&& !currentUrl.includes('login');
+    return !currentUrl.includes('controlPanel')&& !currentUrl.includes('error') && !currentUrl.includes('register')&& !currentUrl.includes('login');
   }
 }
