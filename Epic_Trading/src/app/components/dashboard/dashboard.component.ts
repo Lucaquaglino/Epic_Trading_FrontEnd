@@ -135,19 +135,68 @@ currentNumber = 0; // Il numero corrente che cambierà durante l'animazione
 
   totalPortfolioQuantity: number = 0;
   previousPurchasePrices: number[] = [];
+  // loadUserPortfolioStocks(userId: string): void {
+  //   this.AppService.getUserPortfolioStocks(userId, this.page, 'id').subscribe(
+  //     (response) => {
+  //       console.log("portfolio", response);
+  //       const userPortfolioStocks: PortfolioStock[] = response.content;
+  //       let totalQuantity = 0;
+  //       // Calcola la variazione percentuale e imposta il colore per ciascun PortfolioStock
+  //       userPortfolioStocks.forEach((portfolioStock, index) => {
+  //         totalQuantity += portfolioStock.quantity;
+  //         if (this.previousPurchasePrices[index] !== undefined) {
+  //           const priceChange = portfolioStock.marketData.price - this.previousPurchasePrices[index];
+  //           const percentageChange = (priceChange / this.previousPurchasePrices[index]) * 100;
+
+
+  //           // Assegna il colore in base alla variazione percentuale
+  //           if (percentageChange > 0) {
+  //             portfolioStock.color = 'green';
+  //           } else if (percentageChange < 0) {
+  //             portfolioStock.color = 'red';
+  //           } else {
+  //             portfolioStock.color = 'black';
+  //           }
+  //         }
+
+  //         // Aggiorna il valore precedente con il nuovo prezzo di acquisto
+  //         this.previousPurchasePrices[index] = portfolioStock.marketData.price;
+  //       });
+  //       this.totalPortfolioQuantity = totalQuantity;
+
+  //       // console.log("test quantità portfolio",this.totalPortfolioQuantity)
+  //       this.userPortfolioStocks = userPortfolioStocks;
+
+  //     },
+  //     (error) => {
+  //       console.error("Error fetching user's portfolioStocks:", error);
+  //     }
+  //   );
+  // }
+
+
+
+
+
+
   loadUserPortfolioStocks(userId: string): void {
     this.AppService.getUserPortfolioStocks(userId, this.page, 'id').subscribe(
       (response) => {
         console.log("portfolio", response);
         const userPortfolioStocks: PortfolioStock[] = response.content;
         let totalQuantity = 0;
+
+        // Imposta isSelected su false per tutte le azioni inizialmente
+        userPortfolioStocks.forEach((portfolioStock) => {
+          portfolioStock.isSelected = false;
+        });
+
         // Calcola la variazione percentuale e imposta il colore per ciascun PortfolioStock
         userPortfolioStocks.forEach((portfolioStock, index) => {
           totalQuantity += portfolioStock.quantity;
           if (this.previousPurchasePrices[index] !== undefined) {
             const priceChange = portfolioStock.marketData.price - this.previousPurchasePrices[index];
             const percentageChange = (priceChange / this.previousPurchasePrices[index]) * 100;
-
 
             // Assegna il colore in base alla variazione percentuale
             if (percentageChange > 0) {
@@ -162,9 +211,8 @@ currentNumber = 0; // Il numero corrente che cambierà durante l'animazione
           // Aggiorna il valore precedente con il nuovo prezzo di acquisto
           this.previousPurchasePrices[index] = portfolioStock.marketData.price;
         });
-        this.totalPortfolioQuantity = totalQuantity;
 
-        // console.log("test quantità portfolio",this.totalPortfolioQuantity)
+        this.totalPortfolioQuantity = totalQuantity;
         this.userPortfolioStocks = userPortfolioStocks;
 
       },
@@ -173,6 +221,28 @@ currentNumber = 0; // Il numero corrente che cambierà durante l'animazione
       }
     );
   }
+
+  // Funzione per aprire la finestra modale "modalSell" e impostare isSelected
+  openSelllModal(stockId:any) {
+    // Imposta isSelected su true solo per l'azione selezionata
+    this.userPortfolioStocks.forEach((portfolioStock) => {
+      if (portfolioStock.id === stockId) {
+        portfolioStock.isSelected = true;
+      } else {
+        portfolioStock.isSelected = false;
+      }
+    });
+
+    // Altri codici per aprire la finestra modale "modalSell"
+  }
+
+
+
+
+
+
+
+
 
 
   totalSellBuyTransactionCount : number = 0;
@@ -401,6 +471,57 @@ setTimeout(() => {
   }, 2500);
 }
 
+
+
+selectedStock:any;
+openSellModal( price:number,id:string, quantity:number,idpS:string): void {
+  const settingsModal = document.getElementById('modalSell');
+  this.selectedStock = {
+    id: id,
+    price:price,
+    quantity:quantity,
+    idpS: idpS
+
+
+  };
+    settingsModal!.classList.add('show');
+    settingsModal!.style.display = 'block';
+
+
+
+}
+
+
+closeSellModal():void{
+  const settingsModal = document.getElementById('modalSell');
+  if (settingsModal) {
+    settingsModal.classList.remove('show');
+    settingsModal.style.display = 'none';
+  }
+
+  this.userPortfolioStocks.forEach((portfolioStock) => {
+
+
+      portfolioStock.isSelected = false;
+    }
+  );
+}
+
+
+
+
+
+  modalConfirmSell():void{
+    const okModal = document.getElementById('modalConfirmSell');
+    setTimeout(() => {
+      okModal!.classList.add('show');
+      okModal!.style.display = 'block';
+    }, 500);
+      setTimeout(() => {
+        okModal!.classList.remove('show');
+        okModal!.style.display = 'none';
+      }, 2500);
+    }
 
 
 

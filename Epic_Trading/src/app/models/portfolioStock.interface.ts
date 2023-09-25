@@ -1,6 +1,7 @@
 
 // PortfolioStockResponse.interface.ts
 export interface PortfolioStock {
+  isSelected: boolean;
   content: PortfolioStock[];
   id: string;
   idUser: string;

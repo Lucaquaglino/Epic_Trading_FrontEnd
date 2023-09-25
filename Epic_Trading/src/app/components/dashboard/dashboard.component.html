@@ -50,6 +50,32 @@
   </div>
 </div>
 
+
+ <!--! ----------------------- MODALE CONFIRM SELL ----------------------------------------->
+ <div id="modalConfirmSell" class="modal fade modal-lg">
+  <div class="modal-dialog p-0">
+    <div class="modal-content">
+      <!--<div class="modal-header">
+        <h5
+          class="modal-title bannercontrolpaneltext"
+          id="modal-title-add"
+        >
+
+        </h5>
+      </div>-->
+      <div class="modal-body">
+        <h3
+          id="add-modal "
+          class="text-success text-center"
+        >
+        SUCESSFUL SELL
+      </h3>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- //MODALI -->
   <!-- <div id="modalOk" class="modal fade modal-lg  ">
     <div class="modal-dialog ">
@@ -258,8 +284,9 @@
                                             </tr>
                                           </thead>
                                           <tbody>
-                                            <ng-container *ngFor="let portfolioStock of userPortfolioStocks; let i = index">
-                                            <tr *ngIf="showAllPF || i < numberOfItemsToShowPF">
+                                            <ng-container *ngFor="let portfolioStock of userPortfolioStocks; let i = index" >
+
+                                            <tr *ngIf="showAllPF || i < numberOfItemsToShowPF" [ngClass]="{'selected-action': portfolioStock.isSelected}">
                                               <td  >{{ portfolioStock.marketData.symbol }} </td>
                                               <td>{{ portfolioStock.quantity }}</td>
                                               <td>{{ portfolioStock.purchasePrice| currency:'USD':'symbol-narrow':'1.2-2' }}</td>
@@ -270,9 +297,33 @@
                                                 <button (click)="viewDetails(portfolioStock.marketData.id)" class="btn-xs bannercontrolpanel  px-4 rounded-2 py-2">Details</button>
                                               </td>
                                               <td >
-                                                <button (click)="createTransactionSELL(portfolioStock.marketData.price, portfolioStock.marketData.id, portfolioStock.quantity, portfolioStock.id)" class="btn btn-danger px-4 rounded-2 py-2">SELL</button>
+                                                <button (click)="openSellModal(portfolioStock.marketData.price, portfolioStock.marketData.id, portfolioStock.quantity, portfolioStock.id);openSelllModal(portfolioStock.marketData.id); portfolioStock.isSelected = true" class="btn-s btn-danger rounded-2 px-4 ml-2 py-2">SELL</button>
                                               </td>
                                             </tr>
+ <!--! ----------------------- MODALE  SELL ----------------------------------------->
+ <div id="modalSell" class="modal fade modal-lg  p-0 m-0 ">
+  <div class="modal-dialog p-0">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h5 class="modal-title bannercontrolpaneltext text-center" id="modal-title-add">
+         CONFIRM SELL ?
+        </h5>
+      </div>
+      <div class="modal-body"  *ngIf="currentUserInfo">
+        <p id="add-modal " class="bannercontrolpaneltext"></p>
+          <div>
+           <button (click)=" createTransactionSELL(selectedStock.price,selectedStock.id,selectedStock.quality,selectedStock.idpS); closeSellModal(); modalConfirmSell()" class="btn-s btn-danger rounded-2 px-2 ml-2">SELL</button>
+           <button (click)="closeSellModal()"  class="btn-s bannercontrolpanel rounded-2 ml-4 btn-primary" >Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
                                           </ng-container>
                                             <button *ngIf="userPortfolioStocks.length >6" class="btn bannercontrolpanel mt-2"  (click)="showAllPF = !showAllPF">
                                               {{ showAllPF ? 'Show less' : 'Show all' }}
