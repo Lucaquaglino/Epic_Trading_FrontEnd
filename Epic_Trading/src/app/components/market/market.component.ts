@@ -191,6 +191,17 @@ selectedStock: any = null;
   //   }, 2000); // 2000 millisecondi (2 secondi)
   // }
 
+  okModal():void{
+    const okModal = document.getElementById('modalConfirm');
+    setTimeout(() => {
+      okModal!.classList.add('show');
+      okModal!.style.display = 'block';
+    }, 500);
+      setTimeout(() => {
+        okModal!.classList.remove('show');
+        okModal!.style.display = 'none';
+      }, 2500);
+    }
 
 
 }

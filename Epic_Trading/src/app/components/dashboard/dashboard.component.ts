@@ -180,6 +180,7 @@ loadUserTransactions(userId: string): void {
   this.AppService.getUserTransactions(userId, this.page, 'id').subscribe(
     (response) => {
       console.log("transazioniUtente", response);
+
       const transactions: userInfo[] = response.content;
       let sellBuyTransactionCount = 0;
       // Conta le transazioni di tipo "SELL" e "BUY"
@@ -385,6 +386,23 @@ calculatePriceChange(purchasePrice: number, currentPrice: number): number {
   const priceChange = currentPrice - purchasePrice;
   return (priceChange / purchasePrice) * 100;
 }
+
+
+
+modalConfirmWithdraw():void{
+const okModal = document.getElementById('modalConfirmWithdraw');
+setTimeout(() => {
+  okModal!.classList.add('show');
+  okModal!.style.display = 'block';
+}, 500);
+  setTimeout(() => {
+    okModal!.classList.remove('show');
+    okModal!.style.display = 'none';
+  }, 2500);
+}
+
+
+
 
 
 }

@@ -1,4 +1,4 @@
-<!-- MODALE WITHDRAW -->
+ <!--! ----------------------- MODALE  WITHDRAW ----------------------------------------->
 <div id="modalWithdraw" class="modal fade modal-lg  ">
   <div class="modal-dialog ">
     <div class="modal-content ">
@@ -17,7 +17,7 @@
             </div>
           </form>
           <div>
-           <button  (click)="createTransactionWITHDRAW(amount); closeWithdrawModal()" class=" btn-s bannercontrolpanel rounded-2 ml-4 btn-primary">Withdraw</button>
+           <button  (click)="createTransactionWITHDRAW(amount); closeWithdrawModal();modalConfirmWithdraw() " class=" btn-s bannercontrolpanel rounded-2 ml-4 btn-primary">Withdraw</button>
            <button (click)="closeWithdrawModal()"  class="btn-s btn-danger rounded-2 px-2 ml-2" >Cancel</button>
           </div>
         </div>
@@ -25,6 +25,31 @@
     </div>
   </div>
 </div>
+ <!--! ----------------------- MODALE CONFIRM WITHDRAW ----------------------------------------->
+ <div id="modalConfirmWithdraw" class="modal fade modal-lg">
+  <div class="modal-dialog p-0">
+    <div class="modal-content">
+      <!--<div class="modal-header">
+        <h5
+          class="modal-title bannercontrolpaneltext"
+          id="modal-title-add"
+        >
+
+        </h5>
+      </div>-->
+      <div class="modal-body">
+        <h3
+          id="add-modal "
+          class="text-success text-center"
+        >
+        SUCESSFUL WITHDRAW
+      </h3>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- //MODALI -->
   <!-- <div id="modalOk" class="modal fade modal-lg  ">
     <div class="modal-dialog ">

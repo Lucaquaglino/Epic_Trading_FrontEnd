@@ -139,7 +139,7 @@
                             </td>
                           </tr>
 
-                          <!-- MODALE BUY -->
+                          <!--! ----------------------- MODALE BUY ----------------------------------------->
 
                           <div id="modalBUY" class="modal fade modal-lg">
                             <div class="modal-dialog p-0">
@@ -180,7 +180,7 @@
                                           createTransaction(
                                             selectedStock.id,
                                             stock.quantity
-                                          )
+                                          );okModal();
                                         "
                                       >
                                         Yes
@@ -188,7 +188,7 @@
                                       <button
                                         type="button"
                                         class="btn-s btn-danger rounded-2 px-2 ml-2"
-                                        (click)="closeConfirmationModal()"
+                                        (click)="closeConfirmationModal(); "
                                       >
                                         Cancel
                                       </button>
@@ -198,6 +198,36 @@
                               </div>
                             </div>
                           </div>
+
+ <!--! ----------------------- MODALE CONFIRM ----------------------------------------->
+ <div id="modalConfirm" class="modal fade modal-lg">
+  <div class="modal-dialog p-0">
+    <div class="modal-content">
+      <!--<div class="modal-header">
+        <h5
+          class="modal-title bannercontrolpaneltext"
+          id="modal-title-add"
+        >
+
+        </h5>
+      </div>-->
+      <div class="modal-body">
+        <h3
+          id="add-modal "
+          class="text-success text-center"
+        >
+        SUCESSFUL PURCHASE
+      </h3>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
                         </ng-container>
                         <button
                           class="btn bannercontrolpanel rounded-3 mt-4 mx-2 px-3"
@@ -309,3 +339,4 @@
 
        </div>
    </section> -->
+
