@@ -43,6 +43,7 @@ newmarketData : MarketData = {
 quantity: number = 1; // Imposta un valore di default o iniziale, se necessario
 
 newTransaction: Transactions = {
+  "color":"",
   "timeStamp":"",
   "amount": null!,
   "currency": "",

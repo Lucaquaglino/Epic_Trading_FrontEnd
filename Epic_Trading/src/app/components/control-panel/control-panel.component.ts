@@ -24,6 +24,7 @@ marketData: MarketData[]=[];
     currentPage = 0;
     transaction: Transactions[] = [];
     newTransaction: Transactions = {
+      "color": "",
       "timeStamp":"",
       "amount": null!,
       "currency": "",

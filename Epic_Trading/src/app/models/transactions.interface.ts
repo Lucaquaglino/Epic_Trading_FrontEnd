@@ -1,6 +1,6 @@
 export interface Transactions {
 
-
+  "color":string,
     "timeStamp":string,
     "amount": number,
     "currency": string,

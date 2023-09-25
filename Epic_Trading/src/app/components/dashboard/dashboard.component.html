@@ -279,6 +279,7 @@
                                               <th scope="col">Current Price</th>
                                               <th scope="col">% variation</th>
                                               <th scope="col">Total Price</th>
+                                              <th scope="col">Gain/Loss</th>
                                               <th scope="col">Action</th>
                                               <th scope="col"></th>
                                             </tr>
@@ -293,6 +294,7 @@
                                               <td [style.color]="portfolioStock.color">{{  portfolioStock.marketData.price | currency:'USD':'symbol-narrow':'1.2-2' }}</td>
                                               <td>{{ calculatePriceChange(portfolioStock.purchasePrice, portfolioStock.marketData.price) | number:'1.2-2' }}%</td>
                                               <td>{{ (portfolioStock.purchasePrice) * portfolioStock.quantity | currency:'USD':'symbol-narrow':'1.2-2' }}</td>
+                                              <td [style.color]="portfolioStock.color" >{{ calculateTotalPriceChange(portfolioStock) | currency:'USD':'symbol-narrow':'1.2-2'  }}</td>
                                               <td>
                                                 <button (click)="viewDetails(portfolioStock.marketData.id)" class="btn-xs bannercontrolpanel  px-4 rounded-2 py-2">Details</button>
                                               </td>
@@ -367,6 +369,7 @@
                                           <th scope="col">Quantity</th>
                                           <th scope="col">Amount</th>
                                           <th scope="col">Symbol</th>
+                                          <th scope="col">Gain/Loss</th>
                                         </tr>
                                       </thead>
                                       <tbody>
@@ -377,11 +380,12 @@
                                           <td>{{ portfolioStock.amount | currency:'USD':'symbol-narrow':'1.2-2'}}</td>
                                           <ng-container *ngIf="portfolioStock.transactionType == 'BUY' || portfolioStock.transactionType == 'SELL'">
                                           <td >{{ portfolioStock.order.marketData.symbol }}</td>
+                                          <td [style.color]="portfolioStock.color">{{calculateGainLoss(portfolioStock)| currency:'USD':'symbol-narrow':'1.2-2'}}</td>
                                         </ng-container>
-                                          <td></td>
+
                                         </tr>
                                       </ng-container>
-                                      <button *ngIf="transactions.length > 7" class="btn bannercontrolpanel mt-2"  (click)="showAll = !showAll">
+                                      <button *ngIf="transactions.length > 7" class="btn bannercontrolpanel mt-2"  (click)="showAll = !showAll;loadUserTransactions(currentUserInfo.id)">
                                         {{ showAll ? 'Show less' : 'Show all'  }}
                                       </button>
                                       </tbody>

@@ -1,4 +1,5 @@
 export interface userInfo{
+  color:string,
 content:userInfo[];
   id:string,
   name: string,
@@ -18,6 +19,7 @@ content:userInfo[];
         marketData:{
         name:string,
         symbol:string,
+        price:number,
         }
         quantity:number
       }

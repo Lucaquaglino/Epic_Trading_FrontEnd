@@ -30,6 +30,7 @@ newmarketData : MarketData = {
 
 
 newTransaction: Transactions = {
+  "color":"",
   "timeStamp":"",
   "amount": null!,
   "currency": "",

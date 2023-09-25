@@ -27,6 +27,8 @@ import { interval } from 'rxjs';
 })
 export class DashboardComponent implements OnInit {
 
+
+
 // *logica withdraw
 amount=0;
 
@@ -456,6 +458,58 @@ calculatePriceChange(purchasePrice: number, currentPrice: number): number {
   const priceChange = currentPrice - purchasePrice;
   return (priceChange / purchasePrice) * 100;
 }
+
+
+
+
+
+calculateGainLoss(transaction: userInfo): number {
+  const   calculatedResult = transaction.amount - (transaction.order.quantity * transaction.order.marketData.price);
+
+
+  if (calculatedResult > 0) {
+    transaction.color = 'green';
+  } else if (calculatedResult < 0) {
+    transaction.color = 'red';
+  } else {
+    transaction.color = 'black';
+  }
+
+
+
+  return calculatedResult
+
+}
+
+
+
+calculateTotalPriceChange(portfolioStock:any): number {
+  // Calcola il prezzo totale attuale
+  const currentTotalPrice = portfolioStock.marketData.price * portfolioStock.quantity;
+
+  // Calcola il prezzo totale all'acquisto
+  const purchaseTotalPrice = portfolioStock.purchasePrice * portfolioStock.quantity;
+
+  // Calcola la variazione percentuale
+  if (purchaseTotalPrice === 0) {
+    return 0; // Per evitare divisione per zero
+  }
+
+  const totalChange = (currentTotalPrice - purchaseTotalPrice );
+
+  if (totalChange > 0) {
+    portfolioStock.color = 'green';
+  } else if (totalChange < 0) {
+    portfolioStock.color = 'red';
+  } else {
+    portfolioStock.color = 'black';
+  }
+
+
+  return totalChange;
+
+}
+
 
 
 
