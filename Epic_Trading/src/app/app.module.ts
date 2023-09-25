@@ -9,7 +9,7 @@ import { RouterModule, Route } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { FormsModule } from '@angular/forms';
-
+import { AuthGuard } from './auth/auth.guard';
 
 
 
@@ -36,17 +36,17 @@ const rotte: Route[] = [
   {
     path: 'market',
     component: MarketComponent,
-    // canActivate: [AuthGuard]
+     canActivate: [AuthGuard]
   },
   {
     path: 'marketAnalyst',
     component: MarketAnalystComponent,
-    // canActivate: [AuthGuard]
+     canActivate: [AuthGuard]
   },
   {
     path: 'dashboard',
     component: DashboardComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
@@ -59,15 +59,18 @@ const rotte: Route[] = [
   },
   {
     path: 'paypal',
-    component: PaypalComponent
+    component: PaypalComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'confirmPaypal',
-    component: ConfirmPaypalComponent
+    component: ConfirmPaypalComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'confirmPaypal:/details',
-    component: ConfirmPaypalComponent
+    component: ConfirmPaypalComponent,
+    canActivate: [AuthGuard]
   }
 ];
 @NgModule({

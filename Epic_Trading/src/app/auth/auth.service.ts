@@ -2,11 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
+import { BehaviorSubject, throwError } from 'rxjs';
+import { userInfo } from '../models/userInfo.interface';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private authSubj = new BehaviorSubject<null | userInfo>(null); // Serve per comunicare in tempo reale all'applicazione la presenza dell'utente autenticato
+  response!: userInfo;
+  user$ = this.authSubj.asObservable(); // La variabile di tipo BehaviourSubject che trasmetterà la presenza o meno dell'utente
+
+
   constructor(private http: HttpClient ) { }
 urlUser:string="http://localhost:3001/users"
   login(email: string, password: string): Observable<any> {
@@ -15,8 +21,13 @@ urlUser:string="http://localhost:3001/users"
       .pipe(map(response => {
         console.log('Server Response:', response);
         if (response.accessToken) {
+            // authguard
+            this.authSubj.next(response);
+            this.response=response;
           console.log('Token:', response.accessToken);
           localStorage.setItem('token', response.accessToken);
+
+
         }
         return response;
       }));
@@ -39,6 +50,7 @@ urlUser:string="http://localhost:3001/users"
     return this.http.post<any>('http://localhost:3001/auth/register', newUser);
   }
   logout() {
+    this.authSubj.next(null);
     localStorage.removeItem('token');
 
     return this.http.post<any>('http://localhost:3001/auth/logout' ,null)
