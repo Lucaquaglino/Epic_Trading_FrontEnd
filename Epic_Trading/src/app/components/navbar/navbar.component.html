@@ -117,7 +117,7 @@
           </form>
 
           <div>
-            <button *ngIf="isFormDirty" (click)="updateUser(currentUserInfo.id);closeSettingsModal()" class="btn btn-primary" data-toggle="modal" data-target="#settingsModal"  data-dismiss="modal">Salva modifiche</button>
+            <button *ngIf="isFormDirty" (click)="updateUser(currentUserInfo.id);closeSettingsModal()" class="btn btn-primary mx-2" data-toggle="modal" data-target="#settingsModal"  data-dismiss="modal">Salva modifiche</button>
            <button  (click)="cancelPutUser();closeSettingsModal()" class="btn btn-primary" >Annulla modifiche</button>
           </div>
 
