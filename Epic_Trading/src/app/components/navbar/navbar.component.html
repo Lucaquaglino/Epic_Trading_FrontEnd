@@ -91,31 +91,31 @@
 
       </div>
       <div class="modal-body"  *ngIf="currentUserInfo">
-        <p id="add-modal " class="bannercontrolpaneltext">Successful user modify</p>
+        <p id="add-modal " class="bannercontrolpaneltext">INFO USER</p>
         <div class="col-md-12">
-          <form (submit)="updateUser(currentUserInfo.id)" class="d-flex">
-            <div class="form-group">
-              <label for="name">Nome</label>
-              <input type="text" class="form-control" id="name" name="name" [(ngModel)]="currentUserInfo.name"(ngModelChange)="onFieldChange()">
+          <form (submit)="updateUser(currentUserInfo.id)" class="d-flex flex-column">
+            <div class="form-group mb-3">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" name="name" [(ngModel)]="currentUserInfo.name" (ngModelChange)="onFieldChange()">
             </div>
-            <div class="form-group">
-              <label for="surname">Cognome</label>
-              <input type="text" class="form-control" id="surname" name="surname"  *ngIf="currentUserInfo"[(ngModel)]="currentUserInfo.surname" (ngModelChange)="onFieldChange()">
+            <div class="form-group mb-3">
+              <label for="surname">Surname</label>
+              <input type="text" class="form-control" id="surname" name="surname" *ngIf="currentUserInfo" [(ngModel)]="currentUserInfo.surname" (ngModelChange)="onFieldChange()">
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
               <label for="username">Username</label>
               <input type="text" class="form-control" id="username" name="username" *ngIf="currentUserInfo" [(ngModel)]="currentUserInfo.username" (ngModelChange)="onFieldChange()">
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
               <label for="email">Email</label>
-              <input type="email" class="form-control border-0 bg-white" id="email" name="email" *ngIf="currentUserInfo" [(ngModel)]="currentUserInfo.email" (ngModelChange)="onFieldChange()">
+              <input type="email" class="form-control" id="email" name="email" *ngIf="currentUserInfo" [(ngModel)]="currentUserInfo.email" (ngModelChange)="onFieldChange()">
             </div>
-            <div class="form-group">
-              <label for="phoneNumber">Numero di Telefono</label>
+            <div class="form-group mb-3">
+              <label for="phoneNumber">Telephone number</label>
               <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" *ngIf="currentUserInfo" [(ngModel)]="currentUserInfo.phoneNumber" (ngModelChange)="onFieldChange()">
             </div>
-
           </form>
+
           <div>
             <button *ngIf="isFormDirty" (click)="updateUser(currentUserInfo.id);closeSettingsModal()" class="btn btn-primary" data-toggle="modal" data-target="#settingsModal"  data-dismiss="modal">Salva modifiche</button>
            <button  (click)="cancelPutUser();closeSettingsModal()" class="btn btn-primary" >Annulla modifiche</button>

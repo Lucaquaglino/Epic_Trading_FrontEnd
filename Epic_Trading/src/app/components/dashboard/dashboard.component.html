@@ -376,7 +376,7 @@
                                         <ng-container *ngFor="let portfolioStock of transactions; let i = index">
                                         <tr *ngIf="showAll || i < numberOfItemsToShow">
                                           <td>{{ portfolioStock.transactionType}}</td>
-                                          <td>{{portfolioStock.order.quantity}}</td>
+                                          <td >{{portfolioStock.order.quantity}}</td>
                                           <td>{{ portfolioStock.amount | currency:'USD':'symbol-narrow':'1.2-2'}}</td>
                                           <ng-container *ngIf="portfolioStock.transactionType == 'BUY' || portfolioStock.transactionType == 'SELL'">
                                           <td >{{ portfolioStock.order.marketData.symbol }}</td>
