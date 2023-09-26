@@ -463,23 +463,48 @@ calculatePriceChange(purchasePrice: number, currentPrice: number): number {
 
 
 
-calculateGainLoss(transaction: userInfo): number {
-  const   calculatedResult = transaction.amount - (transaction.order.quantity * transaction.order.marketData.price);
 
+// // Dichiarazione della variabile per memorizzare il prezzo iniziale
+// initialPrice!: number;
 
-  if (calculatedResult > 0) {
-    transaction.color = 'green';
-  } else if (calculatedResult < 0) {
-    transaction.color = 'red';
-  } else {
-    transaction.color = 'black';
-  }
+// // Funzione per salvare il prezzo iniziale quando si fa clic su un pulsante
+// saveInitialPrice(transaction: any) {
+//   this.initialPrice = transaction;
+//   console.log("test prezzo iniziale",this.initialPrice);
+// }
 
 
 
-  return calculatedResult
+// calculateGainLoss(transaction: userInfo): number {
+//   let calculatedResult: number;
 
-}
+//   if (transaction.order.orderType === "SELL") {
+//     calculatedResult = transaction.amount - (transaction.order.quantity * this.initialPrice);
+//   } else {
+//     calculatedResult = transaction.amount - (transaction.order.quantity * transaction.order.marketData.price);
+//   }
+
+//   // Calcola il colore basato su calculatedResult
+//   if (calculatedResult > 0) {
+//     transaction.color = 'green';
+//   } else if (calculatedResult < 0) {
+//     transaction.color = 'red';
+//   } else {
+//     transaction.color = 'black';
+//   }
+// console.log("test calculated result",calculatedResult);
+//   return calculatedResult;
+// }
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -299,7 +299,7 @@
                                                 <button (click)="viewDetails(portfolioStock.marketData.id)" class="btn-xs bannercontrolpanel  px-4 rounded-2 py-2">Details</button>
                                               </td>
                                               <td >
-                                                <button (click)="openSellModal(portfolioStock.marketData.price, portfolioStock.marketData.id, portfolioStock.quantity, portfolioStock.id);openSelllModal(portfolioStock.marketData.id); portfolioStock.isSelected = true" class="btn-s btn-danger rounded-2 px-4 ml-2 py-2">SELL</button>
+                                                <button (click)="openSellModal(portfolioStock.marketData.price, portfolioStock.marketData.id, portfolioStock.quantity, portfolioStock.id);openSelllModal(portfolioStock.marketData.id); portfolioStock.isSelected = true;" class="btn-s btn-danger rounded-2 px-4 ml-2 py-2">SELL</button>
                                               </td>
                                             </tr>
  <!--! ----------------------- MODALE  SELL ----------------------------------------->
@@ -369,7 +369,7 @@
                                           <th scope="col">Quantity</th>
                                           <th scope="col">Amount</th>
                                           <th scope="col">Symbol</th>
-                                          <th scope="col">Gain/Loss</th>
+                                          <!-- <th scope="col">Gain/Loss</th> -->
                                         </tr>
                                       </thead>
                                       <tbody>
@@ -380,9 +380,9 @@
                                           <td>{{ portfolioStock.amount | currency:'USD':'symbol-narrow':'1.2-2'}}</td>
                                           <ng-container *ngIf="portfolioStock.transactionType == 'BUY' || portfolioStock.transactionType == 'SELL'">
                                           <td >{{ portfolioStock.order.marketData.symbol }}</td>
-                                          <td [style.color]="portfolioStock.color">{{calculateGainLoss(portfolioStock)| currency:'USD':'symbol-narrow':'1.2-2'}}</td>
+                                          <!-- <td [style.color]="portfolioStock.color" >{{calculateGainLoss(portfolioStock)| currency:'USD':'symbol-narrow':'1.2-2'}}</td> -->
                                         </ng-container>
-
+<!-- *ngIf="portfolioStock.order.orderType === 'SELL'" -->
                                         </tr>
                                       </ng-container>
                                       <button *ngIf="transactions.length > 7" class="btn bannercontrolpanel mt-2"  (click)="showAll = !showAll;loadUserTransactions(currentUserInfo.id)">

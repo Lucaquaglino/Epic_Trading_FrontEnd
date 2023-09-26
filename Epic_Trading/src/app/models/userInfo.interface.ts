@@ -21,6 +21,7 @@ content:userInfo[];
         symbol:string,
         price:number,
         }
+        orderType:string,
         quantity:number
       }
     // }
