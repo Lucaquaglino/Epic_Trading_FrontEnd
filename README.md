@@ -24,6 +24,7 @@ Ecco un riepilogo delle principali pagine e funzionalità:
    Pagina del Mercato: Qui gli utenti possono visualizzare l'elenco delle azioni disponibili per l'acquisto. Possono anche effettuare acquisti di azioni da questa pagina.
 
 
+
 <img src="https://res.cloudinary.com/dohzyvzxv/image/upload/v1695862353/Acquisizione_schermata_28.09.2023_alle_02.52.08_f3wvsh.png" alt="" style="height: 400px; width:800px">
 
 
