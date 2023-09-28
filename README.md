@@ -1,4 +1,4 @@
-#EpicTrading App v1.0
+# EpicTrading App v1.0
 
 <img src="https://res.cloudinary.com/dohzyvzxv/image/upload/v1695863064/Acquisizione_schermata_28.09.2023_alle_03.03.09_psdch7.png" alt="" style="height: 50px; width:200px">
 
