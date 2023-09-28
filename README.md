@@ -18,7 +18,7 @@ Ecco un riepilogo delle principali pagine e funzionalità:
 
 
 
-<img src="https://res.cloudinary.com/dohzyvzxv/image/upload/v1695862353/Acquisizione_schermata_28.09.2023_alle_02.52.08_f3wvsh.png" alt="" style="height: 400px; width:800px">
+<img src="https://res.cloudinary.com/dohzyvzxv/image/upload/v1695862733/Acquisizione_schermata_28.09.2023_alle_02.58.37_cqjpeu.png" alt="" style="height: 400px; width:800px">
 
 
    Dashboard: Dopo l'accesso, gli utenti possono visualizzare la dashboard che include i seguenti dati:
