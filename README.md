@@ -10,23 +10,25 @@ Benvenuti all'applicazione di trading! Questa applicazione è stata sviluppata u
 L'applicazione di trading è progettata per consentire agli utenti di eseguire operazioni di trading, monitorare il saldo del proprio conto, visualizzare le azioni di loro proprietà e analizzare le tendenze di mercato.
 Ecco un riepilogo delle principali pagine e funzionalità:
 
-    Landing Page: Una pagina introduttiva che descrive l'applicazione e le sue funzionalità.
+   Landing Page: Una pagina introduttiva che descrive l'applicazione e le sue funzionalità.
 
-    Pagina di Login e Registrazione: Gli utenti possono accedere o registrarsi per un nuovo account utilizzando questa pagina.
+<img src="https://res.cloudinary.com/dohzyvzxv/image/upload/v1695862027/Acquisizione_schermata_28.09.2023_alle_02.45.56_rixzep.png" alt="" style="height: 400px; width:800px">
+ 
+   Pagina di Login e Registrazione: Gli utenti possono accedere o registrarsi per un nuovo account utilizzando questa pagina.
 
-    Dashboard: Dopo l'accesso, gli utenti possono visualizzare la dashboard che include i seguenti dati:
+   Dashboard: Dopo l'accesso, gli utenti possono visualizzare la dashboard che include i seguenti dati:
         Saldo del conto
         Elenco delle azioni di proprietà
         Storico delle transazioni effettuate
 
-    Pagina del Mercato: Qui gli utenti possono visualizzare l'elenco delle azioni disponibili per l'acquisto. Possono anche effettuare acquisti di azioni da questa pagina.
+   Pagina del Mercato: Qui gli utenti possono visualizzare l'elenco delle azioni disponibili per l'acquisto. Possono anche effettuare acquisti di azioni da questa pagina.
 
-    Pagina dell'Analista di Mercato: Gli utenti possono selezionare una specifica azione e visualizzare un grafico delle tendenze dei prezzi nel tempo. Questa pagina include anche dati storici sui prezzi e strumenti di analisi.
+   Pagina dell'Analista di Mercato: Gli utenti possono selezionare una specifica azione e visualizzare un grafico delle tendenze dei prezzi nel tempo. Questa pagina include anche dati storici sui prezzi e strumenti di analisi.
 
-    Pagina di Deposito: Gli utenti possono depositare fondi nel proprio conto utilizzando la simulazione con sandbox di PayPal. Questa pagina offre un metodo sicuro per aggiungere denaro al saldo del conto.
+   Pagina di Deposito: Gli utenti possono depositare fondi nel proprio conto utilizzando la simulazione con sandbox di PayPal. Questa pagina offre un metodo sicuro per aggiungere denaro al saldo del conto.
 
 Installazione
-<img src="https://res.cloudinary.com/dohzyvzxv/image/upload/v1695862027/Acquisizione_schermata_28.09.2023_alle_02.45.56_rixzep.png" alt="" style="height: 400px; width:800px">
+
 Per eseguire l'applicazione, seguire questi passaggi:
 
 
