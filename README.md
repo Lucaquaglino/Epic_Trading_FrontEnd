@@ -41,7 +41,7 @@ Ecco un riepilogo delle principali pagine e funzionalità:
 
 
 
-<img src="https://res.cloudinary.com/dohzyvzxv/image/upload/v1695862353/Acquisizione_schermata_28.09.2023_alle_02.52.08_f3wvsh.png" alt="" style="height: 400px; width:800px">
+<img src="https://res.cloudinary.com/dohzyvzxv/image/upload/v1695862819/Acquisizione_schermata_28.09.2023_alle_02.59.58_mbhepr.png" alt="" style="height: 400px; width:800px">
 
 
    Pagina di Deposito: Gli utenti possono depositare fondi nel proprio conto utilizzando la simulazione con sandbox di PayPal. Questa pagina offre un metodo sicuro per aggiungere denaro al saldo del conto.
