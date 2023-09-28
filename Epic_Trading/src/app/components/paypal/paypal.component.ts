@@ -23,22 +23,8 @@ export class PaypalComponent implements OnInit {
 this.currentUserInfo = userInfo;
       console.log(this.currentUserInfo);
       const userId = this.currentUserInfo.id;
-
-
       this.loadUserTransactions(userId);
-
-
-
-
     });
-
-
-
-
-
-
-
-
 
 
     this.amount = this.payment.totalAmount;

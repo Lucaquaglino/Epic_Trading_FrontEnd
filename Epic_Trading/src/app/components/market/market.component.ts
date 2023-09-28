@@ -106,6 +106,8 @@ newTransaction: Transactions = {
     // Naviga alla pagina dei dettagli delle azioni con l'ID come parametro
     this.router.navigate(['/marketAnalyst', stockId]);
   }
+
+
   previousPrices: number[] = [];
   loadMarketData(): void {
     this.AppService.getMarketData(this.page, 'id').subscribe(
