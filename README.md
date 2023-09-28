@@ -16,10 +16,19 @@ Ecco un riepilogo delle principali pagine e funzionalità:
  
    Pagina di Login e Registrazione: Gli utenti possono accedere o registrarsi per un nuovo account utilizzando questa pagina.
 
+
+
+<img src="https://res.cloudinary.com/dohzyvzxv/image/upload/v1695862353/Acquisizione_schermata_28.09.2023_alle_02.52.08_f3wvsh.png" alt="" style="height: 400px; width:800px">
+
+
    Dashboard: Dopo l'accesso, gli utenti possono visualizzare la dashboard che include i seguenti dati:
         Saldo del conto
         Elenco delle azioni di proprietà
         Storico delle transazioni effettuate
+
+
+<img src="https://res.cloudinary.com/dohzyvzxv/image/upload/v1695862353/Acquisizione_schermata_28.09.2023_alle_02.52.08_f3wvsh.png" alt="" style="height: 400px; width:800px">
+
 
    Pagina del Mercato: Qui gli utenti possono visualizzare l'elenco delle azioni disponibili per l'acquisto. Possono anche effettuare acquisti di azioni da questa pagina.
 
@@ -30,7 +39,19 @@ Ecco un riepilogo delle principali pagine e funzionalità:
 
    Pagina dell'Analista di Mercato: Gli utenti possono selezionare una specifica azione e visualizzare un grafico delle tendenze dei prezzi nel tempo. Questa pagina include anche dati storici sui prezzi e strumenti di analisi.
 
+
+
+<img src="https://res.cloudinary.com/dohzyvzxv/image/upload/v1695862353/Acquisizione_schermata_28.09.2023_alle_02.52.08_f3wvsh.png" alt="" style="height: 400px; width:800px">
+
+
    Pagina di Deposito: Gli utenti possono depositare fondi nel proprio conto utilizzando la simulazione con sandbox di PayPal. Questa pagina offre un metodo sicuro per aggiungere denaro al saldo del conto.
+
+
+
+
+<img src="https://res.cloudinary.com/dohzyvzxv/image/upload/v1695862353/Acquisizione_schermata_28.09.2023_alle_02.52.08_f3wvsh.png" alt="" style="height: 400px; width:800px">
+
+
 
 Installazione
 
