@@ -99,7 +99,7 @@ Tecnologie Utilizzate
     Java
     Spring Boot
     PostgreSQL
-    Libreria Weightlight Chart per gestire i gradici azionari
+    Libreria Weightlight Chart per gestire i grafici azionari
 
 
 Per domande o assistenza, contatta luca.quaglino@hotmail.com
