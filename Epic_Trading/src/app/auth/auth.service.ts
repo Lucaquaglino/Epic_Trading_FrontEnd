@@ -26,16 +26,10 @@ urlUser:string="http://localhost:3001/users"
             this.response=response;
           console.log('Token:', response.accessToken);
           localStorage.setItem('token', response.accessToken);
-
-
         }
         return response;
       }));
   }
-
-  // getCurrentUserInfo() {
-  //   return this.http.get<{ name: string, email: string }>('http://localhost:3001/users/current');
-  // }
 
 
   getCurrentUserInfo(): Observable<any> {
@@ -49,18 +43,18 @@ urlUser:string="http://localhost:3001/users"
       const newUser = { email, password, name, surname,role, username};
     return this.http.post<any>('http://localhost:3001/auth/register', newUser);
   }
+
+
   logout() {
     this.authSubj.next(null);
     localStorage.removeItem('token');
-
     return this.http.post<any>('http://localhost:3001/auth/logout' ,null)
-
-
   }
 
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
   }
+
 
   getToken(): string | null {
     return localStorage.getItem('token');

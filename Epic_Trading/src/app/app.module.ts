@@ -16,7 +16,7 @@ import { AuthGuard } from './auth/auth.guard';
 
 import { TokenInterceptor } from './auth/token.interceptor';
 import { AppService } from './services/app.service';
-import { ControlPanelComponent } from './components/control-panel/control-panel.component';
+
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MarketComponent } from './components/market/market.component';
@@ -24,12 +24,13 @@ import { MarketAnalystComponent } from './components/market-analyst/market-analy
 import { PaypalComponent } from './components/paypal/paypal.component';
 import { ConfirmPaypalComponent } from './components/confirm-paypal/confirm-paypal.component';
 import { ErrorComponent } from './components/error/error.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 const rotte: Route[] = [
   { path: '', redirectTo: 'controlPanel', pathMatch: 'full' },
   {
     path: 'controlPanel',
-    component: ControlPanelComponent,
+    component: LandingPageComponent,
     // canActivate: [AuthGuard]
   },
   { path: 'marketAnalyst/:marketDataId', component: MarketAnalystComponent },
@@ -74,7 +75,7 @@ const rotte: Route[] = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'error',
+    path: '**',
     component: ErrorComponent,
     // canActivate: [AuthGuard]
   }
@@ -84,8 +85,8 @@ const rotte: Route[] = [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    ControlPanelComponent,
     DashboardComponent,
+LandingPageComponent,
     NavbarComponent,
     MarketComponent,
     MarketAnalystComponent,

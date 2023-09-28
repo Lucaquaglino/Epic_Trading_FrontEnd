@@ -14,8 +14,11 @@ export class AppComponent {
     // Ottieni l'URL attuale dalla route
     const currentUrl = this.router.url;
 
-    // Decidi se mostrare la navbar in base all'URL attuale
-    // Ad esempio, se l'URL contiene "controlpanel", nascondi la navbar
-    return !currentUrl.includes('controlPanel')&& !currentUrl.includes('error') && !currentUrl.includes('register')&& !currentUrl.includes('login');
+    // Definisci un elenco di rotte in cui vuoi mostrare la navbar
+    const routesWithNavbar = ['/market', '/marketAnalyst', '/dashboard', '/paypal', '/confirmPaypal'];
+
+    // Verifica se l'URL attuale è tra le rotte in cui vuoi mostrare la navbar
+    return routesWithNavbar.includes(currentUrl) || currentUrl.startsWith('/marketAnalyst')|| currentUrl.startsWith('/confirmPaypal')
   }
+
 }

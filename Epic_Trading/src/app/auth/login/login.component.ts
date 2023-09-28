@@ -14,9 +14,8 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-
-
   }
+
 
   login(): void {
     this.authService.login(this.email, this.password).subscribe(
@@ -24,12 +23,10 @@ export class LoginComponent implements OnInit {
         // Login effettuato con successo
         const token = this.authService.getToken();
         console.log('Token:', token); // Verifica il token nella console
-
         this.router.navigate(['/dashboard']);
         console.log('Login effettuato:', response);
       },
       (error) => {
-
         console.error('Errore di login:', error);
       }
     );

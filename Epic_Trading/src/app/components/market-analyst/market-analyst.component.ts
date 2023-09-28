@@ -401,6 +401,7 @@ loadMarketDataId(): void {
     },
     (error) => {
       console.error('Error fetching marketData ID:', error);
+      this.router.navigate(['/**']);
     }
   );
 }

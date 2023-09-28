@@ -7,12 +7,12 @@ import { MarketData } from 'src/app/models/market-data';
 
 
 @Component({
-  selector: 'app-control-panel',
-  templateUrl: './control-panel.component.html',
-  styleUrls: ['./control-panel.component.scss'],
+  selector: 'app-landing-page',
+  templateUrl: './landing-page.component.html',
+  styleUrls: ['./landing-page.scss'],
 
 })
-export class ControlPanelComponent implements OnInit {
+export class LandingPageComponent implements OnInit {
   email: string = '';
     page = 0; // Imposta la pagina iniziale
     pageSize =10;
