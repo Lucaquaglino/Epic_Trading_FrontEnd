@@ -84,80 +84,67 @@ ENG VERSION
 
 EpicTrading App v1.0
 
-bash
+Backend Repository Link: https://github.com/Lucaquaglino/Epic_Trading_backEnd
 
-Backend repository link: (https://github.com/Lucaquaglino/Epic_Trading_backEnd).
-
-Welcome to the trading application! This application has been developed using Angular, Bootstrap, Java, Spring Boot, and PostgreSQL, providing a comprehensive platform for stock trading. Below are the key features and instructions for installation and usage.
+Welcome to the EpicTrading application! This application has been developed using Angular, Bootstrap, Java, Spring Boot, and PostgreSQL, providing a comprehensive platform for stock trading. Below are the key features and instructions for installation and usage.
 
 The trading application is designed to allow users to execute trading operations, monitor their account balance, view owned stocks, and analyze market trends. Here's a summary of the main pages and features:
 
+    Landing Page: An introductory page describing the application and its features.
 
-Landing Page: An introductory page describing the application and its features.
+    Login and Registration Page: Users can log in or register for a new account using this page.
 
-Login and Registration Page: Users can log in or register for a new account using this page.
+    Dashboard: After logging in, users can view the dashboard, which includes the following data:
+        Account balance
+        List of owned stocks
+        Transaction history
 
-Dashboard: After logging in, users can view the dashboard, which includes the following data:
-    Account balance
-    List of owned stocks
-    Transaction history
+    Market Page: Here, users can view the list of stocks available for purchase. They can also make stock purchases from this page.
 
-Market Page: Here, users can view the list of stocks available for purchase. They can also make stock purchases from this page.
+    Market Analyst Page: Users can select a specific stock and view a chart of price trends over time. This page also includes historical price data and analysis tools.
 
-Market Analyst Page: Users can select a specific stock and view a chart of price trends over time. This page also includes historical price data and analysis tools.
-
-Deposit Page: Users can deposit funds into their account using the PayPal sandbox simulation. This page offers a secure method to add money to the account balance.
-
+    Deposit Page: Users can deposit funds into their account using the PayPal sandbox simulation. This page offers a secure method to add money to the account balance.
 
 Installation
 
 To run the application, follow these steps:
 
-
 Configure the Java backend:
 
-Open the Spring Boot application.
+    Open the Spring Boot application.
 
-Configure the PostgreSQL database and connections in the backend as per your requirements.
+    Configure the PostgreSQL database and connections in the backend as per your requirements.
 
-Run as a Spring Boot App.
-
+    Run as a Spring Boot App.
 
 Run the Angular app:
 
-npm i
+    npm install
 
-ng serve -o
+    ng serve -o
 
-Open the browser and access the application via http://localhost:4200.
+    Open the browser and access the application via http://localhost:4200.
 
 Usage
 
-
-After logging in, use the dashboard to monitor the balance, view owned stocks, and check the list of transactions.
-Navigate to the Market page to view and purchase new stocks.
-Go to the Market Analyst page to analyze trends in selected stocks.
-Use the Deposit page to securely add funds to the account balance via the PayPal sandbox simulation.
-
+After logging in, use the dashboard to monitor the balance, view owned stocks, and check the list of transactions. Navigate to the Market page to view and purchase new stocks. Go to the Market Analyst page to analyze trends in selected stocks. Use the Deposit page to securely add funds to the account balance via the PayPal sandbox simulation.
 Requirements
 
-
-Node.js and npm to run the Angular app.
-A Spring Boot application serving as a Java server and handling backend logic.
-A PostgreSQL database configured to store user data, transactions, and stocks.
-The Weightlight Chart library for stock chart visualization.
-A PayPal sandbox account for testing the deposit simulation.
-
+    Node.js and npm to run the Angular app.
+    A Spring Boot application serving as a Java server and handling backend logic.
+    A PostgreSQL database configured to store user data, transactions, and stocks.
+    The Weightlight Chart library for stock chart visualization.
+    A PayPal sandbox account for testing the deposit simulation.
 
 Technologies Used
 
-Angular
-Bootstrap
-Java
-Spring Boot
-PostgreSQL
-Weightlight Chart library for managing stock charts
+    Angular
+    Bootstrap
+    Java
+    Spring Boot
+    PostgreSQL
+    Weightlight Chart library for managing stock charts
 
-For questions or assistance, contact luca.quaglino@hotmail.com
+For questions or assistance, contact luca.quaglino@hotmail.com.
 
 Happy trading! 📈📊🚀
