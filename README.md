@@ -6,7 +6,7 @@ EpicTrading App v1.0
 
 Benvenuti all'applicazione di trading! Questa applicazione è stata sviluppata utilizzando Angular, Bootstrap, Java, Spring Boot e PostgreSQL e offre una piattaforma completa per il trading di azioni. Di seguito sono descritte le principali funzionalità e istruzioni per l'installazione e l'esecuzione.
 
-Descrizione dell'applicazione
+
 L'applicazione di trading è progettata per consentire agli utenti di eseguire operazioni di trading, monitorare il saldo del proprio conto, visualizzare le azioni di loro proprietà e analizzare le tendenze di mercato. Ecco un riepilogo delle      principali pagine e funzionalità:
 
     Landing Page: Una pagina introduttiva che descrive l'applicazione e le sue funzionalità.
