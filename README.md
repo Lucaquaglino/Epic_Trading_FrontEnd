@@ -11,7 +11,7 @@ L'applicazione di trading è progettata per consentire agli utenti di eseguire o
 Ecco un riepilogo delle principali pagine e funzionalità:
 
     Landing Page: Una pagina introduttiva che descrive l'applicazione e le sue funzionalità.
-
+<img src="https://res.cloudinary.com/dohzyvzxv/image/upload/v1695862027/Acquisizione_schermata_28.09.2023_alle_02.45.56_rixzep.png" alt="" style="height: 400px; width:800px">
     Pagina di Login e Registrazione: Gli utenti possono accedere o registrarsi per un nuovo account utilizzando questa pagina.
 
     Dashboard: Dopo l'accesso, gli utenti possono visualizzare la dashboard che include i seguenti dati:
