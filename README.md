@@ -149,3 +149,6 @@ Technologies Used
 For questions or assistance, contact luca.quaglino@hotmail.com.
 
 Happy trading! 📈📊🚀
+
+
+<a href="#"> torna su </a>
