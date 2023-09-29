@@ -342,6 +342,8 @@ loadHistoricalPrices(): void {
     (error) => {
       console.error('Error fetching historical prices:', error);
       this.router.navigate(['/**']);
+
+
     }
   );
   }
