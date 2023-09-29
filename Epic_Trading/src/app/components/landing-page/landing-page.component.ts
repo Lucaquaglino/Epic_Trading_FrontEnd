@@ -96,11 +96,7 @@ marketData: MarketData[]=[];
     }
 
 
-
-
-
     previousPrices: number[] = [];
-
     loadMarketData(): void {
       this.AppService.getMarketData(this.page, 'id').subscribe(
         (marketData: MarketData[]) => {
@@ -120,7 +116,6 @@ marketData: MarketData[]=[];
                 data.color = 'black';
               }
             }
-
             // Aggiorna il valore precedente con il nuovo prezzo
             this.previousPrices[index] = data.price;
           });
@@ -133,11 +128,13 @@ marketData: MarketData[]=[];
       );
     }
 
+
       nextPage() {
         this.page++; // Vai alla pagina successiva
         this. loadTransaction();
 
       }
+
 
       previousPage() {
         if (this.page > 0) {
@@ -145,128 +142,6 @@ marketData: MarketData[]=[];
           this. loadTransaction();
         }
       }
-
-
-    // creaNuovoCliente() {
-    //   this.provinciaService.creaCliente(this.nuovoCliente).subscribe(
-    //     (clienteCreato: Clienti) => {
-    //       console.log('Cliente creato:', clienteCreato);
-    //       // Resetta i campi del nuovo cliente
-    //       this.nuovoCliente = {
-    //         "idCliente":"",
-    //          "ragioneSociale": "",
-    //       "partitaIva":"",
-    //       "emailCliente":"",
-    //       "pec":"",
-    //       "telefonoCliente":null!,
-    //       "tipoCliente":"",
-    //       "nomeContatto":"",
-    //       "cognomeContatto":"",
-    //       "emailContatto":"",
-    //       "telefonoContatto":"",
-    //       "viaUno":"",
-    //       "civicoUno":null!,
-    //       "localitaUno":"",
-    //       "capUno":"",
-    //       "comuneUno":"",
-    //       "viaDue":"",
-    //       "civicoDue":null!,
-    //       "localitaDue":"",
-    //       "capDue":"",
-    //       "comuneDue":"",
-    //       "dataInserimento":"",
-    //       "ultimoContatto":"",
-    //       "fatturatoAnnuale":null!,
-    //       "fatture": undefined,
-    //     "indirizzoSedeLegale": undefined,
-    //     "civico":""
-    //     };
-    //       // Ricarica la lista dei clienti dopo la creazione
-    //       // this.loadClienti();
-    //     },
-    //     (error) => {
-    //       console.error('Errore durante la creazione del cliente:', error);
-    //     }
-    //   );
-    // }
-
-
-
-    // // getFiltroRagioneSociale():void {
-
-    // //   const rg="ciao";
-    // //   const page = 0;
-    // //   const pageSize =10;
-    // //   this.provinciaService.getClientiRagioneSociale(page,pageSize,rg).subscribe((response)=>{
-    // //     console.log( "filtro",response)},
-    // //     (error)=>{
-    // //       console.error(error)
-    // //     }
-    // //   )
-    // //   }
-
-    //   onDeleteCliente(id: string): void {
-    //     this.provinciaService.deleteCliente(id).subscribe(
-    //       () => {
-    //         console.log('Cliente eliminato con successo.');
-    //         this.clienti = this.clienti.filter(cliente => cliente.idCliente !== id);
-    //       },
-    //       (error) => {
-    //         console.error("Errore durante eliminazione cliente" , error);
-
-    //       }
-    //     );
-    //   }
-
-
-    //   applyFatturatoFilter(): void {
-    //     this.provinciaService.getClientiByFatturatoAnnuale(this.fatturatoAnnuale, this.page, this.pageSize).subscribe(
-    //       (clienti: Clienti[]) => {
-    //         console.log(clienti);
-    //         this.clienti = clienti;
-    //       },
-    //       (error) => {
-    //         console.error("Error fetching clienti:", error);
-    //       }
-    //     );
-    //   }
-
-
-    //   applyDataInserimentoFilter(): void {
-    //     this.provinciaService.getClientiByDataInserimento(this.dataInserimento, this.page, this.pageSize).subscribe(
-    //       (clienti: Clienti[]) => {
-    //         console.log(clienti);
-    //         this.clienti = clienti;
-    //       },
-    //       (error) => {
-    //         console.error("Error fetching clienti:", error);
-    //       }
-    //     );
-    //   }
-
-
-    //   applyDataUltimoContattoFilter(): void {
-    //     this.provinciaService.getClientiByDataUltimoContatto(this.dataUltimoContatto, this.page, this.pageSize).subscribe(
-    //       (clienti: Clienti[]) => {
-    //         console.log(clienti);
-    //         this.clienti = clienti;
-    //       },
-    //       (error) => {
-    //         console.error("Error fetching clienti:", error);
-    //       }
-    //     );
-    //   }
-    //   applyParteRagioneSocialeFilter(): void {
-    //     this.provinciaService.getClientiByParteRagioneSociale(this.parteRagioneSociale, this.page, this.pageSize).subscribe(
-    //       (clienti: Clienti[]) => {
-    //         console.log(clienti);
-    //         this.clienti = clienti;
-    //       },
-    //       (error) => {
-    //         console.error("Error fetching clienti:", error);
-    //       }
-    //     );
-    //   }
 
 
 }

@@ -33,7 +33,7 @@
 					<h5>Total: ${{price.amount.value}} USD</h5>
 				</div>
 				<div class="message" *ngFor="let price of details.purchase_units">
-					<p>Hello {{ capitalizeFirstLetter(details.payer.name.given_name) }} {{ capitalizeFirstLetter(details.payer.name.surname) }},<br>You sent a payment of ${{price.amount.value}} USD to EpicTrading (<a href="/controlPanel">paypal@epictrading.com</a>)</p>
+					<p>Hello {{ capitalizeFirstLetter(details.payer.name.given_name) }} {{ capitalizeFirstLetter(details.payer.name.surname) }},<br>You sent a payment of ${{price.amount.value}} USD to EpicTrading (<a href="/landingPage">paypal@epictrading.com</a>)</p>
 					<h6>It may take a few moments for this<br>transaction to appear in your account.</h6>
 				</div>
 				<div class="footer">

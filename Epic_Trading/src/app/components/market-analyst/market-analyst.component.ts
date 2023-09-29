@@ -1,15 +1,12 @@
-
 import { createChart, IChartApi, ISeriesApi, UTCTimestamp } from 'lightweight-charts';
-import { Component, OnInit, ViewChild,  ElementRef  } from '@angular/core';
+import { Component, OnInit, ElementRef  } from '@angular/core';
 import { Transactions } from 'src/app/models/transactions.interface';
 import { AppService } from 'src/app/services/app.service';
-import { Route, Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MarketData } from 'src/app/models/market-data';
 import { ActivatedRoute } from '@angular/router';
 import { HistoricalPrice } from 'src/app/models/HistoricalPrice.interface';
 import { Timestamp } from 'src/app/models/Timestamp.interface';
-import { PortfolioStock } from 'src/app/models/portfolioStock.interface';
 
 @Component({
   selector: 'app-market-analyst',
@@ -24,24 +21,23 @@ export class MarketAnalystComponent implements OnInit {
   //
   previousPrices: number[] = [];
   email: string = '';
-    page = 0; // Imposta la pagina iniziale
-    pageSize =10;
-marketData!: MarketData[];
-marketDataId!: any;
-historicalPrices: HistoricalPrice[] = [];
-newmarketData : MarketData = {
-  "id":"",
-  "name":"",
-  "symbol":"",
-    "price":null!,
-   "volume":null!,
-     "timeStamp":"",
-     color:null!,
-     quantity:null!
-
+  page = 0; // Imposta la pagina iniziale
+  pageSize =10;
+  marketData!: MarketData[];
+  marketDataId!: any;
+  historicalPrices: HistoricalPrice[] = [];
+  newmarketData: MarketData = {
+  "id": "",
+  "name": "",
+  "symbol": "",
+  "price": null!,
+  "volume": null!,
+  "timeStamp": "",
+  "color": null!,
+  "quantity": null!
 }
-quantity: number = 1; // Imposta un valore di default o iniziale, se necessario
 
+quantity: number = 1; // Imposta un valore di default o iniziale, se necessario
 newTransaction: Transactions = {
   "color":"",
   "timeStamp":"",
@@ -70,10 +66,8 @@ newTransaction: Transactions = {
     }
   }
 }
-
-
-
 showPer:boolean = false;
+
 
   // chart
   private chart: IChartApi | null = null;
@@ -94,10 +88,9 @@ showPer:boolean = false;
         this.loadMarketData();
         this.loadMarketDataId();
       }, 10000);
-    setTimeout(() => {
+      setTimeout(() => {
         this.showPer = true;
       }, 12000);
-
     });
 
     // Ottieni il riferimento all'elemento HTML che conterrà il grafico
@@ -110,55 +103,27 @@ showPer:boolean = false;
         height: 400, // Altezza del grafico
         autoSize: true,
 
-          // rightPriceScale: {
-          //   scaleMargins: {
-          //     top: 0.1,
-          //     bottom: 0.1,
-          //   },
-          //   invertScale: false,
-          // },
-
-
-
-
         layout: {
           // backgroundColor: '#f0f0f0', // Colore di sfondo del grafico
           textColor: 'rgba(0, 0, 0, 0.9)', // Colore del testo
-
         },
-        grid: {
 
+        grid: {
           horzLines: {
             color: '#f0f0f0', // Colore delle linee orizzontali della griglia
-
           },
           vertLines: {
             color: '#f0f0f0', // Colore delle linee verticali della griglia
           },
         },
+
         timeScale: {
           timeVisible: true, // Visualizza il tempo sull'asse x
           secondsVisible: true, // Nascondi i secondi sull'asse x
-fixRightEdge: true, // blocca a destra grafico//
-
-// borderVisible: false, //
-
+          fixRightEdge: true, // blocca a destra grafico//
         },
-
-
-
-
       });
       const desiredCandlesToShow = 10;
-
-      // Assicurati che l'array `data` contenga solo le ultime `desiredCandlesToShow` candele
-   // Calcola il numero desiderato di candele da visualizzare (ad esempio, 10)
-
-
-// Calcola la larghezza delle candele in base alla larghezza totale del grafico
-
-
-
       // Aggiungi una serie di dati a candela al grafico
       this.candlestickSeries = this.chart.addCandlestickSeries({
         upColor: '#00ff00', // Colore delle candele rialziste
@@ -166,16 +131,7 @@ fixRightEdge: true, // blocca a destra grafico//
         borderVisible: true, // Visualizza i bordi delle candele
         wickVisible: true, // Visualizza le ombre delle candele
         title: `${this.newmarketData.name}`, // Titolo della serie di dati a candela
-        // autoscaleInfoProvider: () => ({ // impostare prezzo minimo a  0 ??????????????
-        //   priceRange: {
-        //      minValue: 0,
-        //      maxValue: 399,
-        //   },
-        //   }),
-
       });
-
-
 
 
       function formatDateWithTimestamp(timestamp:any) {
@@ -183,9 +139,9 @@ fixRightEdge: true, // blocca a destra grafico//
         const year = date.getFullYear();
         const month = (date.getMonth() + 1).toString().padStart(2, '0'); // +1 perché i mesi sono zero-based
         const day = date.getDate().toString().padStart(2, '0');
-
         return `${year}-${month}-${day}`;
       }
+
 
       const timestamp = "2023-09-11T21:01:07.031994";
       const formattedDate = formatDateWithTimestamp(timestamp);
@@ -211,32 +167,24 @@ fixRightEdge: true, // blocca a destra grafico//
             // Trova il prezzo più basso nei timestamp
             const low = Math.min(...price.timestamp.map((ts: Timestamp) => ts.price));
 
-
-
-
-
-
             return {
               time,
               open,
               close,
               high,
               low,
-
             };
           });
         // Ordina i dati in base al tempo crescente utilizzando una funzione di confronto personalizzata
-data.sort((a:any, b:any) => {
-  const timeA = new Date(a.time).getTime();
-  const timeB = new Date(b.time).getTime();
-  return timeA - timeB;
-});
-
+        data.sort((a:any, b:any) => {
+        const timeA = new Date(a.time).getTime();
+        const timeB = new Date(b.time).getTime();
+        return timeA - timeB;
+        });
           // Imposta i dati nella serie a candela
           if (this.candlestickSeries) {
             this.candlestickSeries.setData(data);
           }
-
           //candele su tutto il grafico del tempo
           this.chart!.timeScale().fitContent();
           // Ora puoi aggiungere i dati dei volumi, ad esempio generando dati casuali
@@ -246,12 +194,10 @@ data.sort((a:any, b:any) => {
               value: Math.floor(Math.random() * 100) + 1, // Dati dei volumi casuali (cambia questa logica con i tuoi dati effettivi)
             };
           });
-
           // Imposta i dati dei volumi nella serie dei volumi
           if (this.volumeSeries) {
             this.volumeSeries.setData(volumeData);
           }
-
           this.historicalPrices = historicalPrices; // Aggiorna l'array con i dati ricevuti
         }
       },
@@ -261,38 +207,6 @@ data.sort((a:any, b:any) => {
     );
     }
   }
-
-//   private addLegend(seriesNames: string[]): void {
-//     const legendContainer = document.getElementById('legendContainer');
-//     if (legendContainer) {
-//       const legendList = document.createElement('ul');
-
-//       // Aggiungi elementi di legenda per ciascuna serie
-//       seriesNames.forEach((seriesName) => {
-//         const legendItem = document.createElement('li');
-//         legendItem.textContent = seriesName;
-
-//         // Gestisci il clic sull'elemento di legenda
-//         legendItem.addEventListener('click', () => {
-//           if (this.candlestickSeries) {
-//             const isVisible = this.candlestickSeries.options().title === seriesName;
-//             this.candlestickSeries.applyOptions({ title: isVisible ? '' : seriesName });
-//           }
-//         });
-
-//         legendList.appendChild(legendItem);
-//       });
-
-//       // Aggiungi ulteriori informazioni o elementi al legendContainer
-//       const additionalInfo = document.createElement('div');
-//       additionalInfo.textContent = 'Ulteriori informazioni qui';
-//       legendContainer.appendChild(additionalInfo);
-
-//       legendContainer.appendChild(legendList);
-//     }
-
-// }
-
 
 
 loadMarketData(): void {
@@ -328,10 +242,7 @@ loadMarketData(): void {
 }
 
 
-
-
 loadHistoricalPrices(): void {
-
   this.AppService
   .getHistoricalPricesByMarketDataId(this.marketDataId)
   .subscribe(
@@ -342,37 +253,9 @@ loadHistoricalPrices(): void {
     (error) => {
       console.error('Error fetching historical prices:', error);
       this.router.navigate(['/**']);
-
-
     }
   );
   }
-
-
-
-  // loadMarketDataId(): void {
-
-  //   this.AppService
-  //   .getMarketDataId(this.marketDataId)
-  //   .subscribe(
-  //     (marketdata) => {
-  //       this.newmarketData = marketdata; // Assegna i dati ricevuti all'array
-  //       console.log( "marketDATA",this.newmarketData); // Verifica i dati nella console
-  //       console.log( "marketDATA",this.newmarketData.name);
-  //       this.candlestickSeries!.applyOptions({
-  //         title: this.newmarketData.symbol // Imposta il nome dell'azione come titolo
-  //       });
-
-
-
-  //     },
-  //     (error) => {
-  //       console.error('Error fetching marketData ID:', error);
-  //     }
-  //   );
-  //   }
-
-
 
 // Dichiarare una variabile per salvare l'ultimo prezzo
 previousPrice: number = 0; // Inizializza a 0 o al valore iniziale desiderato
@@ -381,12 +264,9 @@ percentageChange:number= 0;
 loadMarketDataId(): void {
   this.AppService.getMarketDataId(this.marketDataId).subscribe(
     (newmarketData) => {
-
       if (this.previousPrice !== undefined) {
-
         const priceChange = newmarketData.price - this.previousPrice;
         this.percentageChange = (priceChange / this.previousPrice) * 100;
-
         // Assegna il colore in base alla variazione percentuale
         if (this.percentageChange > 0) {
           newmarketData.color = 'green';
@@ -396,10 +276,8 @@ loadMarketDataId(): void {
           newmarketData.color = 'black';
         }
       }
-
       // Aggiorna il valore precedente con il nuovo prezzo
       this.previousPrice = newmarketData.price;
-
       this.newmarketData = newmarketData; // Aggiorna newmarketData con i dati calcolati
     },
     (error) => {
@@ -408,8 +286,6 @@ loadMarketDataId(): void {
     }
   );
 }
-
-
 
 
 }

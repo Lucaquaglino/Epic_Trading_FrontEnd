@@ -46,54 +46,58 @@ transactions!:userInfo[];
   currentUserInfo!: {
     id:string,
     name: string,
-     email: string,phoneNumber: string,
-      surname: string,
-       username: string,
-       balance: number,
-      portfolioStock:{
-      purchasePrice:number,
-      id:string},
-      transaction:{
-        amount:number,
-        transactionType: string,
-        order:{
-          marketData:{
-          name:string,
-          symbol:string,
-          }
-          quantity:number
-        }
-      }
-  };
-
-  email: string = '';
-  page = 0; // Imposta la pagina iniziale
-  pageSize =20;
-portfolioStock: PortfolioStock[] = [];
-
-userPortfolioStocks: PortfolioStock[] = [];
-
-originalUserInfo!: {
-  id:string,
-  name: string,
-   email: string,phoneNumber: string,
+    email: string,
+    phoneNumber: string,
     surname: string,
-     username: string,
-     balance: number,
+    username: string,
+    balance: number,
     portfolioStock:{
-    purchasePrice:number,
-    id:string},
+      purchasePrice:number,
+      id:string
+    },
     transaction:{
       amount:number,
       transactionType: string,
       order:{
         marketData:{
-        name:string,
-        symbol:string,
+          name:string,
+          symbol:string,
         }
         quantity:number
       }
     }
+  };
+
+  email: string = '';
+  page = 0; // Imposta la pagina iniziale
+  pageSize = 20;
+  portfolioStock: PortfolioStock[] = [];
+
+  userPortfolioStocks: PortfolioStock[] = [];
+
+originalUserInfo!: {
+  id:string,
+  name: string,
+  email: string,
+  phoneNumber: string,
+  surname: string,
+  username: string,
+  balance: number,
+  portfolioStock:{
+    purchasePrice:number,
+    id:string
+  },
+  transaction:{
+    amount:number,
+    transactionType: string,
+    order:{
+      marketData:{
+        name:string,
+        symbol:string,
+      }
+      quantity:number
+    }
+  }
 };
 
 // *logica calcolo percentuale
@@ -120,11 +124,8 @@ currentNumber = 0; // Il numero corrente che cambierà durante l'animazione
     //   this.loadUserPortfolioStocks(userId);
 
     // }, 10000);
-
     this.startAnimation()
-
     });
-
 
   }
 
@@ -137,49 +138,6 @@ currentNumber = 0; // Il numero corrente che cambierà durante l'animazione
 
   totalPortfolioQuantity: number = 0;
   previousPurchasePrices: number[] = [];
-  // loadUserPortfolioStocks(userId: string): void {
-  //   this.AppService.getUserPortfolioStocks(userId, this.page, 'id').subscribe(
-  //     (response) => {
-  //       console.log("portfolio", response);
-  //       const userPortfolioStocks: PortfolioStock[] = response.content;
-  //       let totalQuantity = 0;
-  //       // Calcola la variazione percentuale e imposta il colore per ciascun PortfolioStock
-  //       userPortfolioStocks.forEach((portfolioStock, index) => {
-  //         totalQuantity += portfolioStock.quantity;
-  //         if (this.previousPurchasePrices[index] !== undefined) {
-  //           const priceChange = portfolioStock.marketData.price - this.previousPurchasePrices[index];
-  //           const percentageChange = (priceChange / this.previousPurchasePrices[index]) * 100;
-
-
-  //           // Assegna il colore in base alla variazione percentuale
-  //           if (percentageChange > 0) {
-  //             portfolioStock.color = 'green';
-  //           } else if (percentageChange < 0) {
-  //             portfolioStock.color = 'red';
-  //           } else {
-  //             portfolioStock.color = 'black';
-  //           }
-  //         }
-
-  //         // Aggiorna il valore precedente con il nuovo prezzo di acquisto
-  //         this.previousPurchasePrices[index] = portfolioStock.marketData.price;
-  //       });
-  //       this.totalPortfolioQuantity = totalQuantity;
-
-  //       // console.log("test quantità portfolio",this.totalPortfolioQuantity)
-  //       this.userPortfolioStocks = userPortfolioStocks;
-
-  //     },
-  //     (error) => {
-  //       console.error("Error fetching user's portfolioStocks:", error);
-  //     }
-  //   );
-  // }
-
-
-
-
-
 
   loadUserPortfolioStocks(userId: string): void {
     this.AppService.getUserPortfolioStocks(userId, this.page, 'id').subscribe(
@@ -238,15 +196,6 @@ currentNumber = 0; // Il numero corrente che cambierà durante l'animazione
     // Altri codici per aprire la finestra modale "modalSell"
   }
 
-
-
-
-
-
-
-
-
-
   totalSellBuyTransactionCount : number = 0;
 loadUserTransactions(userId: string): void {
   this.AppService.getUserTransactions(userId, this.page, 'id').subscribe(
@@ -263,7 +212,6 @@ loadUserTransactions(userId: string): void {
       });
 
       this.totalSellBuyTransactionCount = sellBuyTransactionCount;
-
 
       this.transactions = transactions;
 
@@ -460,54 +408,6 @@ calculatePriceChange(purchasePrice: number, currentPrice: number): number {
 }
 
 
-
-
-
-
-// // Dichiarazione della variabile per memorizzare il prezzo iniziale
-// initialPrice!: number;
-
-// // Funzione per salvare il prezzo iniziale quando si fa clic su un pulsante
-// saveInitialPrice(transaction: any) {
-//   this.initialPrice = transaction;
-//   console.log("test prezzo iniziale",this.initialPrice);
-// }
-
-
-
-// calculateGainLoss(transaction: userInfo): number {
-//   let calculatedResult: number;
-
-//   if (transaction.order.orderType === "SELL") {
-//     calculatedResult = transaction.amount - (transaction.order.quantity * this.initialPrice);
-//   } else {
-//     calculatedResult = transaction.amount - (transaction.order.quantity * transaction.order.marketData.price);
-//   }
-
-//   // Calcola il colore basato su calculatedResult
-//   if (calculatedResult > 0) {
-//     transaction.color = 'green';
-//   } else if (calculatedResult < 0) {
-//     transaction.color = 'red';
-//   } else {
-//     transaction.color = 'black';
-//   }
-// console.log("test calculated result",calculatedResult);
-//   return calculatedResult;
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
 calculateTotalPriceChange(portfolioStock:any): number {
   // Calcola il prezzo totale attuale
   const currentTotalPrice = portfolioStock.marketData.price * portfolioStock.quantity;
@@ -536,8 +436,6 @@ calculateTotalPriceChange(portfolioStock:any): number {
 }
 
 
-
-
 modalConfirmWithdraw():void{
 const okModal = document.getElementById('modalConfirmWithdraw');
 setTimeout(() => {
@@ -551,7 +449,6 @@ setTimeout(() => {
 }
 
 
-
 selectedStock:any;
 openSellModal( price:number,id:string, quantity:number,idpS:string): void {
   const settingsModal = document.getElementById('modalSell');
@@ -560,14 +457,9 @@ openSellModal( price:number,id:string, quantity:number,idpS:string): void {
     price:price,
     quantity:quantity,
     idpS: idpS
-
-
   };
     settingsModal!.classList.add('show');
     settingsModal!.style.display = 'block';
-
-
-
 }
 
 
@@ -577,20 +469,14 @@ closeSellModal():void{
     settingsModal.classList.remove('show');
     settingsModal.style.display = 'none';
   }
-
   this.userPortfolioStocks.forEach((portfolioStock) => {
-
-
-      portfolioStock.isSelected = false;
+    portfolioStock.isSelected = false;
     }
   );
 }
 
 
-
-
-
-  modalConfirmSell():void{
+modalConfirmSell():void{
     const okModal = document.getElementById('modalConfirmSell');
     setTimeout(() => {
       okModal!.classList.add('show');
@@ -601,8 +487,6 @@ closeSellModal():void{
         okModal!.style.display = 'none';
       }, 2500);
     }
-
-
 
 
 }

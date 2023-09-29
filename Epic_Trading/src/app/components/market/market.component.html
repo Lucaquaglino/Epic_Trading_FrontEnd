@@ -116,11 +116,6 @@
                                   | currency : "USD" : "symbol-narrow" : "1.2-2"
                               }}
                             </td>
-                            <!-- <td >
-                              <div class="input-group">
-                                <input type="" [(ngModel)]="stock.quantity" class="form-control" placeholder="Enter Quantity">
-                              </div>
-                            </td> -->
                             <td>
                               <button
                                 (click)="openConfirmationModal(stock.id)"
@@ -180,7 +175,8 @@
                                           createTransaction(
                                             selectedStock.id,
                                             stock.quantity
-                                          );okModal();
+                                          );
+                                          okModal()
                                         "
                                       >
                                         Yes
@@ -188,7 +184,7 @@
                                       <button
                                         type="button"
                                         class="btn-s btn-danger rounded-2 px-2 ml-2"
-                                        (click)="closeConfirmationModal(); "
+                                        (click)="closeConfirmationModal()"
                                       >
                                         Cancel
                                       </button>
@@ -199,35 +195,21 @@
                             </div>
                           </div>
 
- <!--! ----------------------- MODALE CONFIRM ----------------------------------------->
- <div id="modalConfirm" class="modal fade modal-lg">
-  <div class="modal-dialog p-0">
-    <div class="modal-content">
-      <!--<div class="modal-header">
-        <h5
-          class="modal-title bannercontrolpaneltext"
-          id="modal-title-add"
-        >
-
-        </h5>
-      </div>-->
-      <div class="modal-body">
-        <h3
-          id="add-modal "
-          class="text-success text-center"
-        >
-        SUCESSFUL PURCHASE
-      </h3>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
+                          <!--! ----------------------- MODALE CONFIRM ----------------------------------------->
+                          <div id="modalConfirm" class="modal fade modal-lg">
+                            <div class="modal-dialog p-0">
+                              <div class="modal-content">
+                                <div class="modal-body">
+                                  <h3
+                                    id="add-modal "
+                                    class="text-success text-center"
+                                  >
+                                    SUCESSFUL PURCHASE
+                                  </h3>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </ng-container>
                         <button
                           class="btn bannercontrolpanel rounded-3 mt-4 mx-2 px-3"
@@ -261,10 +243,8 @@
   </footer>
 </body>
 
-<!-- tesr -->
-
 <!-- about -->
-<div class="about">
+<!-- <div class="about">
   <a class="bg_links social mail" href="mailto:luca.quaglino@hotmail.com" target="_blank">
      <span class="icon"></span>
   </a>
@@ -275,6 +255,5 @@
      <span class="icon"></span>
   </a>
   <a class="bg_links logo"></a>
-</div>
+</div> -->
 <!-- end about -->
-

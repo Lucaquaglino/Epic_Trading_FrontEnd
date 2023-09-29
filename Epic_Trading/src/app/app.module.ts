@@ -27,9 +27,9 @@ import { ErrorComponent } from './components/error/error.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 const rotte: Route[] = [
-  { path: '', redirectTo: 'controlPanel', pathMatch: 'full' },
+  { path: '', redirectTo: 'landingPage', pathMatch: 'full' },
   {
-    path: 'controlPanel',
+    path: 'landingPage',
     component: LandingPageComponent,
     // canActivate: [AuthGuard]
   },

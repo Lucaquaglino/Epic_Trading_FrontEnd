@@ -38,20 +38,8 @@
       </button>
       <div class="collapse navbar-collapse " id="navbarNav">
         <div>
-        <!-- <ul class="navbar-nav mx- ">
-          <li class="nav-item">
-            <a class="nav-link" href="#features">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#pricing">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
-          </li>
-        </ul> -->
         </div>
         <div  class="navbar-nav "   style=" margin-left:auto;">
-        <!-- Aggiungi i bottoni "Login" e "Register" anche qui -->
         <button class="btn btn-light btn-sm ml-2" routerLink="/login">Login</button>
         <button class="btn bannercontrolpanel btn-sm ml-2 border-0" routerLink="/register">Register</button>
          </div>
@@ -69,7 +57,6 @@
   <div class="container-fluid">
     <h1>A trusted and secure market exchange.</h1>
     <p class="mb-5 text-dark">Our trading platform, EpicTrading, offers a cutting-edge user interface designed for seamless trading experiences. <br> With EpicTrading, you'll have access to a suite of powerful features. <br> Whether you're a seasoned trader or just getting started, EpicTrading has you covered for all your trading needs.</p>
-
     <div class="row mb-3">
       <div class="col-md-6 mx-auto">
         <form (ngSubmit)="submitForm(myForm)" #myForm="ngForm">
@@ -77,7 +64,6 @@
             <input type="email" class="form-control" id="emailInput" name="email" placeholder="Enter your email" [(ngModel)]="email">
           </div>
           <button type="submit" class=" btn shadow__btn btn-lg mt-3 border-0">Get Started</button>
-
         </form>
       </div>
     </div>
@@ -86,13 +72,9 @@
 
 
 
-
 <!-- testo che ruota infinito -->
 <div class="marquee-container  py-4 bg-transparent"  >
   <div class="marquee-content" >
-
-
-
     <span *ngFor="let marketData of marketData">
         <span>
           {{ marketData.symbol }}&nbsp;&nbsp;</span>
@@ -100,7 +82,6 @@
         <span [style.color]="marketData.color">
           {{ marketData.price | number:'1.2-2' }}&nbsp;&nbsp;</span>
         <span> </span>
-
         <span> </span>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <span> </span>
@@ -109,25 +90,9 @@
   </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-<!--Hey! This is the original version
-of Simple CSS Waves-->
-
-
-
   <!--Content before waves-->
   <div class="inner-header flex">
   <!--Just the logo.. Don't mind this-->
-
 
   </div>
 
@@ -321,22 +286,22 @@ of Simple CSS Waves-->
 <!-- Contact Section FOOTER -->
 <section id="contact" class=" bannercontrolpanel py-5 ">
   <div class="container">
-      <h2 class="text-center text-black mb-5">CONTACT</h2>
+      <h2 class="text-center text-white mb-5">CONTACT</h2>
       <div class="container d-flex justify-content-between">
         <div class="">
-          <a class="bg_links social github mt-3" href="https://github.com/Lucaquaglino" target="_blank">
-            <img style="width: 50px; height: 50px;" src="https://www.svgrepo.com/show/512317/github-142.svg" alt="">
+          <a class="bg_links social github " href="https://github.com/Lucaquaglino" target="_blank">
+            <img style="width: 50px; height: 50px;" src="https://www.svgrepo.com/show/521688/github.svg" alt="">
          </a>
         </div>
 <div>
 
  <a class="bg_links social linkedin" href="https://www.linkedin.com/in/lucaquaglino/" target="_blank">
-    <img style="width: 50px; height: 50px ;" src="https://www.svgrepo.com/show/508852/linkedin.svg" alt="">
+    <img style="width: 50px; height: 50px ;" src="https://www.svgrepo.com/show/177099/linkedin-social-media.svg" alt="">
  </a>
       </div>
       <div class="">
         <a class="bg_links social github" href="mailto:luca.quaglino@hotmail.com" target="_blank">
-          <img class="mt-2" style="width: 55px; height: 55px;" src="https://www.svgrepo.com/show/521736/mail.svg" alt="">
+          <img class="" style="width: 55px; height: 55px;" src="https://www.svgrepo.com/show/382703/mail-email-message-envelope.svg" alt="">
        </a>
       </div>
       </div>
