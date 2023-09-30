@@ -295,7 +295,7 @@
                                         </tr>
                                       </thead>
                                       <tbody>
-                                        <ng-container *ngFor="let portfolioStock of transactions; let i = index">
+                                        <ng-container *ngFor="let portfolioStock of transactions.reverse(); let i = index">
                                         <tr *ngIf="showAll || i < numberOfItemsToShow">
                                           <td>{{ portfolioStock.transactionType}}</td>
                                           <td >{{portfolioStock.order.quantity}}</td>

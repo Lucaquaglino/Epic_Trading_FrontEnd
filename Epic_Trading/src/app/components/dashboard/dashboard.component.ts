@@ -198,7 +198,7 @@ currentNumber = 0; // Il numero corrente che cambierà durante l'animazione
 
   totalSellBuyTransactionCount : number = 0;
 loadUserTransactions(userId: string): void {
-  this.AppService.getUserTransactions(userId, this.page, 'id').subscribe(
+  this.AppService.getUserTransactions(userId, this.page, 'timeStamp').subscribe(
     (response) => {
       console.log("transazioniUtente", response);
 
