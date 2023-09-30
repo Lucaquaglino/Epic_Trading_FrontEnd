@@ -193,7 +193,6 @@ currentNumber = 0; // Il numero corrente che cambierà durante l'animazione
       }
     });
 
-    // Altri codici per aprire la finestra modale "modalSell"
   }
 
   totalSellBuyTransactionCount : number = 0;
