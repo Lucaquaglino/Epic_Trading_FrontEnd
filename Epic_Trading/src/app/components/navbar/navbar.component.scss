@@ -216,6 +216,7 @@
      .logo {
         opacity: 1;
         transition: all 0.6s ease;
+background-color:  rgba(0, 172, 193, 1);
      }
 
      .social {
@@ -239,7 +240,7 @@
            transition: all 0.3s 0s $cubic;
            .icon {
               &:hover {
-                 background-color: #698fb7;
+                 background-color: #b53e19;
               }
            }
         }
