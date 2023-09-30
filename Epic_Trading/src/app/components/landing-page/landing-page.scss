@@ -371,57 +371,58 @@ p {
      transition: all $transition;
 
      .logo {
-        opacity: 1;
-        transition: all 0.6s ease;
-     }
+      opacity: 1;
+      transition: all 0.6s ease;
+background-color:  rgba(0, 172, 193, 1);
+   }
 
-     .social {
-        opacity: 1;
+   .social {
+      opacity: 1;
 
-        .icon {
-           opacity: 0.9;
-        }
+      .icon {
+         opacity: 0.9;
+      }
 
-        &:hover {
-           background-size: 28px;
-           .icon {
-              background-size: 65%;
-              opacity: 1;
-           }
-        }
+      &:hover {
+         background-size: 28px;
+         .icon {
+            background-size: 65%;
+            opacity: 1;
+         }
+      }
 
-        &.mail {
-           right: 0;
-           bottom: calc(100% - 40px);
-           transition: all 0.3s 0s $cubic;
-           .icon {
-              &:hover {
-                 background-color: #698fb7;
-              }
-           }
-        }
+      &.mail {
+         right: 0;
+         bottom: calc(100% - 40px);
+         transition: all 0.3s 0s $cubic;
+         .icon {
+            &:hover {
+               background-color: #b53e19;
+            }
+         }
+      }
 
-        &.github {
-           bottom: 45%;
-           right: 45%;
-           transition: all 0.3s 0.15s $cubic;
-           .icon {
-              &:hover {
-                 background-color: #ea4c89;
-              }
-           }
-        }
+      &.github {
+         bottom: 45%;
+         right: 45%;
+         transition: all 0.3s 0.15s $cubic;
+         .icon {
+            &:hover {
+               background-color: #ea4c89;
+            }
+         }
+      }
 
-        &.linkedin {
-           bottom: 0;
-           right: calc(100% - 40px);
-           transition: all 0.3s 0.25s $cubic;
-           .icon {
-              &:hover {
-                 background-color: #0077b5;
-              }
-           }
-        }
-     }
-  }
+      &.linkedin {
+         bottom: 0;
+         right: calc(100% - 40px);
+         transition: all 0.3s 0.25s $cubic;
+         .icon {
+            &:hover {
+               background-color: #0077b5;
+            }
+         }
+      }
+   }
+}
 }
