@@ -1,0 +1,325 @@
+<!-- <button (click)="toggleFullscreen()">Visualizza a schermo intero</button> -->
+<div *ngIf="showSpinner " class="mx-auto">
+  <div class="bannercontrolpanel" style="height: 100vh;">
+         <div class="containers ">
+          <div class="item" style="--i:0;"></div>
+          <div class="item" style="--i:1;"></div>
+          <div class="item" style="--i:2;"></div>
+          <div class="item" style="--i:3;"></div>
+          <div class="item" style="--i:4;"></div>
+          <div class="item" style="--i:5;"></div>
+          <div class="item" style="--i:6;"></div>
+          <div class="item" style="--i:7;"></div>
+          <div class="item" style="--i:8;"></div>
+          <div class="item" style="--i:9;"></div>
+          <div class="item" style="--i:10;"></div>
+          <div class="item" style="--i:11;"></div>
+          <div class="item" style="--i:12;"></div>
+          <div class="item" style="--i:13;"></div>
+          <div class="item" style="--i:14;"></div>
+          <div class="item" style="--i:15;"></div>
+          <div><h1>Epic Trading</h1></div>
+          <div class="item" style="--i:16;"></div>
+          <div class="item" style="--i:17;"></div>
+          <div class="item" style="--i:18;"></div>
+          <div class="item" style="--i:19;"></div>
+          <div class="item" style="--i:20;"></div>
+        </div>
+   </div>
+</div>
+<div *ngIf="!showSpinner">
+<header class=" sticky-top ">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light navbarcontrolpanel p-2">
+    <div class="container-fluid navbarcontrolpanel ">
+      <a class="navbar-brand bannercontrolpaneltext" href="#"><img  class="pb-1 mx-1" src="https://img.icons8.com/material-outlined/24/combo-chart.png" alt="" style="max-width: 30px; max-height: 30px;">EPICTRADING</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarNav">
+        <div>
+        </div>
+        <div  class="navbar-nav "   style=" margin-left:auto;">
+        <button class="btn btn-light btn-sm ml-2" routerLink="/login">Login</button>
+        <button class="btn bannercontrolpanel btn-sm ml-2 border-0" routerLink="/register">Register</button>
+         </div>
+       </div>
+    </div>
+  </nav>
+  <hr class="m-0 p-0" style="color: grey;">
+</header>
+
+
+<div class="header ">
+
+ <!-- Hero Section -->
+ <section class="hero  text-center py-5 d-flex justify-content-center align-items-center mb-3">
+  <div class="container-fluid">
+    <h1>A trusted and secure market exchange.</h1>
+    <p class="mb-5 text-dark">Our trading platform, EpicTrading, offers a cutting-edge user interface designed for seamless trading experiences. <br> With EpicTrading, you'll have access to a suite of powerful features. <br> Whether you're a seasoned trader or just getting started, EpicTrading has you covered for all your trading needs.</p>
+    <div class="row mb-3">
+      <div class="col-md-6 mx-auto">
+        <form (ngSubmit)="submitForm(myForm)" #myForm="ngForm">
+          <div class="form-group">
+            <input type="email" class="form-control" id="emailInput" name="email" placeholder="Enter your email" [(ngModel)]="email">
+          </div>
+          <button type="submit" class=" btn shadow__btn btn-lg mt-3 border-0">Get Started</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- testo che ruota infinito -->
+<div class="marquee-container  py-4 bg-transparent"  >
+  <div class="marquee-content" >
+    <span *ngFor="let marketData of marketData">
+        <span>
+          {{ marketData.symbol }}&nbsp;&nbsp;</span>
+        <span>        </span>        <span>       </span><span> </span><span> </span><span> </span><span> </span><span> </span><span> </span>
+        <span [style.color]="marketData.color">
+          {{ marketData.price | number:'1.2-2' }}&nbsp;&nbsp;</span>
+        <span> </span>
+        <span> </span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span> </span>
+        <span> </span>
+      </span>
+  </div>
+</div>
+
+  <!--Content before waves-->
+  <div class="inner-header flex">
+  <!--Just the logo.. Don't mind this-->
+
+  </div>
+
+  <!--Waves Container-->
+  <div>
+  <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+  <defs>
+  <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+  </defs>
+  <g class="parallax">
+  <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+  <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+  <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+  <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+  </g>
+  </svg>
+  </div>
+  <!--Waves end-->
+  </div>
+  <!--Header ends-->
+
+  <!--Content starts-->
+  <!-- DONT DELETE -->
+  <div class="content flex">
+  </div>
+  <!--Content ends-->
+
+<!-- Features Section -->
+<section id="features" class="py-5">
+  <div class="container text-center">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h2 class="text-center bannercontrolpaneltext" >Experience Seamless Trading:</h2>
+        <p>
+          EpicTrading offers an intuitive and user-friendly interface, ensuring that you can navigate the financial markets with ease. <br> Whether you're trading stocks, currencies, or commodities, <br> our platform provides a seamless and efficient experience.</p>
+      </div>
+      <div class="col-md-6">
+        <div class="loader mx-auto">
+          <svg class="logos mx-auto" fill="" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400px" height="256px" viewBox="0 0 104.03 104.03" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M9.349,77.009h85.334c2.206,0,4-1.795,4-4V23.54c0-2.207-1.794-4-4-4H9.349c-2.206,0-4,1.793-4,4v49.469 C5.349,75.214,7.143,77.009,9.349,77.009z M9.349,23.54h85.334l0.003,49.469H9.349V23.54z"></path> <path d="M103.021,79.419H1.036c-0.395,0-0.752,0.23-0.918,0.588c-0.184,0.4-0.151,0.844,0.089,1.219 c0.422,0.658,1.128,1.763,17.189,2.563c9.076,0.453,21.174,0.701,34.063,0.701c11.574,0,49.539-0.228,52.212-3.147 c0.261-0.285,0.387-0.64,0.354-1C103.98,79.82,103.545,79.419,103.021,79.419z"></path> <path d="M85.275,36.042c-1.717,0-3.113,1.397-3.113,3.114c0,0.371,0.076,0.724,0.195,1.054l-6.896,8.374 c-0.215-0.047-0.437-0.075-0.664-0.075c-0.721,0-1.377,0.257-1.905,0.67l-7.851-3.926c-0.188-1.541-1.487-2.744-3.077-2.744 c-1.717,0-3.114,1.397-3.114,3.114c0,0.199,0.022,0.393,0.06,0.582l-7.606,6.894c-0.373-0.158-0.783-0.246-1.213-0.246 c-0.467,0-0.906,0.111-1.305,0.297l-9.47-8.601c0.031-0.176,0.055-0.354,0.055-0.539c0-1.717-1.397-3.114-3.114-3.114 c-1.225,0-2.277,0.718-2.785,1.75l-12.086,0.963c-0.552-0.875-1.521-1.463-2.63-1.463c-1.717,0-3.114,1.397-3.114,3.114 c0,1.717,1.397,3.114,3.114,3.114c1.233,0,2.293-0.727,2.797-1.77l12.063-0.962c0.55,0.886,1.523,1.481,2.64,1.481 c0.416,0,0.812-0.085,1.175-0.234l9.583,8.705c-0.016,0.123-0.038,0.246-0.038,0.373c0,1.717,1.397,3.114,3.114,3.114 c1.717,0,3.114-1.397,3.114-3.114c0-0.17-0.024-0.334-0.05-0.498l7.674-6.953c0.354,0.139,0.733,0.222,1.137,0.222 c0.737,0,1.406-0.269,1.94-0.698l7.811,3.906c0.164,1.563,1.476,2.793,3.082,2.793c1.717,0,3.114-1.397,3.114-3.114 c0-0.372-0.076-0.725-0.197-1.057l6.895-8.371c0.216,0.047,0.438,0.075,0.666,0.075c1.718,0,3.114-1.397,3.114-3.114 C88.39,37.44,86.993,36.042,85.275,36.042z M18.756,46.873c-0.892,0-1.614-0.723-1.614-1.614c0-0.891,0.723-1.614,1.614-1.614 c0.891,0,1.614,0.723,1.614,1.614C20.37,46.15,19.647,46.873,18.756,46.873z M36.256,45.623c-0.892,0-1.614-0.723-1.614-1.614 c0-0.891,0.723-1.614,1.614-1.614c0.891,0,1.614,0.723,1.614,1.614C37.87,44.9,37.147,45.623,36.256,45.623z M50.09,57.581 c-0.892,0-1.614-0.723-1.614-1.613c0-0.892,0.723-1.615,1.614-1.615c0.891,0,1.614,0.724,1.614,1.615 C51.704,56.858,50.981,57.581,50.09,57.581z M61.965,47.238c-0.892,0-1.614-0.723-1.614-1.614s0.724-1.614,1.614-1.614 s1.614,0.723,1.614,1.614S62.856,47.238,61.965,47.238z M74.798,53.238c-0.892,0-1.614-0.724-1.614-1.614 c0-0.891,0.724-1.614,1.614-1.614s1.614,0.723,1.614,1.614C76.412,52.515,75.689,53.238,74.798,53.238z M85.275,40.771 c-0.892,0-1.613-0.723-1.613-1.614s0.723-1.614,1.613-1.614c0.892,0,1.614,0.723,1.614,1.614S86.167,40.771,85.275,40.771z"></path> </g> </g> </g></svg>
+         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section id="feature" class="py-5">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <div class="col-md-6 ">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title"></h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Symbol</th>
+                  <!-- <th scope="col">Name</th> -->
+                  <th scope="col">Volume</th>
+                  <th scope="col">Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let stock of marketData.slice(0,5)">
+                  <td>{{ stock.symbol }}</td>
+                  <!-- <td>{{ stock.name }}</td> -->
+                  <td>{{ stock.volume }}</td>
+                  <td [style.color]="stock.color">{{ stock.price | currency:'USD':'symbol-narrow':'1.2-2' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mt-5">
+        <h2 class="bannercontrolpaneltext">Diverse Market Offerings:</h2>
+        <p >
+          Explore a diverse range of financial instruments, from stocks and cryptocurrencies to forex and commodities. With EpicTrading, you have access to a wide spectrum of markets, allowing you to diversify your portfolio and optimize your trading strategy.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="" style="color: grey;">
+
+<!-- card section -->
+<section id="features" class="py-5 mb-5">
+  <div class="container text-center">
+    <h2 class="mb-5 bannercontrolpaneltext">Here are a few reasons why <br>
+      you should choose EpicTrading</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-4 mt-5">
+        <div class="card h-100">
+          <img src="../../../assets/managment.svg" class="card-img-top mx-auto mt-3  "  alt="Immagine 1" style="max-width: 110px; max-height: 110px ">
+          <div class="card-body">
+            <h5 class="card-title  bannercontrolpaneltext">Educational Resources</h5>
+            <p class="card-text">
+              We believe in the power of knowledge. EpicTrading offers a wealth of educational resources, including webinars, tutorials, and market insights. Whether you're a beginner or a seasoned trader, our educational materials will help you sharpen your skills and make informed decisions.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mt-5">
+        <div class="card h-100">
+          <img src="../../../assets/stroge.svg" class="card-img-top mx-auto mt-3"  alt="Immagine 2" style="max-width: 110px; max-height: 110px">
+          <div class="card-body">
+            <h5 class="card-title  bannercontrolpaneltext"> Secure and Reliable</h5>
+            <p class="card-text">
+              Your security is our top priority. EpicTrading employs cutting-edge security measures to safeguard your funds and personal information. Trade with confidence, knowing that your assets are protected by the latest security protocols.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mt-5">
+        <div class="card h-100">
+          <img src="../../../assets/backup.svg" class="card-img-top mx-auto mt-3"  alt="Immagine 3" style="max-width: 110px; max-height: 110px">
+          <div class="card-body">
+            <h5 class="card-title  bannercontrolpaneltext">Advanced Trading Tools</h5>
+            <p class="card-text">
+              Gain a competitive edge with our suite of advanced trading tools. Access real-time market data, advanced charting, and technical analysis to make informed trading decisions. Our platform empowers you to stay ahead of market trends and execute trades with precision.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="bannercontrolpanel py-5 mb-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-4 text-center">
+        <h2 class=" text-white" style="font-size: 50PX;">$546B</h2>
+        <p class=" text-white">Quartetly volume traded</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <h2 class=" text-white" style="font-size: 50PX;">100 +</h2>
+        <p class=" text-white">Countries supported</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <h2 class=" text-white" style="font-size: 50PX;">30+M</h2>
+        <p class=" text-white">Verified users</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- card section -->
+<section id="features" class="py-5 mb-5">
+  <div class="container text-center">
+    <h2 class="mb-5  bannercontrolpaneltext">Get started in a few steps</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-4 mt-5">
+        <div class="card text-center"> <!-- Aggiungi la classe text-center alla card per centrare il suo contenuto -->
+          <img src="../../../assets/user.svg" class="card-img-top mx-auto mt-3" alt="Immagine 3" style="max-width: 90px; max-height: 90px">
+          <div class="card-body">
+            <h5 class="card-title  bannercontrolpaneltext">Create yout account</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mt-5">
+        <div class="card text-center"> <!-- Aggiungi la classe text-center alla card per centrare il suo contenuto -->
+          <img src="../../../assets/bank.svg" class="card-img-top mx-auto mt-3" alt="Immagine 3" style="max-width: 90px; max-height: 90px">
+          <div class="card-body">
+            <h5 class="card-title  bannercontrolpaneltext">Link your bank account</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mt-5">
+        <div class="card text-center"> <!-- Aggiungi la classe text-center alla card per centrare il suo contenuto -->
+          <img src="../../../assets/trade .svg" class="card-img-top mx-auto mt-3" alt="Immagine 3" style="max-width: 90px; max-height: 90px">
+          <div class="card-body">
+            <h5 class="card-title  bannercontrolpaneltext">Start buying and selling</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- banner -->
+<hr class=" m-0 p-0" style="color: grey;">
+<section id="pricing" class="bg-light py-5 ">
+  <div class="container">
+    <h2 class="text-center">Join EpicTrading today and unlock your full trading potential. Experience the future of trading with a platform that is built on innovation, reliability, and a commitment to your success. Start your trading journey with us and embark on a path to financial greatness.</h2>
+    <div class="text-center mt-4">
+      <button class="btn shadow__btn border-0 btn-lg" (click)="redirectToRegister()">Get Started</button>
+    </div>
+  </div>
+</section>
+<hr class=" m-0 p-0" style="color: grey;">
+<div class="m-5"></div>
+<!-- Contact Section FOOTER -->
+<section id="contact" class=" bannercontrolpanel py-5 ">
+  <div class="container">
+      <h2 class="text-center text-white mb-5">CONTACT</h2>
+      <div class="container d-flex justify-content-between">
+        <div class="">
+          <a class="bg_links social github " href="https://github.com/Lucaquaglino" target="_blank">
+            <img style="width: 50px; height: 50px;" src="https://www.svgrepo.com/show/521688/github.svg" alt="">
+         </a>
+        </div>
+<div>
+
+ <a class="bg_links social linkedin" href="https://www.linkedin.com/in/lucaquaglino/" target="_blank">
+    <img style="width: 50px; height: 50px ;" src="https://www.svgrepo.com/show/177099/linkedin-social-media.svg" alt="">
+ </a>
+      </div>
+      <div class="">
+        <a class="bg_links social github" href="mailto:luca.quaglino@hotmail.com" target="_blank">
+          <img class="" style="width: 55px; height: 55px;" src="https://www.svgrepo.com/show/382703/mail-email-message-envelope.svg" alt="">
+       </a>
+      </div>
+      </div>
+  </div>
+</section>
+</div>
+
+<!-- PROFILE LINK -->
+
+<div class="about">
+  <a class="bg_links social mail" href="mailto:luca.quaglino@hotmail.com" target="_blank">
+     <span class="icon"></span>
+  </a>
+  <a class="bg_links social github" href="https://github.com/Lucaquaglino" target="_blank">
+     <span class="icon"></span>
+  </a>
+  <a class="bg_links social linkedin" href="https://www.linkedin.com/in/lucaquaglino/" target="_blank">
+     <span class="icon"></span>
+  </a>
+  <a class="bg_links logo"></a>
+</div>

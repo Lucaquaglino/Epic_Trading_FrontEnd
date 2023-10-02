@@ -1,0 +1,271 @@
+.bannercontrolpanel{
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%)!important;
+  color:white!important;
+}
+
+
+
+.bannercontrolpaneltext{
+  background: linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bannercontrolpaneltext2 {
+  background: linear-gradient(60deg, rgba(0, 172, 193, 1) 0%, rgb(1, 142, 161) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+
+
+
+#nav-avatar {
+  left: 60px;
+  top: 30px;
+}
+
+// .navbar-toggler {
+//   color: #4ca7fd;
+//   border: 1px solid #4cadfd;
+// }
+
+
+
+.dropdown a {
+  text-decoration: none;
+  color: black;
+}
+
+
+
+
+.navbar-toggler:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+#span-logout {
+  position: absolute;
+  top: 50px;
+  left: 60px;
+}
+
+@media screen and (max-width: 992px) {
+  nav {
+    position: relative;
+  }
+  #icone-nav {
+    // position: absolute;
+    top: 12px;
+    right: 60px;
+  }
+}
+
+
+#h1 {
+  font-weight: 900;
+}
+
+.btn_browse {
+  background-color: #1acb98;
+  color: white;
+}
+.btn_browse:hover {
+  background-color: #15af83;
+}
+
+.cards-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.card-testo span {
+  margin: 0 10px;
+}
+
+.card {
+  margin: 0 0.5em;
+  box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+  border: none;
+  border-radius: 0;
+}
+
+
+.card:hover {
+  box-shadow: 5px 10px 15px 3px rgb(154, 154, 154);
+}
+
+// @media screen and (max-width: 570px) {
+//   .card {
+//     font-size: 80%;
+//   }
+//   .card-testo svg {
+//     width: 10px;
+//   }
+// }
+
+// html,
+// body {
+//   font-family: "feather", sans-serif;
+// }
+
+
+
+
+
+
+
+
+
+
+
+// PROFILE LINK
+
+
+.about {
+  $cubic: cubic-bezier(0.64, 0.01, 0.07, 1.65);
+  $transition: 0.6s $cubic;
+  $size: 40px;
+  position: fixed;
+  z-index: 10;
+  bottom: 10px;
+  right: 10px;
+  width: $size;
+  height: $size;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  transition: all 0.2s ease;
+
+  .bg_links {
+     width: $size;
+     height: $size;
+     border-radius: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background-color: rgba(#000000, 0.2);
+     border-radius: 100%;
+     backdrop-filter: blur(5px);
+     position: absolute;
+  }
+
+  .logo {
+     width: $size;
+     height: $size;
+     z-index: 9;
+     background-image: url(../../../assets/LQ.svg.svg);
+     background-size: 50%;
+     background-repeat: no-repeat;
+     background-position: 10px 10px;
+     opacity: 0.9;
+     transition: all 1s 0.2s ease;
+     bottom: 0;
+     right: 0;
+  }
+
+  .social {
+     opacity: 0;
+     right: 0;
+     bottom: 0;
+
+     .icon {
+        width: 100%;
+        height: 100%;
+        background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: transparent;
+        display: flex;
+        transition: all 0.2s ease, background-color 0.4s ease;
+        opacity: 0;
+        border-radius: 100%;
+     }
+
+     &.mail {
+        transition: all 0.8s ease;
+
+        .icon {
+           background-image: url(https://www.svgrepo.com/show/521736/mail.svg);
+        }
+     }
+
+     &.github {
+        transition: all 0.3s ease;
+        .icon {
+           background-image: url(https://www.svgrepo.com/show/512317/github-142.svg);
+        }
+     }
+
+     &.linkedin {
+        transition: all 0.8s ease;
+        .icon {
+           background-image: url(https://www.svgrepo.com/show/508852/linkedin.svg);
+        }
+     }
+  }
+
+  &:hover {
+     width: 105px;
+     height: 105px;
+     transition: all $transition;
+
+     .logo {
+        opacity: 1;
+        transition: all 0.6s ease;
+background-color:  rgba(0, 172, 193, 1);
+     }
+
+     .social {
+        opacity: 1;
+
+        .icon {
+           opacity: 0.9;
+        }
+
+        &:hover {
+           background-size: 28px;
+           .icon {
+              background-size: 65%;
+              opacity: 1;
+           }
+        }
+
+        &.mail {
+           right: 0;
+           bottom: calc(100% - 40px);
+           transition: all 0.3s 0s $cubic;
+           .icon {
+              &:hover {
+                 background-color: #b53e19;
+              }
+           }
+        }
+
+        &.github {
+           bottom: 45%;
+           right: 45%;
+           transition: all 0.3s 0.15s $cubic;
+           .icon {
+              &:hover {
+                 background-color: #ea4c89;
+              }
+           }
+        }
+
+        &.linkedin {
+           bottom: 0;
+           right: calc(100% - 40px);
+           transition: all 0.3s 0.25s $cubic;
+           .icon {
+              &:hover {
+                 background-color: #0077b5;
+              }
+           }
+        }
+     }
+  }
+}

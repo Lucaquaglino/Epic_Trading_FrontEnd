@@ -1,0 +1,50 @@
+<div class="container "  *ngFor="let price of details.purchase_units">
+		<div class="left d-lg-block d-none">
+			<div class="info-box">
+				<div class="receipt">
+					Receipt for <br><span>EpicTrading LTD.</span>
+				</div>
+				<div class="entry">
+					<i class="icon-wallet" aria-hidden="true"></i>
+					<p>Amount:<br><span>${{price.amount.value}} USD</span></p>
+				</div>
+				<div class="entry">
+					<i class="icon-calendar" aria-hidden="true"></i>
+					<p>Date:<br><span>{{ details.update_time | date:'dd MMMM' }}</span></p>
+				</div>
+				<div class="entry">
+					<i class="icon-star" aria-hidden="true"></i>
+					<p>Issuer:<br><span>EpicTrading LTD</span></p>
+				</div>
+				<div class="entry">
+					<i class="icon-notebook" aria-hidden="true"></i>
+					<p>Confirmation Nr:<br><span>{{details.id}}</span></p>
+				</div>
+			</div>
+		</div>
+		<div class="right">
+			<div class="content">
+				<div class="header">
+					<img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-200px.png">
+					<h4>{{ details.update_time | date:'dd MMMM y HH:mm:ss' }}</h4>
+				</div>
+				<div class="main">
+					<h3>Deposit on wallet</h3>
+					<h5>Total: ${{price.amount.value}} USD</h5>
+				</div>
+				<div class="message" *ngFor="let price of details.purchase_units">
+					<p>Hello {{ capitalizeFirstLetter(details.payer.name.given_name) }} {{ capitalizeFirstLetter(details.payer.name.surname) }},<br>You sent a payment of ${{price.amount.value}} USD to EpicTrading (<a href="/landingPage">paypal@epictrading.com</a>)</p>
+					<h6>It may take a few moments for this<br>transaction to appear in your account.</h6>
+				</div>
+				<div class="footer">
+					<a href="#">www.paypal.com/help</a>
+					<h6>Invoice ID: 108165</h6>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+

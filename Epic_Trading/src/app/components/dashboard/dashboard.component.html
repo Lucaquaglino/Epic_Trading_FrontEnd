@@ -1,0 +1,336 @@
+ <!--! ----------------------- MODALE  WITHDRAW ----------------------------------------->
+<div id="modalWithdraw" class="modal fade modal-lg  ">
+  <div class="modal-dialog ">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h5 class="modal-title bannercontrolpaneltext" id="modal-title-add">
+         WITHDRAW
+        </h5>
+      </div>
+      <div class="modal-body"  *ngIf="currentUserInfo">
+        <p id="add-modal " class="bannercontrolpaneltext">SELECT AMOUNT</p>
+        <div class="col-md-12">
+          <form  class="d-flex">
+            <div class="form-group">
+              <label for="amount">Amount $</label>
+              <input type="number" class="form-control" id="amount" name="amount" [(ngModel)]="amount">
+            </div>
+          </form>
+          <div>
+           <button  (click)="createTransactionWITHDRAW(amount); closeWithdrawModal();modalConfirmWithdraw() " class=" btn-s bannercontrolpanel rounded-2 ml-4 btn-primary">Withdraw</button>
+           <button (click)="closeWithdrawModal()"  class="btn-s btn-danger rounded-2 px-2 ml-2" >Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ <!--! ----------------------- MODALE CONFIRM WITHDRAW ----------------------------------------->
+ <div id="modalConfirmWithdraw" class="modal fade modal-lg">
+  <div class="modal-dialog p-0">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h3
+          id="add-modal "
+          class="text-success text-center"
+        >
+        SUCESSFUL WITHDRAW
+      </h3>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ <!--! ----------------------- MODALE CONFIRM SELL ----------------------------------------->
+ <div id="modalConfirmSell" class="modal fade modal-lg">
+  <div class="modal-dialog p-0">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h3
+          id="add-modal "
+          class="text-success text-center"
+        >
+        SUCESSFUL SELL
+      </h3>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SPINNER  -->
+<div *ngIf="showSpinner">
+<div class="loaderS mx-auto " style="margin-top: 300px;">
+  <div class="box box-1">
+    <div class="side-left"></div>
+    <div class="side-right"></div>
+    <div class="side-top"></div>
+  </div>
+  <div class="box box-2">
+    <div class="side-left"></div>
+    <div class="side-right"></div>
+    <div class="side-top"></div>
+  </div>
+  <div class="box box-3">
+    <div class="side-left"></div>
+    <div class="side-right"></div>
+    <div class="side-top"></div>
+  </div>
+  <div class="box box-4">
+    <div class="side-left"></div>
+    <div class="side-right"></div>
+    <div class="side-top"></div>
+  </div>
+</div>
+</div>
+<!-- DASHBOARD TEMPLATE LIKE MARKET ANALYST -->
+<body id="page-top" *ngIf="!showSpinner">
+  <!-- Page Wrapper -->
+  <div id="wrapper" >
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+          <!-- Main Content -->
+          <div id="content">
+              <!-- Begin Page Content -->
+              <div class="container-fluid">
+                  <!-- Page Heading -->
+                  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                      <h1 class="h3 mb-0 text-gray-800 text-center mt-3">DASHBOARD</h1>
+                      <a routerLink="/market" routerLinkActive="active" class="d-none d-sm-inline-block btn btn-sm  shadow-sm bannercontrolpanel"><i
+                              class=" fas fa-download fa-sm text-white-50"></i> Market</a>
+                      </div>
+                  <!-- Content Row -->
+                  <div class="row">
+                      <!--  !----------------------------------------------NAME USER--------------------------------------------- -->
+                      <div class="col-xl-3 col-md-6 mb-4">
+                          <div class="card border-left-primary shadow h-100 py-2">
+                              <div class="card-body">
+                                  <div class="row no-gutters align-items-center">
+                                      <div class="col mr-2">
+                                          <div class="text-s font-weight-bold text-primary text-uppercase mb-1">
+                                              Welcome,</div>
+                                          <div class="h3 mb-0 font-weight-bold text-gray-800 text-uppercase"  *ngIf="currentUserInfo">{{currentUserInfo.name}} {{currentUserInfo.surname}}</div>
+                                      </div>
+                                      <div class="col-auto">
+                                          <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- !----------------------------------------------BALANCE USER--------------------------------------------- -->
+                      <div class="col-xl-3 col-md-6 mb-4">
+                          <div class="card border-left-success shadow h-100 py-2">
+                              <div class="card-body">
+                                  <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                      <div class="text-s font-weight-bold text-primary text-uppercase mb-1">
+                                          Balance </div>
+                                      <!-- <div class="h3 mb-0 font-weight-bold text-gray-800">{{newmarketData.price| currency:'USD':'symbol-narrow':'1.2-2'}}</div> -->
+                                      <div class="row mb-3">
+                                        <div class="col-md-12 d-flex justify-content-start">
+                                          <h2 class="h3 mb-0 font-weight-bold text-gray-800" [@countTo]="currentNumber > 0 ? 'in' : 'void'" >{{ currentNumber| currency:'USD':'symbol-narrow':'1.2-2' }}</h2>
+                                          <div class="loader pt-1 mx-2"></div>
+
+                                        </div>
+                                      </div>
+                                      <button (click)="createTransactionDEPOSIT()" class=" btn-s bannercontrolpanel rounded-2 ml-4 btn-primary">Deposit</button>   <button (click)="openWithdrawModal()" class="btn-s btn-danger rounded-2 px-2 ml-2" >Withdraw</button>
+                                  </div>
+
+                                      <div class="col-auto">
+                                          <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                       <!-- !----------------------------------------------STOCKS NUMBER USER--------------------------------------------- -->
+                      <div class="col-xl-3 col-md-6 mb-4">
+                          <div class="card border-left-info shadow h-100 py-2">
+                              <div class="card-body">
+                                  <div class="row no-gutters align-items-center">
+                                      <div class="col mr-2">
+                                        <div class="text-s font-weight-bold text-primary text-uppercase mb-1">
+                                            STOCKS</div>
+                                        <div [@countTo]="currentNumber > 0 ? 'in' : 'void'" class="h3 mb-0 font-weight-bold text-gray-800">{{totalPortfolioQuantity}}</div>
+                                    </div>
+                                      <div class="col-auto">
+                                          <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                       <!-- !----------------------------------------------TRANSACTIONS NUMBER USER--------------------------------------------- -->
+                      <div class="col-xl-3 col-md-6 mb-4">
+                          <div class="card border-left-warning shadow h-100 py-2">
+                              <div class="card-body">
+                                  <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                      <div class="text-s font-weight-bold text-primary text-uppercase mb-1">
+                                          TRANSACTIONS</div>
+                                      <div [@countTo]="currentNumber > 0 ? 'in' : 'void'" class="h3 mb-0 font-weight-bold text-gray-800">{{totalSellBuyTransactionCount}}</div>
+                                  </div>
+                                      <div class="col-auto">
+                                          <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Content Row -->
+                  <div class="row">
+                      <div class="col-xl-8 col-lg-7">
+                          <div class="card shadow mb-4">
+                              <!-- !---------------------------------PORTFOLIO USER--------------------------------------------  -->
+                              <div
+                                  class=" bannercontrolpanel  card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                  <h6 class="m-0 font-weight-bold text-white">Portfolio</h6>
+                              </div>
+                              <!-- Card Body -->
+                              <div class="card-body">
+                                    <div class="col-md-12" >
+                                      <div class="table-responsive">
+                                        <table class="table">
+                                          <thead>
+                                            <tr>
+                                              <th scope="col">Stock Symbol</th>
+                                              <th scope="col">Quantity</th>
+                                              <th scope="col">Purchase Price</th>
+                                              <th scope="col">Current Price</th>
+                                              <th scope="col">% variation</th>
+                                              <th scope="col">Total Price</th>
+                                              <th scope="col">Gain/Loss</th>
+                                              <th scope="col">Action</th>
+                                              <th scope="col"></th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <ng-container *ngFor="let portfolioStock of userPortfolioStocks; let i = index" >
+
+                                            <tr *ngIf="showAllPF || i < numberOfItemsToShowPF" [ngClass]="{'selected-action': portfolioStock.isSelected}">
+                                              <td  >{{ portfolioStock.marketData.symbol }} </td>
+                                              <td>{{ portfolioStock.quantity }}</td>
+                                              <td>{{ portfolioStock.purchasePrice| currency:'USD':'symbol-narrow':'1.2-2' }}</td>
+                                              <td [style.color]="portfolioStock.color">{{  portfolioStock.marketData.price | currency:'USD':'symbol-narrow':'1.2-2' }}</td>
+                                              <td>{{ calculatePriceChange(portfolioStock.purchasePrice, portfolioStock.marketData.price) | number:'1.2-2' }}%</td>
+                                              <td>{{ (portfolioStock.purchasePrice) * portfolioStock.quantity | currency:'USD':'symbol-narrow':'1.2-2' }}</td>
+                                              <td [style.color]="portfolioStock.color" >{{ calculateTotalPriceChange(portfolioStock) | currency:'USD':'symbol-narrow':'1.2-2'  }}</td>
+                                              <td>
+                                                <button (click)="viewDetails(portfolioStock.marketData.id)" class="btn-xs bannercontrolpanel  px-4 rounded-2 py-2">Details</button>
+                                              </td>
+                                              <td >
+                                                <button (click)="openSellModal(portfolioStock.marketData.price, portfolioStock.marketData.id, portfolioStock.quantity, portfolioStock.id);openSelllModal(portfolioStock.marketData.id); portfolioStock.isSelected = true;" class="btn-s btn-danger rounded-2 px-4 ml-2 py-2">SELL</button>
+                                              </td>
+                                            </tr>
+            <!--! ----------------------- MODALE  SELL ----------------------------------------->
+                                          <div id="modalSell" class="modal fade modal-lg  p-0 m-0 ">
+                                            <div class="modal-dialog p-0">
+                                              <div class="modal-content ">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title bannercontrolpaneltext text-center" id="modal-title-add">
+                                                  CONFIRM SELL ?
+                                                  </h5>
+                                                </div>
+                                                <div class="modal-body"  *ngIf="currentUserInfo">
+                                                  <p id="add-modal " class="bannercontrolpaneltext"></p>
+                                                    <div>
+                                                    <button (click)=" createTransactionSELL(selectedStock.price,selectedStock.id,selectedStock.quality,selectedStock.idpS); closeSellModal(); modalConfirmSell()" class="btn-s btn-danger rounded-2 px-2 ml-2">SELL</button>
+                                                    <button (click)="closeSellModal()"  class="btn-s bannercontrolpanel rounded-2 ml-4 btn-primary" >Cancel</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </ng-container>
+                                            <button *ngIf="userPortfolioStocks.length >6" class="btn bannercontrolpanel mt-2"  (click)="showAllPF = !showAllPF">
+                                              {{ showAllPF ? 'Show less' : 'Show all' }}
+                                            </button>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                      <div class="col-xl-4 col-lg-5">
+                          <div class="card shadow mb-4">
+                              <!--! ----------------------------------------  TRANSACTIONS LIST USER------------------- -->
+                              <div
+                                  class=" bannercontrolpanel card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                  <h6 class="m-0 font-weight-bold text-white">Transactions</h6>
+                                  <div class="dropdown no-arrow">
+                                      <a class="dropdown-toggle" href="" role="button" id="dropdownMenuLink"
+                                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                      </a>
+                                      <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                          aria-labelledby="dropdownMenuLink">
+                                          <div class="dropdown-header">Dropdown Header:</div>
+                                          <a class="dropdown-item" href="#">Action</a>
+                                          <a class="dropdown-item" href="#">Another action</a>
+                                          <div class="dropdown-divider"></div>
+                                          <a class="dropdown-item" href="#">Something else here</a>
+                                      </div>
+                                  </div>
+                              </div>
+                              <!-- Card Body -->
+                              <div class="card-body">
+                                  <div class="col-md-12">
+                                  <div class="table-responsive">
+                                    <table class="table">
+                                      <thead>
+                                        <tr>
+                                          <th scope="col">Transaction</th>
+                                          <th scope="col">Quantity</th>
+                                          <th scope="col">Amount</th>
+                                          <th scope="col">Symbol</th>
+                                          <!-- <th scope="col">Gain/Loss</th> -->
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <ng-container *ngFor="let portfolioStock of transactions.reverse(); let i = index">
+                                        <tr *ngIf="showAll || i < numberOfItemsToShow">
+                                          <td>{{ portfolioStock.transactionType}}</td>
+                                          <td >{{portfolioStock.order.quantity}}</td>
+                                          <td>{{ portfolioStock.amount | currency:'USD':'symbol-narrow':'1.2-2'}}</td>
+                                          <ng-container *ngIf="portfolioStock.transactionType == 'BUY' || portfolioStock.transactionType == 'SELL'">
+                                          <td >{{ portfolioStock.order.marketData.symbol }}</td>
+                                        </ng-container>
+                                        </tr>
+                                      </ng-container>
+                                      <button *ngIf="transactions.length > 7" class="btn bannercontrolpanel mt-2"  (click)="showAll = !showAll;loadUserTransactions(currentUserInfo.id)">
+                                        {{ showAll ? 'Show less' : 'Show all'  }}
+                                      </button>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+              </div>
+              <!-- /.container-fluid -->
+          </div>
+          <!-- End of Main Content -->
+          <!-- Footer -->
+          <footer class="sticky-footer bg-white ">
+              <div class="container my-auto">
+                  <div class="copyright text-center my-auto">
+                      <span>Copyright &copy; Luca Quaglino 2023</span>
+                  </div>
+              </div>
+          </footer>
+          <!-- End of Footer -->
+      </div>
+      <!-- End of Content Wrapper -->
+  </div>
+  <!-- End of Page Wrapper -->
+

@@ -1,0 +1,37 @@
+<div class="bannercontrolpanel ">
+<div class="form-box mx-auto ">
+
+  <form class="form">
+    <div class=" title container-fluid text-center ">
+      <a class="navbar-brand bannercontrolpaneltext" href="#"><img  class="pb-1 mx-1" src="https://img.icons8.com/material-outlined/24/combo-chart.png" alt="" style="max-width: 30px; max-height: 30px;">EPICTRADING</a>
+      </div>
+      <span class="title">Log in</span>
+      <span class="subtitle">Access with your account.</span>
+      <div class="form-container">
+
+        <input type="email" class="input" placeholder="Email" id="email" name="email" required [(ngModel)]="email">
+        <input type="password" class="input" placeholder="Password" id="password" name="password" required [(ngModel)]="password">
+      </div>
+      <button (click)="login()" type="submit" class="btn btn-primary">Log in</button>
+  </form>
+  <div class="form-section">
+    <p>Don't have an account? <a routerLink="/register" routerLinkActive="active">Sign up</a> </p>
+  </div>
+  </div>
+</div>
+
+
+<!-- PROFILE LINK -->
+
+<div class="about">
+  <a class="bg_links social mail" href="mailto:luca.quaglino@hotmail.com" target="_blank">
+     <span class="icon"></span>
+  </a>
+  <a class="bg_links social github" href="https://github.com/Lucaquaglino" target="_blank">
+     <span class="icon"></span>
+  </a>
+  <a class="bg_links social linkedin" href="https://www.linkedin.com/in/lucaquaglino/" target="_blank">
+     <span class="icon"></span>
+  </a>
+  <a class="bg_links logo"></a>
+</div>

@@ -1,0 +1,310 @@
+<header class="sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-light bannercontrolpanel">
+    <div class="container-fluid">
+      <a class="navbar-brand bannercontrolpaneltext2" href="#"
+        ><img
+          class="pb-1 mx-1"
+          src="https://img.icons8.com/material-outlined/24/combo-chart.png"
+          alt=""
+          style="max-width: 30px; max-height: 30px"
+        />EPICTRADING</a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div>
+          <ul class="navbar-nav mx-">
+            <li class="nav-item">
+              <a
+                class="nav-link text-white"
+                routerLink="/market"
+                routerLinkActive="active"
+                >Market</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link text-white"
+                routerLink="/dashboard"
+                routerLinkActive="active"
+                >Dashboard</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link text-white"
+                routerLink="/paypal"
+                routerLinkActive="active"
+                >Deposit</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="navbar-nav" style="margin-left: auto">
+          <div id="icone-nav" class="nav-icons row d-flex">
+            <div id="navbar-avatar" class="col-6 dropdown position-relative">
+              <a
+                class="dropdown"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  class="rounded-circle mx-2"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJxA5cTf-5dh5Eusm0puHbvAhOrCRPtckzjA&usqp=CAU"
+                  alt=""
+                  width="60px"
+                  height="60px"
+                />
+                <span
+                  id="nav-avatar"
+                  class="position-absolute translate-middle badge border border-light rounded-circle bg-success p-2"
+                  ><span class="visually-hidden">unread messages</span></span
+                >
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li class="mx-4">
+                  <a class="dropdown-item" href="#"
+                    ><div class="position-relative" id="">
+                      <span id="span-logout" class=" "
+                        ><span class="visually-hidden"
+                          >unread messages</span
+                        ></span
+                      >
+                    </div></a
+                  >
+                  <div class="me-3">
+                    <p class="m-0" *ngIf="currentUserInfo">
+                      {{ currentUserInfo.name }}
+                    </p>
+                    <p class="m-0 text-secondary" *ngIf="currentUserInfo">
+                      {{ currentUserInfo.email }}
+                    </p>
+                  </div>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item d-flex align-items-center"
+                    [routerLink]="['/dashboard']"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-person mx-2"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"
+                      /></svg
+                    >Profile</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item d-flex align-items-center"
+                    [routerLink]="['/market']"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-star mx-2"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"
+                      /></svg
+                    >Market</a
+                  >
+                </li>
+                <li>
+                  <a
+                    (click)="openSettingsModal()"
+                    class="dropdown-item d-flex align-items-center"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-gear mx-2"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"
+                      />
+                      <path
+                        d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"
+                      /></svg
+                    >Settings</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item d-flex align-items-center"
+                    routerLink="/landingPage"
+                    routerLinkActive="active"
+                    (click)="logOut()"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-power mx-2"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M7.5 1v7h1V1h-1z" />
+                      <path
+                        d="M3 8.812a4.999 4.999 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812z"
+                      /></svg
+                    >Sign Out</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div id="modalOk" class="modal fade modal-lg">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title bannercontrolpaneltext" id="modal-title-add">
+          USER MODIFIER
+        </h5>
+      </div>
+      <div class="modal-body" *ngIf="currentUserInfo">
+        <p id="add-modal " class="bannercontrolpaneltext">INFO USER</p>
+        <div class="col-md-12">
+          <form
+            (submit)="updateUser(currentUserInfo.id)"
+            class="d-flex flex-column"
+          >
+            <div class="form-group mb-3">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                [(ngModel)]="currentUserInfo.name"
+                (ngModelChange)="onFieldChange()"
+              />
+            </div>
+            <div class="form-group mb-3">
+              <label for="surname">Surname</label>
+              <input
+                type="text"
+                class="form-control"
+                id="surname"
+                name="surname"
+                *ngIf="currentUserInfo"
+                [(ngModel)]="currentUserInfo.surname"
+                (ngModelChange)="onFieldChange()"
+              />
+            </div>
+            <div class="form-group mb-3">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                name="username"
+                *ngIf="currentUserInfo"
+                [(ngModel)]="currentUserInfo.username"
+                (ngModelChange)="onFieldChange()"
+              />
+            </div>
+            <div class="form-group mb-3">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                *ngIf="currentUserInfo"
+                [(ngModel)]="currentUserInfo.email"
+                (ngModelChange)="onFieldChange()"
+              />
+            </div>
+            <div class="form-group mb-3">
+              <label for="phoneNumber">Telephone number</label>
+              <input
+                type="tel"
+                class="form-control"
+                id="phoneNumber"
+                name="phoneNumber"
+                *ngIf="currentUserInfo"
+                [(ngModel)]="currentUserInfo.phoneNumber"
+                (ngModelChange)="onFieldChange()"
+              />
+            </div>
+          </form>
+
+          <div>
+            <button
+              *ngIf="isFormDirty"
+              (click)="updateUser(currentUserInfo.id); closeSettingsModal()"
+              class="btn btn-primary mx-2"
+              data-toggle="modal"
+              data-target="#settingsModal"
+              data-dismiss="modal"
+            >
+              Save
+            </button>
+            <button
+              (click)="cancelPutUser(); closeSettingsModal()"
+              class="btn btn-primary"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="about">
+  <a
+    class="bg_links social mail"
+    href="mailto:luca.quaglino@hotmail.com"
+    target="_blank"
+  >
+    <span class="icon"></span>
+  </a>
+  <a
+    class="bg_links social github"
+    href="https://github.com/Lucaquaglino"
+    target="_blank"
+  >
+    <span class="icon"></span>
+  </a>
+  <a
+    class="bg_links social linkedin"
+    href="https://www.linkedin.com/in/lucaquaglino/"
+    target="_blank"
+  >
+    <span class="icon"></span>
+  </a>
+  <a class="bg_links logo"></a>
+</div>
